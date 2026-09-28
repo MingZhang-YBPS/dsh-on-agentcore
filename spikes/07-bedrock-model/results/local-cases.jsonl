@@ -1,0 +1,27 @@
+{"combo":"bedrock-runtime-deepseek.v3.2","id":"R01","desc":"选择 ~/workspace 作为工作区","pass":true,"ms":576}
+{"combo":"bedrock-runtime-deepseek.v3.2","id":"R02","desc":"文本对话：真实模型流式回复，页面无原始标记","pass":true,"doneMs":1632,"stopSeenMs":231,"leak":false,"note":"发送→结束 1632 ms（停止控件 231 ms）；新增「消息或创建任务, / 调用指令, @ 文件或对话 完全权限 deepseek.v3.2 1 轮 1 步·2400 tok/s 8.4K tok·缓存命中 98%」","ms":1980}
+{"combo":"bedrock-runtime-deepseek.v3.2","id":"R03","desc":"工具调用：模型调用 bash 写文件并报告输出，界面显示工具调用，无原始标记","pass":true,"doneMs":3002,"stopSeenMs":201,"toolShown":true,"leak":false,"note":"发送→结束 3002 ms；工具调用标记=true；展开后原始标记=false","ms":4922}
+{"combo":"bedrock-runtime-deepseek.v3.2","id":"R04","desc":"多轮上下文：追问上一轮工具输出（历史中含 assistant.tool_calls 与 role=tool 消息）","pass":true,"doneMs":5977,"stopSeenMs":198,"note":"发送→结束 5977 ms；新增「件或对话 完全权限 deepseek.v3.2 3 轮 4 步·187 tok/s 33.9K tok·缓存命中 97%」","ms":6466}
+{"combo":"bedrock-runtime-deepseek.v3.2","id":"R05","desc":"停止生成：长回复中点击「停止生成」，按钮消失且之后不再追加内容","pass":true,"stopMs":87,"lastAtStop":54,"lastAfter5s":54,"note":"发送→数到 50：2443 ms；点击→停止控件消失 87 ms；停止时 54，5 秒后 54","ms":9196}
+{"combo":"bedrock-runtime-deepseek.v3.2","id":"L01","desc":"bash 工具写入的文件落在 ~/workspace","pass":true,"note":"\"spike07\\n\""}
+{"combo":"bedrock-runtime-deepseek.v3.2","id":"L02","desc":"适配器日志中的上游错误","pass":true,"note":"无"}
+{"combo":"bedrock-runtime-deepseek.v3.2","id":"L04","desc":"DSH 会话日志中没有模型原始标记（DSML）","pass":true,"note":"扫描 2 个文件；命中 0"}
+{"combo":"bedrock-mantle-deepseek.v3.2","id":"R01","desc":"选择 ~/workspace 作为工作区","pass":true,"ms":581}
+{"combo":"bedrock-mantle-deepseek.v3.2","id":"R02","desc":"文本对话：真实模型流式回复，页面无原始标记","pass":true,"doneMs":1486,"stopSeenMs":246,"leak":false,"note":"发送→结束 1486 ms（停止控件 246 ms）；新增「消息或创建任务, / 调用指令, @ 文件或对话 完全权限 deepseek.v3.2 1 轮 1 步·2333 tok/s 8.4K tok·缓存命中 98%」","ms":1832}
+{"combo":"bedrock-mantle-deepseek.v3.2","id":"R03","desc":"工具调用：模型调用 bash 写文件并报告输出，界面显示工具调用，无原始标记","pass":true,"doneMs":3156,"stopSeenMs":200,"toolShown":true,"leak":false,"note":"发送→结束 3156 ms；工具调用标记=true；展开后原始标记=false","ms":5090}
+{"combo":"bedrock-mantle-deepseek.v3.2","id":"R04","desc":"多轮上下文：追问上一轮工具输出（历史中含 assistant.tool_calls 与 role=tool 消息）","pass":true,"doneMs":1187,"stopSeenMs":243,"note":"发送→结束 1187 ms；新增「件或对话 完全权限 deepseek.v3.2 3 轮 4 步·148 tok/s 33.9K tok·缓存命中 72%」","ms":1692}
+{"combo":"bedrock-mantle-deepseek.v3.2","id":"R05","desc":"停止生成：长回复中点击「停止生成」，按钮消失且之后不再追加内容","pass":true,"stopMs":73,"lastAtStop":52,"lastAfter5s":52,"note":"发送→数到 50：2337 ms；点击→停止控件消失 73 ms；停止时 52，5 秒后 52","ms":9079}
+{"combo":"bedrock-mantle-deepseek.v3.2","id":"L01","desc":"bash 工具写入的文件落在 ~/workspace","pass":true,"note":"\"spike07\\n\""}
+{"combo":"bedrock-mantle-deepseek.v3.2","id":"L02","desc":"适配器日志中的上游错误","pass":true,"note":"无"}
+{"combo":"bedrock-mantle-deepseek.v3.2","id":"L04","desc":"DSH 会话日志中没有模型原始标记（DSML）","pass":true,"note":"扫描 2 个文件；命中 0"}
+{"combo":"bedrock-mantle-deepseek.v3.1","id":"R01","desc":"选择 ~/workspace 作为工作区","pass":true,"ms":588}
+{"combo":"bedrock-mantle-deepseek.v3.1","id":"R02","desc":"文本对话：真实模型流式回复，页面无原始标记","pass":true,"doneMs":1627,"stopSeenMs":231,"leak":false,"note":"发送→结束 1627 ms（停止控件 231 ms）；新增「消息或创建任务, / 调用指令, @ 文件或对话 完全权限 deepseek.v3.1 1 轮 1 步·4667 tok/s 7.9K tok·缓存命中 17%」","ms":1974}
+{"combo":"bedrock-mantle-deepseek.v3.1","id":"R03","desc":"工具调用：模型调用 bash 写文件并报告输出，界面显示工具调用，无原始标记","pass":true,"doneMs":1773,"stopSeenMs":201,"toolShown":true,"leak":false,"note":"发送→结束 1773 ms；工具调用标记=true；展开后原始标记=false","ms":3732}
+{"combo":"bedrock-mantle-deepseek.v3.1","id":"R04","desc":"多轮上下文：追问上一轮工具输出（历史中含 assistant.tool_calls 与 role=tool 消息）","pass":true,"doneMs":836,"stopSeenMs":216,"note":"发送→结束 836 ms；新增「或对话 完全权限 deepseek.v3.1 3 轮 4 步·4182 tok/s 31.9K tok·缓存命中 79%」","ms":1337}
+{"combo":"bedrock-mantle-deepseek.v3.1","id":"R05","desc":"停止生成：长回复中点击「停止生成」，按钮消失且之后不再追加内容","pass":true,"stopMs":71,"lastAtStop":64,"lastAfter5s":64,"note":"发送→数到 50：1680 ms；点击→停止控件消失 71 ms；停止时 64，5 秒后 64","ms":8423}
+{"combo":"bedrock-mantle-deepseek.v3.1","id":"L01","desc":"bash 工具写入的文件落在 ~/workspace","pass":true,"note":"\"spike07\\n\""}
+{"combo":"bedrock-mantle-deepseek.v3.1","id":"L02","desc":"适配器日志中的上游错误","pass":true,"note":"无"}
+{"combo":"bedrock-mantle-deepseek.v3.1","id":"L04","desc":"DSH 会话日志中没有模型原始标记（DSML）","pass":true,"note":"扫描 2 个文件；命中 0"}
+{"combo":"bedrock-runtime-deepseek.not-a-model","id":"E01","desc":"模型不可用：对话界面显示错误，页面仍可用","pass":true,"doneMs":1161,"stopSeenMs":232,"note":"显示错误=true；输入框可用=true；新增「 is invalid.\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"validation_error\"} INVALID_REQUEST 发消息或创建任务, / 调用指令, @ 文件或对话 完全权限 deepseek.not-a-model 1 轮 1 步」","ms":2833}
+{"combo":"bedrock-runtime-deepseek.not-a-model","id":"L02","desc":"适配器日志中的上游错误","pass":true,"note":"无"}
+{"combo":"-","id":"L03","desc":"DSH 进程非回环外联（经外联记录代理）","pass":true,"note":"0 次 []"}

@@ -1,0 +1,253 @@
+{
+ "mode": "expire",
+ "minutes": 8,
+ "timeline": [
+  {
+   "t": 2,
+   "kind": "navigated",
+   "url": "/auth/login"
+  },
+  {
+   "t": 8,
+   "kind": "navigated",
+   "url": "/"
+  },
+  {
+   "t": 11,
+   "kind": "ws-open",
+   "id": 0
+  },
+  {
+   "t": 13,
+   "kind": "logged-in"
+  },
+  {
+   "t": 28,
+   "kind": "reply",
+   "tag": "第一条",
+   "ok": true,
+   "ms": 1417
+  },
+  {
+   "t": 28,
+   "kind": "state",
+   "tag": "ready",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 58,
+   "kind": "state",
+   "tag": "t+58s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 88,
+   "kind": "state",
+   "tag": "t+88s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 118,
+   "kind": "state",
+   "tag": "t+118s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 148,
+   "kind": "state",
+   "tag": "t+148s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 178,
+   "kind": "state",
+   "tag": "t+178s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 208,
+   "kind": "state",
+   "tag": "t+208s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 238,
+   "kind": "state",
+   "tag": "t+238s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 268,
+   "kind": "state",
+   "tag": "t+268s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 298,
+   "kind": "state",
+   "tag": "t+298s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 328,
+   "kind": "state",
+   "tag": "t+328s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 358,
+   "kind": "state",
+   "tag": "t+358s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 388,
+   "kind": "state",
+   "tag": "t+388s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 418,
+   "kind": "state",
+   "tag": "t+418s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 448,
+   "kind": "state",
+   "tag": "t+448s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 478,
+   "kind": "state",
+   "tag": "t+478s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 508,
+   "kind": "state",
+   "tag": "t+508s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 509,
+   "kind": "http-error",
+   "status": 401,
+   "url": "/api/session/prompt"
+  },
+  {
+   "t": 568,
+   "kind": "reply",
+   "tag": "保持之后不刷新",
+   "ok": false,
+   "ms": 60336,
+   "error": "page.waitForFunction: Timeout 60000ms exceeded."
+  },
+  {
+   "t": 568,
+   "kind": "state",
+   "tag": "after-send",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 569,
+   "kind": "navigated",
+   "url": "/auth/login"
+  },
+  {
+   "t": 572,
+   "kind": "state",
+   "tag": "after-reload",
+   "url": "/auth/login",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [
+    "登录"
+   ],
+   "replies": 0
+  }
+ ],
+ "ws": [
+  {
+   "id": 0,
+   "url": "/api/remote.mux",
+   "openedAt": 11,
+   "closedAt": null,
+   "rx": 73,
+   "tx": 4
+  }
+ ]
+}

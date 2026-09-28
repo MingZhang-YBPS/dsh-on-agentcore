@@ -1,0 +1,3 @@
+{"runId":"2fec7c","id":"L01","desc":"页面保持 70 分钟：记录 WebSocket 关闭（AgentCore 1 小时上限）","note":"关闭 #0@3663s(3647s)；打开 #0@16s #1@3663s"}
+{"runId":"2fec7c","id":"L02","desc":"每次关闭之后页面都自动重新连接","pass":true,"note":"关闭 1，打开 2"}
+{"runId":"2fec7c","id":"L03","desc":"保持 70 分钟后不刷新直接对话","pass":true,"note":"ok 3296 ms"}

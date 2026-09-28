@@ -1,0 +1,24 @@
+{
+  "phase": "E",
+  "cases": [
+    {
+      "id": "E01",
+      "desc": "模型不可用：对话界面显示错误，页面仍可用",
+      "pass": true,
+      "doneMs": 1161,
+      "stopSeenMs": 232,
+      "note": "显示错误=true；输入框可用=true；新增「 is invalid.\",\"type\":\"invalid_request_error\",\"param\":null,\"code\":\"validation_error\"} INVALID_REQUEST 发消息或创建任务, / 调用指令, @ 文件或对话 完全权限 deepseek.not-a-model 1 轮 1 步」",
+      "ms": 2833
+    }
+  ],
+  "net": {
+    "console": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "failed": [
+      "404 POST http://localhost:8000/api/settings/describe",
+      "404 POST http://localhost:8000/api/settings/describe"
+    ]
+  }
+}

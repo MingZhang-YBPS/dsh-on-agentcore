@@ -1,0 +1,6 @@
+{"runId":"d1cd05","id":"W01","desc":"写入：新会话中调用 bash 在工作空间写 hello.txt（内容带本次 runId）","pass":true,"note":"发送→结束 4568 ms；输出含 dsh-e2e-d1cd05=true","ms":15068,"user":"alice"}
+{"runId":"d1cd05","id":"P0S","desc":"StopRuntimeSession（运维用户的 Bearer 令牌）","pass":true,"note":"200 {}"}
+{"runId":"d1cd05","id":"P01","desc":"microVM 回收后重新打开：冷启动内加载完成，写入时的会话在列表中且历史可见","pass":true,"coldMs":11513,"note":"登录→首页可用 11513 ms；会话「e2e-d1cd05-alice 请调用」历史可见（含 dsh-e2e-d1cd05）","ms":5431,"user":"alice"}
+{"runId":"d1cd05","id":"P02","desc":"回收后 hello.txt 仍在：右侧边栏预览显示写入的内容","pass":true,"note":"预览显示 dsh-e2e-d1cd05","ms":12439,"user":"alice"}
+{"runId":"d1cd05","id":"P03","desc":"回收后在新会话继续对话","pass":true,"note":"回复 2365 ms","ms":4608,"user":"alice"}
+{"runId":"d1cd05","id":"P04","desc":"新 microVM：DSH_HOME 从 session storage 恢复，适配器启动到 DSH 就绪的耗时","pass":true,"note":"05:25:06 final home mirror sync {\"copied\":17}；05:25:38 home restore {\"restored\":5,\"ms\":43}；05:25:43 dsh web ready {\"readyMs\":4975}"}

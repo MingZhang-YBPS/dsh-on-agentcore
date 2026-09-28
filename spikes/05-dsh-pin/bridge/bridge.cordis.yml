@@ -1,0 +1,66 @@
+# Spike 05 桥接补丁：叠加在 `dsh --profile headless` 之上（`--patch` 最后一层，行级覆盖）。
+# - 关闭一次性 headless 驱动，换成 agentcore-bridge（相对路径按本文件所在目录解析）
+# - 关闭会向外发数据或额外调用模型的行：遥测（默认上报到 harness-telemetry.deepseeksvc.com）、
+#   首条提问生成标题的 LLM 调用、DeepSeek 官方适配器及其请求体扩展、开发热重载
+# - 模型只走 llm-pi-ai 的 openai-completions 路由，baseURL 指向适配层内的 SigV4 签名代理
+# 运行参数全部来自环境变量，由适配层在 spawn 时设置。
+
+- id: headless-startup
+  disabled: true
+- id: headless-runner
+  disabled: true
+
+- id: session-telemetry-otel
+  disabled: true
+- id: session-title-llm
+  disabled: true
+- id: hmr
+  disabled: true
+- id: llm-deepseek
+  disabled: true
+- id: deepseek-llm-api-extensions
+  disabled: true
+- id: session-log-deepseek
+  disabled: true
+- id: plugin-package-inventory-deepseek
+  disabled: true
+
+# web_search 走 DeepSeek 官方搜索 API（需要 DEEPSEEK_API_KEY 并外联到 DeepSeek），PoC 不启用；
+# 一并关闭 web_fetch 工具，模型需要访问网页时只能经 bash 工具（与执行角色、网络配置同一边界）
+- id: tool-web
+  disabled: true
+- id: web
+  disabled: true
+- id: web-search-deepseek
+  disabled: true
+- id: web-fetch-http
+  disabled: true
+
+# bash 工具进程组 SIGTERM→SIGKILL 的宽限期：DSH 默认 3000 ms，改为与设计一致的 500 ms（toolKillGraceMs）
+- id: bash-sandbox
+  config:
+    timeoutMs: 60000
+    graceMs: 500
+
+- id: agent-default-model
+  config:
+    provider: bedrock
+    model: !!js process.env.DSH_BRIDGE_MODEL_ID
+
+- id: llm-pi-ai
+  config:
+    providers:
+      bedrock:
+        displayName: Amazon Bedrock (OpenAI-compatible)
+        api: openai-completions
+        baseURL: !!js process.env.DSH_BRIDGE_MODEL_BASE_URL
+        # 适配器要求有一个密钥；真正的鉴权由签名代理完成，代理会丢弃这个 Authorization
+        apiKeyEnv: DSH_BRIDGE_PLACEHOLDER_KEY
+        models:
+          - id: !!js process.env.DSH_BRIDGE_MODEL_ID
+            contextWindow: 131072
+            maxTokens: 8192
+
+- insert:
+    - id: agentcore-bridge
+      name: ./dsh-agentcore-bridge.mjs

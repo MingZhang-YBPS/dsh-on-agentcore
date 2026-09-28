@@ -1,0 +1,1239 @@
+[
+ {
+  "at": 1266,
+  "data": {
+   "choices": [
+    {
+     "delta": {
+      "content": "",
+      "role": "assistant"
+     },
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "o4KMhsuaW8l3JlM6BblBNO1hKchqZ12dIXvOdaY6SHK44IHhYsccyigncW7L6qloiGdc147YrvOZgqNVMYKi1T3Hp2dN7xLhmpqjWyynWLn3k4J2ErdJz"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "LuEv1gZcsLMtVlOXLvdmtcX5aTK4piWK56LcWQc201dsQjWCCSf8fNPOkWINUCy7ngZ23szNbYGC6UUZHGDkZ95TSCGcXyiCMzpbhkopqe9",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1266,
+  "data": {
+   "choices": [
+    {
+     "delta": {
+      "content": "我将为您执行 `echo spike07` 命令并返回输出。\n\n<｜DSML｜function_calls"
+     },
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "s3Z4Wz9owAJQiJ6MBRv1fJnZM0GiuMswMe8K5303hzr8A31xMQu83CtRf5fPwLe"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "BqALxKqpAeWmIVlUUhmlDDd1jZaIDg8bI8jcGPFNSMoMj2q310JopIQCBkjopuSvygBZNF8Jl5JB1z",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1266,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "YW0M0YtVSzVuvQEICjc4gvLISdv0q8gUD6unEkEszSInUxi3W8KkbzPzSL9WC6c31FZCKbsV5dGt3MrYIQM"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "iCBCf2p7BDsWAgEgOsqVEPoLJ6P6xhGZe3lRDuePMcgl8GzI8AFg8gsHf4",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1266,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "HOfLT5ogBP7qxWoxAouCYA6W4YvSB1zsHkETmjnyZBncBx8KvuzIYu4O0CqIUsaQxsHTXS4Jly7PamYIjyZ9Gdw4SPn85WCib9"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "CzFZDjcUfOVeY82QzXJMDixwTIQ3qWRJiYhUWpHhD7E2bv4Ul4MfuXI78c",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1266,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "wFm1wE6FqwWsTyrFeucRg1iEjwP8JDfP30ep8d9DQoFL2qYzmAOopttBVM3nENKm6TLHpdnjcD6UJiJ42z5p1d1c85LkXP666PtvOInnBxuggnXZ"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "EVO54kwdVMq6bZuvdf167SFQm9a47RVoI1zSa8mMKRpQtSvp1qY7muNnojCAhJ",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1464,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "ju2feiI0wGiZWdWy3lim2GKiXQvV9JIyzdvHgFgT31DWwJ8WzmcSA3gnAO6xKbevsTzE5F3MyBTA7Rt1"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "F3j4h3skao6tTFBYNIlRj88Tc1A1dFYSz3RM3qhopvSdKtzv72MDXl6jHYwqlm0",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1464,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "cCsKoR2tthmSn8Aa6ckoD17GXsrwaY6TQxSzMCXWp3VFr6e6HYJ4oqbm397N5DD2G1UgGgULeRkxsDSUsNzKpoBIG5wpkPza3G"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "JDYN3gkm433sj2bZXZeCqtgvpahHrCvk8KyAGTBHv7",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1464,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "vaKzWOoP3tUXrELhRu946KlehWqQZv57vi30mbcuKu30s4iVlTqfVgQjMlh8"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "tLvzEBkBnSOrP0tFpNLH61R0FAPiuGGIU3l8uwQ7Dy2X4FlUcRG0NvV",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1467,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "ep8jVivTiPcsayZ5jpfZqYL7k9gJzE7X1E9sLsmVOKeMdQEg8csIdPX0"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "HYaSbK6ecSS3Ye7t3ucbM6N1hTzh4zhl2SEz8zkLIsUMg2",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1468,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "VP3fmjyFr2f9hevEbXEEpcv6Mz2CxHSvPV9YTBVoGJYclSlM8aPEVLZLr6KUWVn5QYueBQLm4Sk4DozcF9yCkzk0NLYWihNY"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "ixirkbzosqT11bOsBjvYtTuilPUUscPTep1wxTexzO",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1468,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "UTNSwdeqP0pzUqnHMin9HO5CEUpK4Hes8Axkte9CyqmpY5"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "63xg7itrFKSIkIPzEZQ0HoJPDnvn8ArTgg6ejBrt5Se5d6y5jR3km3MRj2f0pWyImPM8wULSivcYaUpydTg9ecB4OhVr2WY8rGW3FrREh1o9okF9GCYARG3ZX1",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1468,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "TFtbbXNtcWhMgh0izGzKeS0jbHxMaDAWEW1VXrNQrDexOv1P"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "hqbHHzO29uft35ZMKUgAQrdmFBR6hODMi5ayegV9YmoDdIdQyfGvB7jHsANm3V0SDL0SUofNS5bpndFPOGq7wLsCbBXz9t77ilB",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1468,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "FrQmmWIhD87iDZFnGS1ieEoK2mw82qdDarKEwFx9OWNGOYinHa3qpm8RUSd1vL5ypTu5nFNRUi6OOlFbQRuAQA4"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "TneYHDmrgc3HMVVMjUtzAvB1pz556z8M4WizbQ5TqTG0kS9xp",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1468,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "LqOogdZQ9X20yDaqqt4Jg4Oudes5WQTxsVLtL7vBVXGYFdjZ3bIjadNUxACGF1GQp4Xm"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "G1nM0z0D8vuO3vUCvAZ7rlu2Lku9JtdQcz1PXtKWLaRuU8QOPQA3Q5eEL4jY5aphNSsyX3bqby2uL1iMNT3AhN84qPfsEqcF",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1468,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "KWP6Mg5CHLMKAnBbIakSke7xTasBOVAqQohl6r1JjfH1Eemkyzz3T6"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "36yPWwwuVWNdEnRn5UeRc383cjlpaPnPyRxzP8vG9IowgL2RuDEkk",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1468,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "dsAG0sSB4u0zDFQVzkP0vTl4ulz8OlQBJwQI1N2lVpbAHIKrAq2jxSL3oRwUzVwyL4QqSng"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "QJNidijSUWmmkwy8BM7raMoZkVyXiFNzjF0BSN0Z6t4IIxBP7ZCl8nzuKEPQ8Zefo",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1535,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "7Cro7zHEZHw47VGOGyclkI2dDwjw7MSrkgBfBBMqq5BPZ0et3CnapjijmgRyumFIl0eo9WJOh7N6s4tsQQIRQWH4s3f4RjcAdR9jAuWsjfBS3M57Mm2n"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "mmlTj9cETOhmUdGxYf9EWhapL7KSrv7gN47XXKyCPHx",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1535,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "XuW1OQrBVG0KXHOHV5tBFJDKSbOcLSAQKO2Zm8KZQVVQfOBN9z62gz77OpNPzbBdccYazMKStoyCPOp6w9cMcWqoE4UGSdAQU"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "KTwUbJyGiXildZ6dhBvboiUO1yujQkhOu1cETn2MNOStbVg0pR70",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1535,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "pTYK3rR3mqFjJLerWpNDGxbyLi7rq1cNp8xqdfUjUT788JykvDf13Rc5sbAQxrAZPWCkCynwMBZYjrAHDizsGOt"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "IjB74qMeGm5y3sBkKnaoAf6KZXNV2Ehfo7VrKFhc4hdl",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1536,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "vv4FxmqUMmFgf73OeLcz8I6joM51xNGfzkNdjHUyhBaWM0U7mD"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "44ZoMhRet7EUkTkwGkuAoVmI99VDzPhdWAbKXlu7PYhExUh7",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1536,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "ef5HJAP9ZiRMIZQFcFACeHXq7yNUN9cA92N1FiN8Enl7vz7tJ60hBjqHH1iB1oyIIMmrl77dUbHnNYt2En1Bz8AhhoQBswDBKA0HIHL"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "tko30dbuTDAlzsnZgn2A7QmypJueachrpAZyO0rmpF4DcXDwRg6yAGYo0uL",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1536,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "CpuBGPzRlTE0vJQq6htt5RTLR1cf2baNINNv8B685ngeXxCmkZG"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "ymDYm3vEYWtp1VtrvDpNf25FSRu9boKlaEpIg10lnlTjqoOWq8OYLYBx",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1536,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "CNmtchpXeII44r10JDRr7RrfEpxRjLMOqrlFdkaYV7VCeo0"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "gDSc7NEjE7usOtK8cJJL0YIcJ79mMpNdLgHAxoQyeMfT2EurCx0GQUaSNXSKXi9KJz5UMZ",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1536,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "AliPNYdwisqo6VtNaPgn44vRVXI2dTz57TiXTpG7qUKHMWyqGQpPf9ZGB1JDfglmzFXfNfy923Xv2bORG12xz6oDiKrAIsOVXYoYFkDaXfllPEqjMRNM9vsIDF"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "TlGbGPFflEKG1K8deoCJSnRnSYaxhIrSrktcJfOjCqDnp3PIJPbJCQNO5ccFiazSJoHcDI1DbVFezKfN1SMLlkmnU6BoR4SfqOqhiJMLVWtYFQYyRFwLcGZ7",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1536,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "ltcLiYNK5e6Kw3JSTUFfHL4R3XWJQaaGxARJI7I2cwNk40lQGL"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "iwzt01sKRs0s3kMiM54ftQaOEBanniivEuhl6Wf2xUTZ",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1536,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "TG9UyH5ZDobPTJVzD1t1sfMJTMtEbOXEuJmQdnAI5QZKyTrUePAJPMaGlAbBoQBFMTF8ZrQB"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "LWOqYZnKIpGUDgZsAmwjl5Xyng7vdhMDuv0Lu79ZKTOu2AZte6dTjIMYql767y0SdOTgNFiLFgoUvu1FqU3Ar23JVySiZjJzucdUOQVRZ3zoNd",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1536,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "FaGMwGx4QWDKjHlOyCxNnEyvul8scuVBaRnqxQJr7GIi7Fw7ebmdtMmCeWgAybmtv2Pcncz4I1xYR8vKEcMqyfWlwB35DFdsVr51YT"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "gNaCvkcmIsyeniPqDaeVfSYHiHG9zoE4p8751iRoEoTWmwRXnB345dXuSzkuDQRD1whLFAtUUFBp66gdohIoxH0wFUzufGpARScA44Hw3n",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1673,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "X78FlVgjyh4SIExxJLRb1LbS5OVjWMzW8AEc"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "Nx248B45n2HbjBWP5HOOIrFO535aKQK6eMsWk4f3YXGzUCxTFHmzty9j0EMEJ2SvO4zcxvAaM8A3JEFhN",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1673,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "arI7jAQPnHUZ8qagMvKjQUYqgmeVBlai8gmFI7vUaT"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "Ld7cvG1hCetSm2DzqmFVf864QcuOmzmFaJE74acKIAWupR1DoZZNVw8Y4Ol4hZ9jQ5nVXxxNz3UTiBMIT",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1674,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "oNuCuFcVHetYK08OV6bMkwyADv6FGP6D8WlNM59RV644HP8LhbTgvNF8MFXguQJck2cgsU1FCB3ksWxpUw"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "eBdEmjsus0Mdnc77DiQov0HvI2jXjLMPRsM75FSh7Q6jHDPzfmgRg2h4JxcLZd0gOg1vq4",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1674,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "XE4XlLu8nY7fsDaxR8msnibT3TBPBBv1sTyLiGE4hL8ySPJghMYZMDNtbcNM5X7dDp5SS1ysdikvVRyTQNIzYpPqq5JeDt90Zo0UtbRidWn9qES9akgpknJgk9NwtJGc"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "IywvlN0vxtviyUza0WtyBHoLguP4IWmrsy0S9oGNnh7TJCwM61jNuQphiFDdqBg2R6jbZy1N",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1674,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "NKWLNEjB5zmEuxgHFbDgwqn1zDRyjKL0FiWLZ10dxXtzogSB6yHk1QfxQIxYccO7b1loDPtArmgJ2F4PThq0"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "6QgYqrpPSRjZCJK19HtjnL5X1XYQWgmbuzKFyhpmW8DuJPXNU9jGq4MpEi3rQMFt3SVCC9Q54PKWE9QAobqBx",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1674,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "VYuCJ9cU9dmFJLtY6p9a5ZyNmN8usSjATwwdNssBxv1eaJjXM9tt6ZpjlW5Zy3D1ZzpuQFdZiE8AVX70YxYPJXgDMo1o1OJwV0V"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "C1XcfR4IlwhQbE6HnOcjw1EtsV2tpccQngUccIOMyhm",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1674,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "NO1s3b9Nzf6BHzLj6elkmtWgrTeVp5NvbcvNnNrE09Az4Lph8907uvFQPi13jJBOH7gnIsvTRQ8"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "Su2NkX6XRizq62OW5wRD3UGJ0oT2mUQQyvrSq7yAqU9TwizrrppMw7G2itvB6S46fIkmfiv29TMM6XwUS",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1678,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "izFQlabapds9uhhP33m1E4wvXzyFbMHXG"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "T990WJrKeqPBAZd5HnNelIpHaSczr1Qt3XRkge2Y3KdX8yCDUJxwv866E5RKUatuZtQHEaxNPvJaICX2VYCvJAqL",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1678,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "2XERRzHo6rjSLQoqRP8iV768I92me0h7ggXn29aqbwnwuif8pSAdYH9v9EdGVqWGqOAxV9GisGE5galtaUjDK7yGEtPApFm3I0lrTNzg"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "fLw18bhfTg9g7lWmK5UqYJJrqYgurXvPrSrlQ8sX9xwig5jR9VtAcBqIwA19yvai7kGf3oHV868alXs2Avf5inVbMzpqNDbqDV4Wyzmc77atY8ToKPPDntYDUPbJs4i",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1678,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "uNc7gVFulcRBTc1F6fYsAmR1zgHimf9f1W8IElCmj7408ZxBJ"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "pl5O8nhqZYrfBaexzvNdIZEl9UwiSeuiCvuerztCvycFYPO",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1678,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "hsCllAaHq0df1Uycq2vXiVsQPjsftcuzroDymo69Gm4iC2eQibAewV"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "YLI7tTuK9sqyYewXAFC6xfk4Mw39xkDddMLHHz",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1679,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "jIRGrVlc9o0wu3LlDhiRLk9P8eyX2Br687yf1jgliRCmjfDbhsCWY1zuA4EjcolMsvP92DyORBbRdUriglNSpr65yFiZJWHEXAbq9YdrWUKVqb1t9O"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "J6Y7dJWsLtERq6hkboFNhGe8DUz1rzw0yfeGowoQhir4NCaIuqTGtqATERfk8uehr",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1679,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "nEOfiAchk3grkoMDlrER0d4auFz3HL92ebIRveYfxyBKiybMrgE3OuqxE2ANY"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "3pX7TmGdNxTSrTiwls6QJXdaMajnQ8IRQ8gBKFpqmynU",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1679,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "GROo03xy2moF5qwRHXC6nAIWtisT6T7Tahkrn3cD59d7VaRYsznObhiUdQ7RfpUr8sEfODtete6RF3pJlRthCUNLNwQloJJipmMPzkktYsTVYNoiI8vNh1VJJfZT"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "lmHsncOpca59UU0s1Mf4PBC2vJ2TevajcVi6T2bofjUp53wHlxsLLVZUBql9S8mXT7hz7OV3utLcge9QJddv7AaJm9enWbLSRvEBQpTjoWLnEFZI6TkzxH4C7Q",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1679,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "tdfPaayzMjcDLqdYV9a05NA3AVj3kVUK1RNRlLKn9a0D6SFXShehH7wFxDblppnXwiWlFrxpPYoLCLyJQomjt5yl3ywvh6kQ0CFAWqoJhK3Tuc5bY3j1vuKyK"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "QeqGwLbEWNGvQcRHnLsYXwXOgkEHiqaNZhLdW98UEjyDqWCdGNP9LJcEVpOe8x18XyFr9cuiuzD68",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1679,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "n8UFiG3xHfoQ9ooWJKTFwokJX0pwRKrInz7PVxmZXXzIGI5NC4Gi1h5C5JYfDmbDkc"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "oglyY74miM2PQwx3Pt7yu85xcaNgmr8K6yc3s",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1679,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "sOcV6Tzp2SoCKTrcxdDycvVhHJjDh9h4"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "lpVWGkkAL0R88KA9F8hglQP0zblKQVMS3sb56bF71pbmjjlHBCaywumgW2g2UN5AZTuKsNewSzO",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1679,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "XEtgMTd6PCLevXX4jxq7OCoBSYQfpKdVrIiDa9I"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "NM9mjuArd1e3QmD5QmwWdYRsBmZIBXb7aDiMlcEo7C28I8nXBvPa3V2PigSrEMJtM6SRDaUq6sL30Tp2F2oxVbfAgUm6jMPNRVD5ujs1gBe",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1679,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "uqsjTMKjVifJZF0WXzSwzga1Q1dS9mRrsrbvmEmW99OIsgtrl8qM"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "1ees1jrG30UWkFkNBqEy2RuWwgPQjVMwcvv734SbFDHSlOSGFcWKuk7vUlIOTm0gGcdWlMaMH73ra",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1679,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "LwkvWRADaFBMW9tdo6gSi0V3pJ1dPYCjHXsczNY5C8JIZAn627t7CQ5zeWnm2iqHztopMpnblDvbjg"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "JQp3KbaiZ5idZBA0av1Twrq1TNrmhYEp1Uxnv20FZ3Eg1EGN3LjqWV3RXsP8hqcvveyH9ZXFXchQO7raZfk2zxDAiF2rGMqflu41NuXtD",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1679,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "n0ifNf2VJMfCP2FmUosjTxi7u1ufiPyXmUwunqr0zREPMiyF8MdUp4thgIWS6PKi737rPgiwEpDEkDLc8LEO2BdPhievATi0kM98HjyXHQBxB3QZL"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "KcFYASOhtDOoqjlCVrkxUt1XcJ1ok1mk8lsL3mQDbQtmpoIp5sJj3X41ZeaRZcrA4On8HLUSro7P4fHWC2kYnWmILgtRdUgteg5O2lCNwYS",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1679,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "bwQgtfFzgH9bn0Ap93MIvGNPqU6bTgA4T9zJvZTw5FFKl9EkdYXe4zOAF05ZxJV"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "94MUws4BZWT4guHOUTpBg4hltTMXXIPQYoGZCPZRsgRp7YMKGpa59irKFcqAZP7pxrqBaavsSsfrf7CfGUlwi3zKEeILxzjeMGKI4qWQ6ehU19oOIYGFuWxwCXYs5",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1797,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "0wVAhzT4Ia9MXy0onoxHptP71rexfQrpS20DAzfVV3V1UePhy2pv23vXZnIC6VHvqhVXBoC9YrZlpTM8Ud69X7TvpJMJRYYWFIgczZ2yryeDXmmAJa8"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "XPAeFbLxKL1yeYkqyBYyQ5587HXMLNTVIaFitv8xHmpT5GF1eCE702jVgq2kP",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1797,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "rGzKvWe0asHdpYKw5oUfqTDFx7eUvm5sS2y9pgPHhNSYC134dRhjJDBdTtoSB8Pr2flMqRh4zhCoBFvxwZSWJt5epbHBucwPnx07hmMsJULnHTBMhrEF"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "wSa5ndG8E6MONJHOxlz5VHRSlYKBW88SOHej2EXVszPP5akLx",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1797,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "npctZaKoeQ0ew6DwSBzjEqU0GDLp1r3h8wdmP6ZEvxx57VphmMXeDCkEKqt490jfJPzvMUff4WDxR5RW7AO72c2yLInm1nxoXq"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "7gsckYBA9BfuaQG4qmy8Ju2puOBhMFxb",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1797,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "ytp6KFdeHux4aDbV2yiQ27G2uxwxe6Gd3NJU2ET2s1czqSXpBdVP7"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "B5Pn5dXU4D9CC8BfJ0yxFqTzEHTXEYWt03aw6EpCwBZUS6AhJNUDN42HGnsnVhqj2loBXk8pvnRFixb98S23m4zuuolUO9J5x3",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1797,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "nZvZgNhJrjXpQ58IuVv94wAimzwIxP12m3"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "xRGsZ7jqmCxZnUM36agQRPqxSmU9dGu06zchNK8O6rRSPbSUNe2XB5XDwHT5Et0if26RVxeY",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1797,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "bagbcJx4pcdHGkyfNnCFKcDmeZ8B8TmgDB6yuH2YSCYooHupF0JDlK6pKbsRUwcCwirkMPGSC6iwIigrqRt0Huhtr"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "HplVzhlcyKUhDrtNAScNi5MNalrE8Qpg39miHFkjxoFpxuHZIb9tyBYEg49190nylcZn0",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1797,
+  "data": {
+   "choices": [
+    {
+     "delta": {
+      "tool_calls": [
+       {
+        "function": {
+         "arguments": "{\"command\": \"echo spike07\", \"description\": \"Execute echo command to output spike07\"}",
+         "name": "bash"
+        },
+        "id": "call_a1bf8b53b8df4291ae3598f5",
+        "index": 0,
+        "type": "function"
+       }
+      ]
+     },
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "zIYl9ExauTMX2g6GsoSIzDayHNkwsGPyKhfYsQ"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "z9yZUiBkgzfwqATYDB17SauraiqvDphgzJbEtyJa7mDoBIexZpjI1Ix5eMWDePcQj6EPVUdbeuVX",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1797,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "fpcg0z1Yrh8uja2mjfEkhHZTthm5rOtyBmrX4yBmqTuLlyGTgTwXW"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "OyGdaZVQirGzI20oo011ciuqD1uVnUmQQn4vpKsGPemmD5NZu4A7Dt4v13qRH4wg5X0WDH9O9gNoaDuLmJciaC",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1797,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "CTWmXMJkhPU7WHxElXAmo01dxAEI8Wd6I4zMd7QPkId7c6P8EUuNloSI4vCcck9"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "fdnql9boADNYd5Ftqfj1CW3gFEmalQm1sHuvTKSxgX",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1798,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "3CH1kMxEyGCXbXilNUB2tpp3kBXoPDYn8PMc9yF6R8kGB9am4hFeGcjhooCsPjjzg1O8BZNi9eiR"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "F6oLyW6GbXPM5jFfbJPNHzSbpXraFrpQQQOCgKCW5qW4daJ7uVkTGZffOfdfohbMTGqul46p62H7KiAdtEGMVJQ",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1798,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "z9AljtJQtlHJU3i1GcToxG3q6S8UgeULrhNa4t2R49QC6c2nZerUhOB7zEMo7Lz7FsxghikHFRlM"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "jwKhvuLDFgXRbY6XV7GL87wnyyQ7BETNSiF65CFfKtubYkFuQwfzrloGDgmnNLDjgfjL6s9ivVx9sGBo6QbvaqI",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1798,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "RlUUUFsl0gP1ffful4xuYuXhav1Gb6kosfJfe7E8jALyUEMSRU06vewYyE5wqG96XN1Hm8cyrCgi2lkoi7hA"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "nIfeKldd3pTR2pBfR4kfHnuQEP4sEzT8loucae",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1798,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "vgpYgoRZs09Hw7PbDPoRRck9lzQDsR4gVFy5ONj3D7EIVOnP35wo0lUZ2ZWquwNjneVFNE2ZS3EqcfXklUW0UxYpYS8lUrHyGHCffpzZ0qjDtz0QNhhMbcH8uPhwILe"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "RQlthS6bR4uw5VDAKObl1ctfXQlvi9cP42uyeJhDyYCcUiOBQ1WQCByT3V8OtAsIVoEUPv7LZT",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1798,
+  "data": {
+   "choices": [
+    {
+     "delta": {
+      "content": ""
+     },
+     "finish_reason": "tool_calls",
+     "index": 0,
+     "obfuscation": "2xBS3dpZjRRQkUwp334OFHiVrmt1ZGEqDZkioWm5ckvG"
+    }
+   ],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "BTnUv6OTWYIaAofP4udjH3oF5eG6p3KjMwa06csGDGDg8KBrrzDq5OT4NvIfZr6iOK3Md3PPsEeZIffqf",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1798,
+  "data": {
+   "choices": [],
+   "created": 1790479284,
+   "id": "chatcmpl-7802d7fd-5ce2-40cb-bd81-0c4decb146bf",
+   "model": "deepseek.v3.2",
+   "obfuscation": "MApidCyMrYvgeyJ1YSWsFrh1AzHhRtvFR",
+   "object": "chat.completion.chunk",
+   "service_tier": "default",
+   "usage": {
+    "completion_tokens": 80,
+    "prompt_tokens": 6181,
+    "total_tokens": 6261
+   }
+  }
+ },
+ {
+  "at": 1798,
+  "data": "[DONE]"
+ }
+]

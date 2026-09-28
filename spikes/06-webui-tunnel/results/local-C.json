@@ -1,0 +1,47 @@
+{
+  "phase": "C",
+  "cases": [
+    {
+      "id": "U08",
+      "desc": "加固补丁下：页面可用、可新建会话对话；失败请求只有被关闭的 settings/describe",
+      "pass": true,
+      "console": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "failed": [
+        "404 POST http://localhost:8000/api/settings/describe",
+        "404 POST http://localhost:8000/api/settings/describe"
+      ],
+      "note": "回复 579 ms；失败请求 2 个（均为 settings/describe=true）",
+      "ms": 5944
+    },
+    {
+      "id": "U09",
+      "desc": "加固补丁下：设置面板里没有模型/插件/凭证配置页",
+      "pass": true,
+      "settingsEntry": true,
+      "note": "设置入口=true；页面含「插件」=false「API Key」=false「凭证」=false",
+      "ms": 1596
+    }
+  ],
+  "net": {
+    "console": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "failed": [
+      "404 POST http://localhost:8000/api/settings/describe",
+      "404 POST http://localhost:8000/api/settings/describe",
+      "404 POST http://localhost:8000/api/settings/describe"
+    ],
+    "requests": 30,
+    "ws": [
+      {
+        "url": "ws://localhost:8000/api/remote.mux",
+        "closed": false
+      }
+    ]
+  }
+}

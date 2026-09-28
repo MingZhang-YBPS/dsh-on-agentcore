@@ -1,0 +1,375 @@
+{
+  "receivedAt": 1790413587289,
+  "durationMs": 889,
+  "runtimeSessionIdHeader": "dsh-87cfaa9c-dc60-4296-8895-8ee24b7b3d11-6f073cc76f1f8421",
+  "headers": {
+    "x-amzn-requestid": "21844049-b94b-478c-9e53-4612349c0d4a",
+    "accept": "application/json",
+    "baggage": "Self=1-6ab78b11-176f4d4b13cab71d4d8c2362,session.id=dsh-87cfaa9c-dc60-4296-8895-8ee24b7b3d11-6f073cc76f1f8421",
+    "content-length": "1301",
+    "content-type": "application/json",
+    "x-amzn-bedrock-agentcore-runtime-session-id": "dsh-87cfaa9c-dc60-4296-8895-8ee24b7b3d11-6f073cc76f1f8421",
+    "x-amzn-trace-id": "Root=1-6ab78b11-3512b1f46261e842239498b8;Parent=ad1461922833d804;Sampled=1;Self=1-6ab78b11-176f4d4b13cab71d4d8c2362",
+    "host": "cell01.us-east-1.prod.arp.kepler-analytics.aws.dev"
+  },
+  "env": {
+    "names": [
+      "AGENTCORE_RUNTIME_URL",
+      "AGENT_OBSERVABILITY_ENABLED",
+      "AWS_DEFAULT_REGION",
+      "AWS_DNS_SUFFIX",
+      "AWS_EXECUTION_ENV",
+      "AWS_REGION",
+      "INVOCATION_ID",
+      "JOURNAL_STREAM",
+      "LANG",
+      "LD_LIBRARY_PATH",
+      "NODE_ENV",
+      "OTEL_EXPORTER_OTLP_LOGS_HEADERS",
+      "OTEL_EXPORTER_OTLP_TIMEOUT",
+      "OTEL_PYTHON_CONFIGURATOR",
+      "OTEL_PYTHON_DISTRO",
+      "OTEL_PYTHON_EXCLUDED_URLS",
+      "OTEL_RESOURCE_ATTRIBUTES",
+      "PATH",
+      "PWD",
+      "RUST_BACKTRACE",
+      "RUST_LOG",
+      "SHLVL",
+      "SYSTEMD_EXEC_PID"
+    ],
+    "aws": {
+      "AGENTCORE_RUNTIME_URL": "https://bedrock-agentcore.us-east-1.amazonaws.com/runtimes/arn%3Aaws%3Abedrock-agentcore%3Aus-east-1%3A271547278201%3Aruntime%2Fdsh_poc_spike_03_probe-xdTCr87bU3/invocations",
+      "AWS_DEFAULT_REGION": "us-east-1",
+      "AWS_DNS_SUFFIX": "amazonaws.com",
+      "AWS_EXECUTION_ENV": "AWS_BedrockAgentCore_Runtime",
+      "AWS_REGION": "us-east-1"
+    }
+  },
+  "node": "v22.23.2",
+  "arch": "arm64",
+  "uid": 991,
+  "pid": 334,
+  "execRole": {
+    "identity": {
+      "Arn": "arn:aws:sts::271547278201:assumed-role/dsh-poc-spike-03-exec-role/BedrockAgentCore-c71ebe10-3bbd-4849-b0c5-cfa4ceaf2099",
+      "UserId": "AROAT6OL2UN44L6VKIR27:BedrockAgentCore-c71ebe10-3bbd-4849-b0c5-cfa4ceaf2099",
+      "Account": "271547278201"
+    },
+    "cases": [
+      {
+        "id": "E01",
+        "desc": "sts GetCallerIdentity（执行角色）",
+        "expect": "allow",
+        "outcome": "allowed",
+        "error": null,
+        "httpStatus": 200,
+        "ms": 107,
+        "pass": true
+      },
+      {
+        "id": "E02",
+        "desc": "s3 GetObject 本会话 seed（执行角色 + PrincipalTag 条件）",
+        "expect": "deny",
+        "outcome": "denied",
+        "error": "AccessDenied: User: arn:aws:sts::271547278201:assumed-role/dsh-poc-spike-03-exec-role/BedrockAgentCore-c71ebe10-3bbd-4849-b0c5-cfa4ceaf2099 is not authorized to perform: s3:GetObject on resource: \"arn:aws:s3:::dsh-",
+        "httpStatus": 403,
+        "ms": 50,
+        "pass": true
+      },
+      {
+        "id": "E03",
+        "desc": "s3 ListObjectsV2 prefix=本会话/（执行角色）",
+        "expect": "deny",
+        "outcome": "denied",
+        "error": "AccessDenied: User: arn:aws:sts::271547278201:assumed-role/dsh-poc-spike-03-exec-role/BedrockAgentCore-c71ebe10-3bbd-4849-b0c5-cfa4ceaf2099 is not authorized to perform: s3:ListBucket on resource: \"arn:aws:s3:::dsh",
+        "httpStatus": 403,
+        "ms": 10,
+        "pass": true
+      },
+      {
+        "id": "E04",
+        "desc": "ddb GetItem WORKSPACE#本会话/HEAD（执行角色）",
+        "expect": "deny",
+        "outcome": "denied",
+        "error": "AccessDeniedException: User: arn:aws:sts::271547278201:assumed-role/dsh-poc-spike-03-exec-role/BedrockAgentCore-c71ebe10-3bbd-4849-b0c5-cfa4ceaf2099 is not authorized to perform: dynamodb:GetItem on resource: arn:aws:dynamo",
+        "httpStatus": 400,
+        "ms": 47,
+        "pass": true
+      },
+      {
+        "id": "E05",
+        "desc": "sts AssumeRole 工作空间角色（执行角色）",
+        "expect": "deny",
+        "outcome": "denied",
+        "error": "AccessDenied: User: arn:aws:sts::271547278201:assumed-role/dsh-poc-spike-03-exec-role/BedrockAgentCore-c71ebe10-3bbd-4849-b0c5-cfa4ceaf2099 is not authorized to perform: sts:TagSession on resource: arn:aws:iam::271",
+        "httpStatus": 403,
+        "ms": 20,
+        "pass": true
+      }
+    ]
+  },
+  "childIdentity": {
+    "code": 0,
+    "ok": true,
+    "Arn": "arn:aws:sts::271547278201:assumed-role/dsh-poc-spike-03-exec-role/BedrockAgentCore-c71ebe10-3bbd-4849-b0c5-cfa4ceaf2099"
+  },
+  "scopedCases": [
+    {
+      "id": "M01",
+      "desc": "s3 GetObject 本会话 seed",
+      "expect": "allow",
+      "outcome": "allowed",
+      "error": null,
+      "httpStatus": 200,
+      "ms": 53,
+      "pass": true
+    },
+    {
+      "id": "M02",
+      "desc": "s3 PutObject 本会话",
+      "expect": "allow",
+      "outcome": "allowed",
+      "error": null,
+      "httpStatus": 200,
+      "ms": 23,
+      "pass": true
+    },
+    {
+      "id": "M03",
+      "desc": "s3 ListObjectsV2 prefix=本会话/",
+      "expect": "allow",
+      "outcome": "allowed",
+      "error": null,
+      "httpStatus": 200,
+      "ms": 19,
+      "pass": true
+    },
+    {
+      "id": "M04",
+      "desc": "s3 DeleteObject 本会话（M02 写入的对象）",
+      "expect": "allow",
+      "outcome": "allowed",
+      "error": null,
+      "httpStatus": 204,
+      "ms": 22,
+      "pass": true
+    },
+    {
+      "id": "M05",
+      "desc": "s3 GetObject 对端 seed",
+      "expect": "deny",
+      "outcome": "denied",
+      "error": "AccessDenied: User: arn:aws:sts::271547278201:assumed-role/dsh-poc-spike-03-workspace-role/ws-87cfaa9c-dc60-4296-8895-8ee24b7b3d11 is not authorized to perform: s3:GetObject on resource: \"arn:aws:s3:::dsh-poc-spike",
+      "httpStatus": 403,
+      "ms": 11,
+      "pass": true
+    },
+    {
+      "id": "M06",
+      "desc": "s3 PutObject 对端",
+      "expect": "deny",
+      "outcome": "denied",
+      "error": "AccessDenied: User: arn:aws:sts::271547278201:assumed-role/dsh-poc-spike-03-workspace-role/ws-87cfaa9c-dc60-4296-8895-8ee24b7b3d11 is not authorized to perform: s3:PutObject on resource: \"arn:aws:s3:::dsh-poc-spike",
+      "httpStatus": 403,
+      "ms": 7,
+      "pass": true
+    },
+    {
+      "id": "M07",
+      "desc": "s3 ListObjectsV2 prefix=对端/",
+      "expect": "deny",
+      "outcome": "denied",
+      "error": "AccessDenied: User: arn:aws:sts::271547278201:assumed-role/dsh-poc-spike-03-workspace-role/ws-87cfaa9c-dc60-4296-8895-8ee24b7b3d11 is not authorized to perform: s3:ListBucket on resource: \"arn:aws:s3:::dsh-poc-spik",
+      "httpStatus": 403,
+      "ms": 25,
+      "pass": true
+    },
+    {
+      "id": "M08",
+      "desc": "s3 ListObjectsV2 prefix=workspaces/",
+      "expect": "deny",
+      "outcome": "denied",
+      "error": "AccessDenied: User: arn:aws:sts::271547278201:assumed-role/dsh-poc-spike-03-workspace-role/ws-87cfaa9c-dc60-4296-8895-8ee24b7b3d11 is not authorized to perform: s3:ListBucket on resource: \"arn:aws:s3:::dsh-poc-spik",
+      "httpStatus": 403,
+      "ms": 8,
+      "pass": true
+    },
+    {
+      "id": "M09",
+      "desc": "s3 ListObjectsV2 无 prefix",
+      "expect": "deny",
+      "outcome": "denied",
+      "error": "AccessDenied: User: arn:aws:sts::271547278201:assumed-role/dsh-poc-spike-03-workspace-role/ws-87cfaa9c-dc60-4296-8895-8ee24b7b3d11 is not authorized to perform: s3:ListBucket on resource: \"arn:aws:s3:::dsh-poc-spik",
+      "httpStatus": 403,
+      "ms": 8,
+      "pass": true
+    },
+    {
+      "id": "M10",
+      "desc": "s3 DeleteObject 对端 seed",
+      "expect": "deny",
+      "outcome": "denied",
+      "error": "AccessDenied: User: arn:aws:sts::271547278201:assumed-role/dsh-poc-spike-03-workspace-role/ws-87cfaa9c-dc60-4296-8895-8ee24b7b3d11 is not authorized to perform: s3:DeleteObject on resource: \"arn:aws:s3:::dsh-poc-sp",
+      "httpStatus": 403,
+      "ms": 7,
+      "pass": true
+    },
+    {
+      "id": "M11",
+      "desc": "s3 CopyObject 对端 seed → 本会话",
+      "expect": "deny",
+      "outcome": "denied",
+      "error": "AccessDenied: User: arn:aws:sts::271547278201:assumed-role/dsh-poc-spike-03-workspace-role/ws-87cfaa9c-dc60-4296-8895-8ee24b7b3d11 is not authorized to perform: s3:GetObject on resource: \"arn:aws:s3:::dsh-poc-spike",
+      "httpStatus": 403,
+      "ms": 14,
+      "pass": true
+    },
+    {
+      "id": "M12",
+      "desc": "s3 GetObject 本会话/../对端/seed.txt（点段穿越）",
+      "expect": "noleak",
+      "outcome": "error",
+      "error": "NoSuchKey: The specified key does not exist.",
+      "httpStatus": 404,
+      "ms": 16,
+      "pass": true,
+      "detail": "NoSuchKey"
+    },
+    {
+      "id": "M13",
+      "desc": "s3 PutObject 本会话/../对端/traversal.txt（本机事后核对对端前缀无此对象）",
+      "expect": "noleak",
+      "outcome": "allowed",
+      "error": null,
+      "httpStatus": null,
+      "ms": 24,
+      "pass": true,
+      "detail": "allowed, content not peer's (\"put-accepted\")"
+    },
+    {
+      "id": "M14",
+      "desc": "s3 GetObject 本会话/%2e%2e/对端/seed.txt（编码变形）",
+      "expect": "noleak",
+      "outcome": "error",
+      "error": "NoSuchKey: The specified key does not exist.",
+      "httpStatus": 404,
+      "ms": 13,
+      "pass": true,
+      "detail": "NoSuchKey"
+    },
+    {
+      "id": "M15",
+      "desc": "ddb GetItem WORKSPACE#本会话/HEAD",
+      "expect": "allow",
+      "outcome": "allowed",
+      "error": null,
+      "httpStatus": 200,
+      "ms": 31,
+      "pass": true
+    },
+    {
+      "id": "M16",
+      "desc": "ddb UpdateItem WORKSPACE#本会话/HEAD（条件更新）",
+      "expect": "allow",
+      "outcome": "allowed",
+      "error": null,
+      "httpStatus": 200,
+      "ms": 8,
+      "pass": true
+    },
+    {
+      "id": "M17",
+      "desc": "ddb GetItem WORKSPACE#对端/HEAD",
+      "expect": "deny",
+      "outcome": "denied",
+      "error": "AccessDeniedException: User: arn:aws:sts::271547278201:assumed-role/dsh-poc-spike-03-workspace-role/ws-87cfaa9c-dc60-4296-8895-8ee24b7b3d11 is not authorized to perform: dynamodb:GetItem on resource: arn:aws:dynamodb:us-eas",
+      "httpStatus": 400,
+      "ms": 8,
+      "pass": true
+    },
+    {
+      "id": "M18",
+      "desc": "ddb UpdateItem WORKSPACE#对端/HEAD",
+      "expect": "deny",
+      "outcome": "denied",
+      "error": "AccessDeniedException: User: arn:aws:sts::271547278201:assumed-role/dsh-poc-spike-03-workspace-role/ws-87cfaa9c-dc60-4296-8895-8ee24b7b3d11 is not authorized to perform: dynamodb:UpdateItem on resource: arn:aws:dynamodb:us-",
+      "httpStatus": 400,
+      "ms": 8,
+      "pass": true
+    },
+    {
+      "id": "M19",
+      "desc": "ddb PutItem WORKSPACE#对端/HEAD",
+      "expect": "deny",
+      "outcome": "denied",
+      "error": "AccessDeniedException: User: arn:aws:sts::271547278201:assumed-role/dsh-poc-spike-03-workspace-role/ws-87cfaa9c-dc60-4296-8895-8ee24b7b3d11 is not authorized to perform: dynamodb:PutItem on resource: arn:aws:dynamodb:us-eas",
+      "httpStatus": 400,
+      "ms": 7,
+      "pass": true
+    },
+    {
+      "id": "M20",
+      "desc": "ddb GetItem SESSION#本会话/RUNCTL",
+      "expect": "allow",
+      "outcome": "allowed",
+      "error": null,
+      "httpStatus": 200,
+      "ms": 6,
+      "pass": true
+    },
+    {
+      "id": "M21",
+      "desc": "ddb GetItem SESSION#对端/RUNCTL",
+      "expect": "deny",
+      "outcome": "denied",
+      "error": "AccessDeniedException: User: arn:aws:sts::271547278201:assumed-role/dsh-poc-spike-03-workspace-role/ws-87cfaa9c-dc60-4296-8895-8ee24b7b3d11 is not authorized to perform: dynamodb:GetItem on resource: arn:aws:dynamodb:us-eas",
+      "httpStatus": 400,
+      "ms": 8,
+      "pass": true
+    },
+    {
+      "id": "M22",
+      "desc": "ddb PutItem SESSION#本会话/RUNCTL（适配层只读）",
+      "expect": "deny",
+      "outcome": "denied",
+      "error": "AccessDeniedException: User: arn:aws:sts::271547278201:assumed-role/dsh-poc-spike-03-workspace-role/ws-87cfaa9c-dc60-4296-8895-8ee24b7b3d11 is not authorized to perform: dynamodb:PutItem on resource: arn:aws:dynamodb:us-eas",
+      "httpStatus": 400,
+      "ms": 8,
+      "pass": true
+    },
+    {
+      "id": "M23",
+      "desc": "ddb Query PK=WORKSPACE#对端",
+      "expect": "deny",
+      "outcome": "denied",
+      "error": "AccessDeniedException: User: arn:aws:sts::271547278201:assumed-role/dsh-poc-spike-03-workspace-role/ws-87cfaa9c-dc60-4296-8895-8ee24b7b3d11 is not authorized to perform: dynamodb:Query on resource: arn:aws:dynamodb:us-east-",
+      "httpStatus": 400,
+      "ms": 8,
+      "pass": true
+    },
+    {
+      "id": "M24",
+      "desc": "ddb Scan 全表",
+      "expect": "deny",
+      "outcome": "denied",
+      "error": "AccessDeniedException: User: arn:aws:sts::271547278201:assumed-role/dsh-poc-spike-03-workspace-role/ws-87cfaa9c-dc60-4296-8895-8ee24b7b3d11 is not authorized to perform: dynamodb:Scan on resource: arn:aws:dynamodb:us-east-1",
+      "httpStatus": 400,
+      "ms": 18,
+      "pass": true
+    },
+    {
+      "id": "M25",
+      "desc": "sts 用本会话凭证再 AssumeRole 工作空间角色并打对端标签",
+      "expect": "deny",
+      "outcome": "denied",
+      "error": "AccessDenied: User: arn:aws:sts::271547278201:assumed-role/dsh-poc-spike-03-workspace-role/ws-87cfaa9c-dc60-4296-8895-8ee24b7b3d11 is not authorized to perform: sts:TagSession on resource: arn:aws:iam::271547278201",
+      "httpStatus": 403,
+      "ms": 28,
+      "pass": true
+    }
+  ],
+  "invokeMs": 3147,
+  "runtimeSessionId": "dsh-87cfaa9c-dc60-4296-8895-8ee24b7b3d11-6f073cc76f1f8421",
+  "statusCode": 200
+}

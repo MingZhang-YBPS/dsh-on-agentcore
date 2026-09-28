@@ -1,0 +1,77 @@
+{
+  "phase": "A",
+  "cases": [
+    {
+      "id": "U01",
+      "desc": "页面经隧道加载：无控制台错误、无失败请求、建立 1 条 /api/remote.mux WebSocket",
+      "pass": true,
+      "loadMs": 5932,
+      "requests": 20,
+      "console": [
+        "Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "Failed to load resource: the server responded with a status of 404 (Not Found)"
+      ],
+      "failed": [
+        "404 POST http://localhost:8001/api/settings/describe",
+        "404 POST http://localhost:8001/api/settings/describe"
+      ],
+      "note": "加载 5932 ms，20 个请求",
+      "ms": 7441
+    },
+    {
+      "id": "U02",
+      "desc": "关闭内测声明，经目录选择器选择 ~/workspace 作为工作区",
+      "pass": true,
+      "ms": 11544
+    },
+    {
+      "id": "U03",
+      "desc": "文本对话：发送后助手回复逐段渲染完成",
+      "pass": true,
+      "sendToReplyMs": 1396,
+      "note": "发送→回复出现 1396 ms",
+      "ms": 1623
+    },
+    {
+      "id": "U04",
+      "desc": "工具调用：bash 在工作空间写文件，界面显示工具调用与后续回复",
+      "pass": true,
+      "note": "发送→完成 963 ms",
+      "ms": 1188
+    },
+    {
+      "id": "U05",
+      "desc": "停止生成：新会话慢速流式中点击「停止生成」，按钮消失、后续片段不再到达",
+      "pass": true,
+      "stopMs": 519,
+      "lastPieceAtStop": 17,
+      "lastPieceAfter5s": 17,
+      "note": "点击→停止控件消失 519 ms，停止时最后一片 片17，5 秒后 片17",
+      "ms": 8644
+    },
+    {
+      "id": "U06",
+      "desc": "文件预览：右侧边栏文件树列出工作空间文件，点击 hello.txt 显示内容",
+      "pass": true,
+      "note": "预览显示 spike05",
+      "ms": 3287
+    }
+  ],
+  "net": {
+    "console": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "failed": [
+      "404 POST http://localhost:8001/api/settings/describe",
+      "404 POST http://localhost:8001/api/settings/describe"
+    ],
+    "requests": 45,
+    "ws": [
+      {
+        "url": "ws://localhost:8001/api/remote.mux",
+        "closed": false
+      }
+    ]
+  }
+}

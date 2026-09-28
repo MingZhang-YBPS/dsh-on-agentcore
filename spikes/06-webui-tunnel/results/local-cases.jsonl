@@ -1,0 +1,23 @@
+{"id":"L01","desc":"适配器启动到 dsh web 就绪（spawn、token 换 cookie、/ping 变为 Healthy）","pass":true,"note":"9632 ms","readyMs":9632}
+{"id":"U01","desc":"页面经隧道加载：无控制台错误、无失败请求、建立 1 条 /api/remote.mux WebSocket","pass":true,"loadMs":2163,"requests":22,"console":[],"failed":[],"note":"加载 2163 ms，22 个请求","ms":3674,"phase":"A"}
+{"id":"U02","desc":"关闭内测声明，经目录选择器选择 ~/workspace 作为工作区","pass":true,"ms":1127,"phase":"A"}
+{"id":"U03","desc":"文本对话：发送后助手回复逐段渲染完成","pass":true,"sendToReplyMs":979,"note":"发送→回复出现 979 ms","ms":1284,"phase":"A"}
+{"id":"U04","desc":"工具调用：bash 在工作空间写文件，界面显示工具调用与后续回复","pass":true,"note":"发送→完成 422 ms","ms":656,"phase":"A"}
+{"id":"U05","desc":"停止生成：新会话慢速流式中点击「停止生成」，按钮消失、后续片段不再到达","pass":true,"stopMs":124,"lastPieceAtStop":12,"lastPieceAfter5s":12,"note":"点击→停止控件消失 124 ms，停止时最后一片 片12，5 秒后 片12","ms":7812,"phase":"A"}
+{"id":"U06","desc":"文件预览：右侧边栏文件树列出工作空间文件，点击 hello.txt 显示内容","pass":true,"note":"预览显示 spike05","ms":2889,"phase":"A"}
+{"id":"L02","desc":"工具写入的文件落在持久目录的 ~/workspace 下","pass":true,"note":"/tmp/spike06-local-gPn8Rg/home/workspace/hello.txt"}
+{"id":"L03","desc":"停止生成后到模型上游的连接被关闭","pass":true,"note":"clientClosedEarly=true"}
+{"id":"L04","desc":"未加固时，经网关可直接调用 settings/describe（说明需要加固）","pass":true,"detail":{"status":200,"ok":false,"error":{"code":"gateway/internal","message":"Remote payload must contain exactly one plain-object args field","details":{}}},"note":"status=200 ok=false"}
+{"id":"L05","desc":"阶段 A 期间 DSH 进程无非回环外联","pass":true,"detail":[],"note":"0 次"}
+{"id":"L06","desc":"隧道请求统计（本机，不含 AgentCore 开销）","pass":true,"note":"HTTP 56 个，WS 1 条，错误 0，P50 31 ms，P95 152 ms"}
+{"id":"L07","desc":"重启后 dsh web 就绪（同一持久目录，cookie 签名密钥与会话日志已存在）","pass":true,"note":"9822 ms"}
+{"id":"U07","desc":"DSH 进程重启后（同一持久目录）：会话列表与历史仍在，可在旧会话继续对话","pass":true,"console":[],"note":"旧会话历史可见；继续对话回复 550 ms","ms":5277,"phase":"B"}
+{"id":"L08","desc":"重启后在旧会话继续对话：模型请求包含重启前的历史（DSH 从 JSONL 恢复会话）","pass":true,"note":"请求中用户消息 4 条"}
+{"id":"L09","desc":"加固补丁下 dsh web 能启动","pass":true,"note":"9433 ms"}
+{"id":"U08","desc":"加固补丁下：页面可用、可新建会话对话；失败请求只有被关闭的 settings/describe","pass":true,"console":["Failed to load resource: the server responded with a status of 404 (Not Found)","Failed to load resource: the server responded with a status of 404 (Not Found)"],"failed":["404 POST http://localhost:8000/api/settings/describe","404 POST http://localhost:8000/api/settings/describe"],"note":"回复 579 ms；失败请求 2 个（均为 settings/describe=true）","ms":5944,"phase":"C"}
+{"id":"U09","desc":"加固补丁下：设置面板里没有模型/插件/凭证配置页","pass":true,"settingsEntry":true,"note":"设置入口=true；页面含「插件」=false「API Key」=false「凭证」=false","ms":1596,"phase":"C"}
+{"id":"L10:settings/describe","desc":"加固后经 /api 直接调用 settings/describe 被拒绝","pass":true,"detail":{"status":404,"ok":null,"error":null,"text":"not found"},"note":"status=404 ok=null \"not found\""}
+{"id":"L10:settings/update","desc":"加固后经 /api 直接调用 settings/update 被拒绝","pass":true,"detail":{"status":404,"ok":null,"error":null,"text":"not found"},"note":"status=404 ok=null \"not found\""}
+{"id":"L10:credentials/describe","desc":"加固后经 /api 直接调用 credentials/describe 被拒绝","pass":true,"detail":{"status":404,"ok":null,"error":null,"text":"not found"},"note":"status=404 ok=null \"not found\""}
+{"id":"L10:credentials/set","desc":"加固后经 /api 直接调用 credentials/set 被拒绝","pass":true,"detail":{"status":404,"ok":null,"error":null,"text":"not found"},"note":"status=404 ok=null \"not found\""}
+{"id":"L11","desc":"全程 DSH 进程无非回环外联","pass":true,"detail":[],"note":"0 次"}

@@ -1,0 +1,69 @@
+{
+ "startedAt": "2026-09-27T06:11:55.516Z",
+ "minutes": 25,
+ "results": [
+  {
+   "label": "V1 直连，无客户端帧",
+   "openedS": 19,
+   "closedS": 1049,
+   "code": 1006,
+   "pings": 51,
+   "lastPingS": 1039,
+   "msgs": 0,
+   "http": [],
+   "error": null
+  },
+  {
+   "label": "V2 直连，客户端每 20 s ping",
+   "openedS": 21,
+   "closedS": 1049,
+   "code": 1006,
+   "pings": 51,
+   "lastPingS": 1042,
+   "msgs": 0,
+   "http": [],
+   "error": null
+  },
+  {
+   "label": "V3 CloudFront，无客户端帧",
+   "openedS": 21,
+   "closedS": 1049,
+   "code": 1006,
+   "pings": 51,
+   "lastPingS": 1042,
+   "msgs": 0,
+   "http": [],
+   "error": null
+  },
+  {
+   "label": "V4 CloudFront + 每 4 分钟 HTTP",
+   "openedS": 21,
+   "closedS": 1049,
+   "code": 1006,
+   "pings": 51,
+   "lastPingS": 1042,
+   "msgs": 0,
+   "http": [
+    "264s:200",
+    "503s:200",
+    "743s:200",
+    "983s:200"
+   ],
+   "error": null
+  }
+ ],
+ "adapterLogs": {
+  "V1": [],
+  "V2": [],
+  "V3": [
+   "20s {\"t\":\"2026-09-27T06:12:15.530Z\",\"level\":\"info\",\"msg\":\"dsh web ready\",\"readyMs\":7180,\"pid\":369}",
+   "20s {\"t\":\"2026-09-27T06:12:15.535Z\",\"level\":\"info\",\"msg\":\"ws bridged\",\"sessionHeader\":\"dsh-user-04b8b448-e051-70e3-6e96-03e36434f003\",\"hasAuthorization\":true}",
+   "1081s {\"t\":\"2026-09-27T06:29:56.089Z\",\"level\":\"info\",\"msg\":\"ws closed\",\"closedBy\":\"client\",\"code\":1006,\"reason\":\"\",\"lifetimeMs\":1060554,\"framesFromClient\":0,\"framesFromDsh\":0}"
+  ],
+  "V4": [
+   "20s {\"t\":\"2026-09-27T06:12:15.508Z\",\"level\":\"info\",\"msg\":\"dsh web ready\",\"readyMs\":7197,\"pid\":368}",
+   "20s {\"t\":\"2026-09-27T06:12:15.527Z\",\"level\":\"info\",\"msg\":\"ws bridged\",\"sessionHeader\":\"dsh-user-e4b874e8-9031-7082-e67f-445c46d1697a\",\"hasAuthorization\":true}",
+   "1081s {\"t\":\"2026-09-27T06:29:56.087Z\",\"level\":\"info\",\"msg\":\"ws closed\",\"closedBy\":\"client\",\"code\":1006,\"reason\":\"\",\"lifetimeMs\":1060560,\"framesFromClient\":0,\"framesFromDsh\":0}"
+  ]
+ }
+}

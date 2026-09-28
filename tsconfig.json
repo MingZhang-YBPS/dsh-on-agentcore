@@ -1,0 +1,13 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages/envelope" },
+    { "path": "packages/session-identity" },
+    { "path": "packages/auth-throttle" },
+    { "path": "packages/model-stream" },
+    { "path": "packages/log" },
+    { "path": "services/adapter" },
+    { "path": "services/tunnel" },
+    { "path": "infra" }
+  ]
+}

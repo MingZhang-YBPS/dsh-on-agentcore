@@ -1,0 +1,85 @@
+[
+ {
+  "at": 1538,
+  "data": {
+   "choices": [
+    {
+     "delta": {
+      "content": "",
+      "role": "assistant"
+     },
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "RQDnp6fYarHXGi5MVdno0bZNG1HmySN7XFlAshFlFmjkHcNleksq0za3cwGk8VJhN5QbTgqF8SZv"
+    }
+   ],
+   "created": 1790479282,
+   "id": "chatcmpl-ddf911a9-2b3f-4b2c-9c84-e3b8942720c6",
+   "model": "deepseek.v3.2",
+   "obfuscation": "feFVI9fyMXRy2tWP1lnt7pAwc4DFVjh7v4gtmHOTd54abKEJdUGa2bKCuwe16YLQY5KOxVcL1yyMVZKBbEVI7egBfsqkovEJSl910Ag8V",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1538,
+  "data": {
+   "choices": [
+    {
+     "delta": {
+      "content": "你好！很高兴为您服务。"
+     },
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "6SOPGUUDoq0fLIWciWF0uPWuA5pjhXT7hiaIQY2ppdB4BSu9yihXID"
+    }
+   ],
+   "created": 1790479282,
+   "id": "chatcmpl-ddf911a9-2b3f-4b2c-9c84-e3b8942720c6",
+   "model": "deepseek.v3.2",
+   "obfuscation": "Gr6K2zCzvmrEeNcMEJMJGuNK2ybkqmEDfnZbuXCqb2KyHWLVzWGLoqBUEkPAissN",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1538,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": "stop",
+     "index": 0,
+     "obfuscation": "SGUvzFlGsSHCAR3YEK8cO8zmDcIqkqQe6MP3TNPfSd4wCVZqtedcxdLEv"
+    }
+   ],
+   "created": 1790479282,
+   "id": "chatcmpl-ddf911a9-2b3f-4b2c-9c84-e3b8942720c6",
+   "model": "deepseek.v3.2",
+   "obfuscation": "i8ExTIwJcL74Ajwvk69AXEra2heIfsqK7lNpOUUA9FVuMlyx1ZJdxjsxe7BozSrCEytY7XsZplGU",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1538,
+  "data": {
+   "choices": [],
+   "created": 1790479282,
+   "id": "chatcmpl-ddf911a9-2b3f-4b2c-9c84-e3b8942720c6",
+   "model": "deepseek.v3.2",
+   "obfuscation": "a3P6vgCJ1Cqq9ctSA2llndCPRL4jg15hXU7okHCrTYzavF3dwozd8twKpKRhZWIZRVp3okK9sho36dLFaCT8Kc9vvJHGA8Z4peTaJ0upeGP8",
+   "object": "chat.completion.chunk",
+   "service_tier": "default",
+   "usage": {
+    "completion_tokens": 7,
+    "prompt_tokens": 6175,
+    "total_tokens": 6182
+   }
+  }
+ },
+ {
+  "at": 1539,
+  "data": "[DONE]"
+ }
+]

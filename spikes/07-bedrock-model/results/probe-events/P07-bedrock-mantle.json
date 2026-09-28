@@ -1,0 +1,81 @@
+[
+ {
+  "at": 1239,
+  "data": {
+   "choices": [
+    {
+     "delta": {
+      "content": "",
+      "role": "assistant"
+     },
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "CCfLXvVasZ6tC9Dnhj9SKkY2KZ5yCG0FjIRoJF3aNCyqGfvgvbU4KEns5b8LRlFJbhU7ARTQb9oyOWMGlPOiAOcwNhuN1PP0xHWzXAvsR4pfLBmclrUjE8i1xm2v"
+    }
+   ],
+   "created": 1790479292,
+   "id": "chatcmpl-c4bf28c9-35ec-4477-bc81-90eeef704693",
+   "model": "deepseek.v3.2",
+   "obfuscation": "wSq5WpbFh0uk2qg6gezkx7tceALPT9AZfr9L7JKE8oPUCF6C5QcUipCiXGR6MAB680rzEqY3qu",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1239,
+  "data": {
+   "choices": [
+    {
+     "delta": {
+      "content": "你好！很高兴为您服务。"
+     },
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "BiUbzzlwuUNLiv7iwMKQhrrSlRYpuIHNG9hHqKDgHtyBAqaX9gOryNnSigiHL6ddTOn9UrhHtEIlXSg3Ydxs0W0ByMPkw31ODfLxTUZP7C3OIHxIX"
+    }
+   ],
+   "created": 1790479292,
+   "id": "chatcmpl-c4bf28c9-35ec-4477-bc81-90eeef704693",
+   "model": "deepseek.v3.2",
+   "obfuscation": "V6QsgQuRilVmzD4Z2NSJLWQsj04IYtoOD1eUFoqqOKUofKDqFeXX290K0UGHS80Fj9t2HReotQpSwThATFIbRRlx5woDGumUmzW",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1239,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": "stop",
+     "index": 0,
+     "obfuscation": "oK8zsxsyI4OFpDBsKlYUoKWyCkO7TL9jtEIFaqs1tnCpp7wUrSdclKGBPxxUGmviUCG"
+    }
+   ],
+   "created": 1790479292,
+   "id": "chatcmpl-c4bf28c9-35ec-4477-bc81-90eeef704693",
+   "model": "deepseek.v3.2",
+   "obfuscation": "49GcMPlsjvcOjJV3VUBHaKJlciElkxvqkSVSO3SMzQAYgCcXB1J9Asa7q022vDHuwOd",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1239,
+  "data": {
+   "choices": [],
+   "created": 1790479292,
+   "id": "chatcmpl-c4bf28c9-35ec-4477-bc81-90eeef704693",
+   "model": "deepseek.v3.2",
+   "obfuscation": "39cJ5psNMz7uWG023abc3EMgZFsCEU6JUNAxWMRJKNEEEYv1bPLdji38fbJWWqrGSWL97909SJo70f9hgE9nuH2vtfexEZu0pEkAAYC3fYTSMjs7FFu",
+   "object": "chat.completion.chunk",
+   "service_tier": "default",
+   "usage": {
+    "completion_tokens": 7,
+    "prompt_tokens": 6175,
+    "total_tokens": 6182
+   }
+  }
+ }
+]

@@ -1,0 +1,11 @@
+04:41:36 L 开始：HOLD_MIN=70；bob 令牌 60 分钟后过期
+04:42:15 carol：页面就绪=true，StopRuntimeSession=200 {}
+04:48:04 ✓ S01 StopRuntimeSession 后打开着的页面：WebSocket 关闭并自动重连（刷新前） — Stop=200 {}；go@18s 之后关闭 #0@26s，新开 #1@27s；全程打开 #0@5s #1@27s #2@280s #3@283s #4@284s #5@292s #6@294s #7@296s；提示 ["自动重连中...","历史加载失败：api gateway: Remote stream WebSocket closed（gateway/internal）"]
+04:48:04 ✓ S02 回收后不刷新页面继续对话 — ok 1444 ms 
+04:48:04 ✗ S03 回收后刷新页面：历史可见、可继续对话 — 历史=false；「历史加载失败」后再刷新 1 次；回复 FAIL page.waitForFunction: Timeout 90000ms exceeded.
+04:48:04 ✓ S04 对照（不回收，页面打开 4 分钟后刷新）：历史与对话 — 「历史加载失败」后再刷新 0 次；回复 ok 1083 ms；WS 打开 #0@15s #1@276s 关闭 
+05:53:24 ✗ L01 浏览器页面保持 70 分钟：WebSocket 是否中断 — 打开 #0@5s #1@2054s #2@2058s #3@2080s #4@2103s #5@2109s；关闭 #0@666s(661s) #1@2054s(0s) #2@2058s(0s) #3@2080s(0s) #4@2103s(0s)；结束前 wsOpen=1；提示 ["自动重连中..."]
+05:53:24 ✗ L02 保持 70 分钟后不刷新直接对话 — FAIL 60353 ms
+05:53:24 ✗ L03 原始 WebSocket（只连接不发消息，令牌 60 分钟过期）保持 72 分钟 — {"openedMs":1062,"closedMs":2054574,"code":1006,"reason":"","msgs":0,"pings":33,"error":null}
+05:53:27 重新配置：{"MAX_LIFETIME":"300","TOKEN_VALIDITY_MINUTES":"60"}
+05:57:23 重新配置完成 236803 ms：DGpu51MUBKH_xcOEQDGGUdSR7.gq8JVYOqjTNijVyZGy6vz59reVHzar9otW_CvcR7Ea3omm_JoHsNig_G7L8S41j7q&partNumber=3 TLS/SSL connection has been closed (EOF) (_ssl.c:1082) 

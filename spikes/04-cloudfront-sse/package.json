@@ -1,0 +1,16 @@
+{
+  "name": "spike-04-cloudfront-sse",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Spike 04: CloudFront + Lambda Function URL 的 SSE 链路验证（tasks.md 任务 1.4）",
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@aws-sdk/client-cloudwatch-logs": "3.1141.0",
+    "@aws-sdk/credential-provider-node": "3.972.84",
+    "@smithy/hash-node": "4.5.2",
+    "@smithy/signature-v4": "5.7.4"
+  }
+}

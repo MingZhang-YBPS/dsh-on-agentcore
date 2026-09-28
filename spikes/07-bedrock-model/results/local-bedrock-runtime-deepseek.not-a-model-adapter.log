@@ -1,0 +1,34 @@
+{"t":"2026-09-27T03:41:05.149Z","level":"info","msg":"signing proxy up","base":"http://127.0.0.1:43201"}
+{"t":"2026-09-27T03:41:05.151Z","level":"info","msg":"dsh home restored from persistent dir","restored":0,"ms":1,"persist":"/tmp/spike07-JO12Rq/home/.dsh","local":"/tmp/spike07-JO12Rq/local-dsh-home"}
+{"t":"2026-09-27T03:41:05.156Z","level":"info","msg":"adapter listening","port":18210}
+{"t":"2026-09-27T03:41:13.248Z","level":"info","msg":"dsh web ready","readyMs":8115,"pid":21270}
+{"t":"2026-09-27T03:41:14.996Z","level":"debug","msg":"tunnel","method":"GET","path":"/","status":200,"ms":44}
+{"t":"2026-09-27T03:41:15.249Z","level":"debug","msg":"tunnel","method":"GET","path":"/plugins/??@deepseek-ai/dsh-client-modules/client.js&rev=cddf5581d5d5","status":200,"ms":41}
+{"t":"2026-09-27T03:41:15.310Z","level":"debug","msg":"tunnel","method":"GET","path":"/assets/vendor-BNsW4eBh.css","status":200,"ms":67}
+{"t":"2026-09-27T03:41:15.323Z","level":"debug","msg":"tunnel","method":"GET","path":"/assets/index-DPX2bQLO.css","status":200,"ms":56}
+{"t":"2026-09-27T03:41:15.352Z","level":"debug","msg":"tunnel","method":"GET","path":"/assets/index-BKQ_L1z6.js","status":200,"ms":136}
+{"t":"2026-09-27T03:41:15.364Z","level":"debug","msg":"tunnel","method":"GET","path":"/assets/vendor-CCJJTK99.js","status":200,"ms":112}
+{"t":"2026-09-27T03:41:15.958Z","level":"debug","msg":"tunnel","method":"GET","path":"/plugins/??@deepseek-ai/dsh-api-gateway/client.js,@deepseek-ai/dsh-api-workspace-files/client.js,@deepseek-ai/dsh-cordis","status":200,"ms":816}
+{"t":"2026-09-27T03:41:16.164Z","level":"info","msg":"ws bridged","sessionHeader":null,"hasAuthorization":false}
+{"t":"2026-09-27T03:41:16.202Z","level":"debug","msg":"tunnel","method":"POST","path":"/api/settings/describe","status":404,"ms":20}
+{"t":"2026-09-27T03:41:16.446Z","level":"debug","msg":"tunnel","method":"POST","path":"/api/dynamicCordisRunner/inventory","status":200,"ms":22}
+{"t":"2026-09-27T03:41:16.447Z","level":"debug","msg":"tunnel","method":"POST","path":"/api/session/modelCatalog","status":200,"ms":14}
+{"t":"2026-09-27T03:41:16.464Z","level":"debug","msg":"tunnel","method":"POST","path":"/api/dynamicCordisRunner/syncInspectManifest","status":200,"ms":13}
+{"t":"2026-09-27T03:41:16.683Z","level":"debug","msg":"tunnel","method":"POST","path":"/api/agentPresets/list","status":200,"ms":34}
+{"t":"2026-09-27T03:41:16.814Z","level":"debug","msg":"tunnel","method":"GET","path":"/favicon.svg","status":200,"ms":4}
+{"t":"2026-09-27T03:41:16.844Z","level":"debug","msg":"tunnel","method":"POST","path":"/api/dynamicCordisRunner/inventory","status":200,"ms":14}
+{"t":"2026-09-27T03:41:16.847Z","level":"debug","msg":"tunnel","method":"POST","path":"/api/session/modelCatalog","status":200,"ms":17}
+{"t":"2026-09-27T03:41:16.847Z","level":"debug","msg":"tunnel","method":"POST","path":"/api/session/list","status":200,"ms":21}
+{"t":"2026-09-27T03:41:16.853Z","level":"debug","msg":"tunnel","method":"POST","path":"/api/settings/describe","status":404,"ms":17}
+{"t":"2026-09-27T03:41:16.858Z","level":"debug","msg":"tunnel","method":"POST","path":"/api/dynamicCordisRunner/syncInspectManifest","status":200,"ms":21}
+{"t":"2026-09-27T03:41:16.872Z","level":"debug","msg":"tunnel","method":"POST","path":"/api/agentPresets/list","status":200,"ms":49}
+{"t":"2026-09-27T03:41:24.610Z","level":"debug","msg":"tunnel","method":"POST","path":"/api/directoryPicker/list","status":200,"ms":7}
+{"t":"2026-09-27T03:41:24.722Z","level":"debug","msg":"tunnel","method":"POST","path":"/api/directoryPicker/list","status":200,"ms":5}
+{"t":"2026-09-27T03:41:24.778Z","level":"debug","msg":"tunnel","method":"POST","path":"/api/workspace/create","status":200,"ms":13}
+{"t":"2026-09-27T03:41:25.055Z","level":"debug","msg":"tunnel","method":"POST","path":"/api/session/create","status":200,"ms":263}
+{"t":"2026-09-27T03:41:25.109Z","level":"debug","msg":"tunnel","method":"POST","path":"/api/dynamicCordisRunner/inventory","status":200,"ms":22}
+{"t":"2026-09-27T03:41:25.116Z","level":"debug","msg":"tunnel","method":"POST","path":"/api/commands/list","status":200,"ms":27}
+{"t":"2026-09-27T03:41:25.117Z","level":"debug","msg":"tunnel","method":"POST","path":"/api/subagents/list","status":200,"ms":56}
+{"t":"2026-09-27T03:41:25.137Z","level":"debug","msg":"tunnel","method":"POST","path":"/api/skills/list","status":200,"ms":47}
+{"t":"2026-09-27T03:41:25.271Z","level":"debug","msg":"tunnel","method":"POST","path":"/api/agentPresets/list","status":200,"ms":12}
+{"t":"2026-09-27T03:41:25.311Z","level":"debug","msg":"tunnel","method":"POST","path":"/api/session/prompt","status":200,"ms":36}

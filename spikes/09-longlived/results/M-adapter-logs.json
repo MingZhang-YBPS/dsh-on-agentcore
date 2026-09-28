@@ -1,0 +1,8 @@
+[
+ "06:48:42 {\"t\":\"2026-09-27T06:48:42.832Z\",\"level\":\"info\",\"msg\":\"dsh web ready\",\"readyMs\":4703,\"pid\":367}",
+ "06:48:46 {\"t\":\"2026-09-27T06:48:46.916Z\",\"level\":\"info\",\"msg\":\"ws bridged\",\"sessionHeader\":\"dsh-user-c43884a8-b011-701c-54b3-9406b1ae14b4\",\"hasAuthorization\":true}",
+ "06:53:37 {\"t\":\"2026-09-27T06:53:37.880Z\",\"level\":\"info\",\"msg\":\"shutdown requested\"}",
+ "06:53:49 {\"t\":\"2026-09-27T06:53:49.812Z\",\"level\":\"info\",\"msg\":\"dsh web ready\",\"readyMs\":7129,\"pid\":366}",
+ "06:53:50 {\"t\":\"2026-09-27T06:53:50.308Z\",\"level\":\"info\",\"msg\":\"ws bridged\",\"sessionHeader\":\"dsh-user-c43884a8-b011-701c-54b3-9406b1ae14b4\",\"hasAuthorization\":true}",
+ "06:56:09 {\"t\":\"2026-09-27T06:56:09.113Z\",\"level\":\"info\",\"msg\":\"ws bridged\",\"sessionHeader\":\"dsh-user-c43884a8-b011-701c-54b3-9406b1ae14b4\",\"hasAuthorization\":true}"
+]

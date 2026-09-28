@@ -1,0 +1,20 @@
+{
+  "app": "npx tsx bin/app.ts",
+  "output": "cdk.out",
+  "context": {
+    "modelId": "deepseek.v3.2",
+    "modelEndpointSurface": "bedrock-runtime",
+    "tokenValidityHours": 12,
+    "refreshTokenValidityDays": 1,
+    "tokenRefreshSkewSeconds": 300,
+    "idleRuntimeSessionTimeoutSeconds": 900,
+    "maxLifetimeSeconds": 28800,
+    "wsKeepaliveMs": 20000,
+    "wsFrameMax": 49152,
+    "homeMirrorIntervalMs": 2000,
+    "dshReadyTimeoutMs": 90000,
+    "demoUsers": "demo",
+    "logRetentionDays": 14,
+    "acceptDataWipe": false
+  }
+}

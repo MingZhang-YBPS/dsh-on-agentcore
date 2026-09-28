@@ -1,0 +1,81 @@
+[
+ {
+  "at": 1184,
+  "data": {
+   "choices": [
+    {
+     "delta": {
+      "content": "",
+      "role": "assistant"
+     },
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "Uv7v8X5UTlJu4lFWVISfG6bu935hcod7Rm4UKgfE1uBE90sRO1G3KowAz4DvvswkPC1rYGB"
+    }
+   ],
+   "created": 1790479294,
+   "id": "chatcmpl-009dde7d-d702-4588-a314-82cd7277bf75",
+   "model": "deepseek.v3.2",
+   "obfuscation": "I9UljXbwDYgGNNJ2HV018uuYUBvPsWYFtAuBIMGS0UAm4F9toaCZhGBpZ6W9JfMmJE59dL6kHYh5facCXIDUBCUVQbdraW",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1184,
+  "data": {
+   "choices": [
+    {
+     "delta": {
+      "content": "你好！很高兴为你服务。"
+     },
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "xT4MPt493qpxky23965kXMzxwQPQrxW9720t5rzdQpSuYXA36cMXNO7myEz9RVKT3q3P7pccEdRFT1qxLF7f37OGVO"
+    }
+   ],
+   "created": 1790479294,
+   "id": "chatcmpl-009dde7d-d702-4588-a314-82cd7277bf75",
+   "model": "deepseek.v3.2",
+   "obfuscation": "wl7izfWvlNuVWZVIyuzZW1ZJFFdjcspmNYvRa3",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1184,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": "stop",
+     "index": 0,
+     "obfuscation": "XLAKyZTbTblbwp5g1yjvZJjwXNjFfhrIIHTna6PRXLjd1b9DyjnxUWUGt7X2Bho8MOfLFIYMjH8u1qOIjVXuPQuQCTDG7j5SnNPwHQGqD3UtZUKIulUz"
+    }
+   ],
+   "created": 1790479294,
+   "id": "chatcmpl-009dde7d-d702-4588-a314-82cd7277bf75",
+   "model": "deepseek.v3.2",
+   "obfuscation": "PoHCSnTLhl7o6ZF7EeIhRB2U7U8CFKS6rcpdPcH5rKBbLxA2Wj76gWHm2h7V2qdYYczyJGgRfHlz0dLYDEzElcqmucXdnXTqgRNN",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1184,
+  "data": {
+   "choices": [],
+   "created": 1790479294,
+   "id": "chatcmpl-009dde7d-d702-4588-a314-82cd7277bf75",
+   "model": "deepseek.v3.2",
+   "obfuscation": "clorosFrTUo0lRXTBveF1pu63F9qiFhzrmpjUw2oaoJceXB9CAHVLeZlCNZQ7aVZI1DDKElqVEpVz9ZSjCjalsuUZjgKJlobQp0eCp",
+   "object": "chat.completion.chunk",
+   "service_tier": "default",
+   "usage": {
+    "completion_tokens": 7,
+    "prompt_tokens": 6175,
+    "total_tokens": 6182
+   }
+  }
+ }
+]

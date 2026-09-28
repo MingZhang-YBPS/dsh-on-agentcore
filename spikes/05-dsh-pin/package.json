@@ -1,0 +1,15 @@
+{
+  "name": "spike-05-dsh-pin",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Spike 05: 锁定 DSH 版本并验证无界面集成接口（tasks.md 任务 1.5）",
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "dependencies": {
+    "@deepseek-ai/dsh": "0.1.5-rc.3",
+    "@smithy/hash-node": "4.5.2",
+    "@smithy/signature-v4": "5.7.4"
+  }
+}

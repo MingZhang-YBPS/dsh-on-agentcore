@@ -1,0 +1,22 @@
+{"id":"C01","desc":"未登录访问 / → 303 跳转登录页","pass":true,"note":"303 → /auth/login"}
+{"id":"C02","desc":"口令错误 → 401 登录页，不下发 cookie","pass":true,"note":"401"}
+{"id":"C03","desc":"绕过 CloudFront 直连 Lambda Function URL（无源头密钥）→ 403","pass":true,"note":"403"}
+{"id":"C04","desc":"未登录调用 /api/* → 401","pass":true,"note":"401"}
+{"id":"C05","desc":"未登录连接 /api/remote.mux → CloudFront Function 返回 401","pass":true,"note":"{\"result\":\"rejected\",\"status\":401}"}
+{"id":"U01","desc":"页面经隧道加载：无控制台错误、无失败请求、建立 1 条 /api/remote.mux WebSocket","pass":true,"loadMs":5158,"requests":44,"console":[],"failed":[],"note":"加载 5158 ms，44 个请求","ms":6664,"phase":"A","user":"alice"}
+{"id":"U02","desc":"关闭内测声明，经目录选择器选择 ~/workspace 作为工作区","pass":true,"note":"工作区已从上次运行持久化，无需重新选择","ms":8015,"phase":"A","user":"alice"}
+{"id":"U03","desc":"文本对话：发送后助手回复逐段渲染完成","pass":true,"sendToReplyMs":1418,"note":"发送→回复出现 1418 ms","ms":1650,"phase":"A","user":"alice"}
+{"id":"U04","desc":"工具调用：bash 在工作空间写文件，界面显示工具调用与后续回复","pass":true,"note":"发送→完成 1375 ms","ms":1608,"phase":"A","user":"alice"}
+{"id":"U05","desc":"停止生成：新会话慢速流式中点击「停止生成」，按钮消失、后续片段不再到达","pass":true,"stopMs":696,"lastPieceAtStop":16,"lastPieceAfter5s":16,"note":"点击→停止控件消失 696 ms，停止时最后一片 片16，5 秒后 片16","ms":8812,"phase":"A","user":"alice"}
+{"id":"U06","desc":"文件预览：右侧边栏文件树列出工作空间文件，点击 hello.txt 显示内容","pass":true,"note":"预览显示 spike05","ms":3297,"phase":"A","user":"alice"}
+{"id":"C06","desc":"经 CloudFront 登录耗时（含 Cognito AdminInitiateAuth 与首页冷启动）","pass":true,"note":"9730 ms"}
+{"id":"U10","desc":"另一用户登录后看到的是自己的空白环境：没有他人的会话与工作区","pass":true,"leaked":[],"note":"会话列表为「暂无会话」","ms":14164,"phase":"I","user":"bob"}
+{"id":"C07","desc":"bob 的有效令牌 + alice 的会话 ID 直接调用 AgentCore /invocations → 适配器 403","pass":true,"note":"AgentCore 200，内层 403"}
+{"id":"C08","desc":"对照：alice 令牌 + alice 会话 ID 直接调用 → 200","pass":true,"note":"AgentCore 200，内层 200"}
+{"id":"C09","desc":"不带令牌直接调用 AgentCore → 被 JWT 授权器拒绝","pass":true,"note":"401 {\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32001,\"message\":\"Missing Authentication Token\"}}"}
+{"id":"C10","desc":"签名被篡改的令牌 → 被 JWT 授权器拒绝","pass":true,"note":"401"}
+{"id":"C11","desc":"bob 令牌 + alice 会话 ID 直连 AgentCore /ws → 被拒绝或立即关闭","pass":true,"note":"{\"result\":\"rejected\",\"status\":424}"}
+{"id":"C12","desc":"对照：alice 令牌 + alice 会话 ID 直连 /ws → 保持打开","pass":true,"note":"{\"result\":\"open\"}"}
+{"id":"C15","desc":"记录行为：直连 /ws 时小写 authorization 不会被转发给容器 → 失败即关闭（424）","pass":true,"note":"{\"result\":\"rejected\",\"status\":424}"}
+{"id":"C13","desc":"不带令牌直连 /ws → 被拒绝","pass":true,"note":"{\"result\":\"rejected\",\"status\":403}"}
+{"id":"C14","desc":"会话 ID 由令牌主体派生，两名用户互不相同","pass":true,"note":"alice=dsh-user-a4081418-2021-70b3-2846-a59b9ae835e4 bob=dsh-user-34888468-6051-7025-a798-04120b18ae3d"}

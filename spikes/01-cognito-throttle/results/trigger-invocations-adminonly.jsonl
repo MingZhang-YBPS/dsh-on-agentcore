@@ -1,0 +1,2 @@
+{"marker": "DSH_SPIKE_TRIGGER", "fn": "dsh-poc-spike-preauth", "triggerSource": "PreAuthentication_Authentication", "userName": "spikeuser", "clientId": "1q4v32c4j68cddi879k33vltuj", "userNotFound": false, "clientMetadata": null, "hasValidationData": true, "ts": 1790405035499, "kind": "pre"}
+{"marker": "DSH_SPIKE_TRIGGER", "fn": "dsh-poc-spike-postauth", "triggerSource": "PostAuthentication_Authentication", "userName": "spikeuser", "clientId": "1q4v32c4j68cddi879k33vltuj", "clientMetadata": null, "hasValidationData": false, "ts": 1790405035943, "kind": "post"}

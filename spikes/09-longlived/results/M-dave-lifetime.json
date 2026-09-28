@@ -1,0 +1,560 @@
+{
+ "mode": "watch",
+ "minutes": 7,
+ "timeline": [
+  {
+   "t": 2,
+   "kind": "navigated",
+   "url": "/auth/login"
+  },
+  {
+   "t": 11,
+   "kind": "navigated",
+   "url": "/"
+  },
+  {
+   "t": 15,
+   "kind": "ws-open",
+   "id": 0
+  },
+  {
+   "t": 17,
+   "kind": "logged-in"
+  },
+  {
+   "t": 31,
+   "kind": "reply",
+   "tag": "第一条",
+   "ok": true,
+   "ms": 1431
+  },
+  {
+   "t": 31,
+   "kind": "state",
+   "tag": "ready",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 31,
+   "kind": "waiting-for-go"
+  },
+  {
+   "t": 32,
+   "kind": "go"
+  },
+  {
+   "t": 42,
+   "kind": "state",
+   "tag": "t+42s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 52,
+   "kind": "state",
+   "tag": "t+52s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 62,
+   "kind": "state",
+   "tag": "t+62s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 72,
+   "kind": "state",
+   "tag": "t+72s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 82,
+   "kind": "state",
+   "tag": "t+82s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 92,
+   "kind": "state",
+   "tag": "t+92s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 102,
+   "kind": "state",
+   "tag": "t+102s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 112,
+   "kind": "state",
+   "tag": "t+112s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 122,
+   "kind": "state",
+   "tag": "t+122s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 132,
+   "kind": "state",
+   "tag": "t+132s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 142,
+   "kind": "state",
+   "tag": "t+142s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 152,
+   "kind": "state",
+   "tag": "t+152s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 162,
+   "kind": "state",
+   "tag": "t+162s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 172,
+   "kind": "state",
+   "tag": "t+172s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 182,
+   "kind": "state",
+   "tag": "t+182s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 192,
+   "kind": "state",
+   "tag": "t+192s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 202,
+   "kind": "state",
+   "tag": "t+202s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 212,
+   "kind": "state",
+   "tag": "t+212s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 222,
+   "kind": "state",
+   "tag": "t+222s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 232,
+   "kind": "state",
+   "tag": "t+232s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 242,
+   "kind": "state",
+   "tag": "t+242s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 252,
+   "kind": "state",
+   "tag": "t+252s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 262,
+   "kind": "state",
+   "tag": "t+262s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 272,
+   "kind": "state",
+   "tag": "t+272s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 282,
+   "kind": "state",
+   "tag": "t+282s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 292,
+   "kind": "state",
+   "tag": "t+292s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 302,
+   "kind": "state",
+   "tag": "t+302s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 307,
+   "kind": "ws-close",
+   "id": 0,
+   "lifetimeS": 292,
+   "rx": 73,
+   "tx": 4
+  },
+  {
+   "t": 307,
+   "kind": "ws-open",
+   "id": 1
+  },
+  {
+   "t": 312,
+   "kind": "state",
+   "tag": "t+312s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [
+    "自动重连中..."
+   ],
+   "replies": 1
+  },
+  {
+   "t": 322,
+   "kind": "state",
+   "tag": "t+322s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 332,
+   "kind": "state",
+   "tag": "t+332s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 342,
+   "kind": "state",
+   "tag": "t+342s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 352,
+   "kind": "state",
+   "tag": "t+352s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 362,
+   "kind": "state",
+   "tag": "t+362s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 372,
+   "kind": "state",
+   "tag": "t+372s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 382,
+   "kind": "state",
+   "tag": "t+382s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 392,
+   "kind": "state",
+   "tag": "t+392s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 402,
+   "kind": "state",
+   "tag": "t+402s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 412,
+   "kind": "state",
+   "tag": "t+412s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 422,
+   "kind": "state",
+   "tag": "t+422s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 432,
+   "kind": "state",
+   "tag": "t+432s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 442,
+   "kind": "state",
+   "tag": "t+442s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 452,
+   "kind": "state",
+   "tag": "t+452s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 454,
+   "kind": "reply",
+   "tag": "回收之后不刷新",
+   "ok": true,
+   "ms": 1707
+  },
+  {
+   "t": 454,
+   "kind": "state",
+   "tag": "after-send-no-reload",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 2
+  },
+  {
+   "t": 455,
+   "kind": "navigated",
+   "url": "/"
+  },
+  {
+   "t": 457,
+   "kind": "ws-open",
+   "id": 2
+  },
+  {
+   "t": 462,
+   "kind": "state",
+   "tag": "after-reload",
+   "url": "/",
+   "wsOpen": 2,
+   "wsTotal": 3,
+   "hints": [],
+   "replies": 2
+  },
+  {
+   "t": 462,
+   "kind": "history-after-reload",
+   "visible": true
+  },
+  {
+   "t": 463,
+   "kind": "reply",
+   "tag": "刷新之后",
+   "ok": true,
+   "ms": 1288
+  }
+ ],
+ "ws": [
+  {
+   "id": 0,
+   "url": "/api/remote.mux",
+   "openedAt": 15,
+   "closedAt": 307,
+   "rx": 73,
+   "tx": 4
+  },
+  {
+   "id": 1,
+   "url": "/api/remote.mux",
+   "openedAt": 307,
+   "closedAt": null,
+   "rx": 55,
+   "tx": 4
+  },
+  {
+   "id": 2,
+   "url": "/api/remote.mux",
+   "openedAt": 457,
+   "closedAt": null,
+   "rx": 48,
+   "tx": 4
+  }
+ ]
+}

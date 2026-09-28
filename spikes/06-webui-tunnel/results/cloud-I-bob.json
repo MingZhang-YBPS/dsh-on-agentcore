@@ -1,0 +1,29 @@
+{
+  "phase": "I",
+  "cases": [
+    {
+      "id": "U10",
+      "desc": "另一用户登录后看到的是自己的空白环境：没有他人的会话与工作区",
+      "pass": true,
+      "leaked": [],
+      "note": "会话列表为「暂无会话」",
+      "ms": 14164
+    }
+  ],
+  "net": {
+    "console": [],
+    "failed": [],
+    "requests": 36,
+    "ws": [
+      {
+        "url": "wss://d2p7f1fl3ms30c.cloudfront.net/api/remote.mux",
+        "closed": false
+      },
+      {
+        "url": "wss://d2p7f1fl3ms30c.cloudfront.net/api/remote.mux",
+        "closed": false
+      }
+    ],
+    "loginMs": 8148
+  }
+}

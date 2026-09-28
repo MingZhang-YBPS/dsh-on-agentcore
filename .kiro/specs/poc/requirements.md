@@ -1,0 +1,141 @@
+# Requirements Document
+
+## Introduction
+
+本特性交付一个可演示的 PoC：DeepSeek Harness（DSH）运行在 Amazon Bedrock AgentCore Runtime 上，用户用浏览器登录后，直接使用 **DSH 官方 Web UI**（`dsh web`）。PoC 不自建前端。
+
+每个用户对应一个 AgentCore 运行时会话。DSH 自己保存会话历史和工作空间文件，这些数据存放在该运行时会话的托管持久存储中。PoC 在 DSH 外围提供五项能力：部署、登录与访问控制、把官方 Web UI 安全地暴露给浏览器、用户之间的隔离、以及跨 microVM 回收的数据持久化。另外提供一层面向现场排障的可观测性。
+
+演示流程：
+1. 用户登录，看到自己的 DSH Web 界面。
+2. 新建会话，与 DSH 对话，包括工具调用与文件读写。
+3. 关闭浏览器。
+4. 重新登录，或在 microVM 被回收后再次访问，仍能看到历史会话与工作空间文件。
+5. 另一名用户登录后，看不到前一名用户的任何内容。
+
+可行性已由 `spikes/06-webui-tunnel/` 验证（本机、AgentCore、CloudFront + Cognito 三个阶段共 63 个用例）。本文档只描述系统「应当做什么」，技术方案在设计文档中确定。
+
+## Glossary
+
+- **DSH（DeepSeek Harness）**：被部署的 Agent 运行框架。它负责调用模型、执行工具、读写工作空间，并自行保存会话历史。PoC 锁定使用经过验证的版本。
+- **DSH_Web**：DSH 官方 Web UI，由 `dsh web` 在 microVM 内提供。PoC 不修改它的前端代码。
+- **AgentCore_运行时**：Amazon Bedrock AgentCore Runtime。它为每个运行时会话提供一个隔离的 microVM。
+- **用户运行时会话**：与一名用户一一对应的 AgentCore 运行时会话。它的会话标识由用户标识派生，一名用户只有一个用户运行时会话。
+- **适配器**：microVM 内的进程。它满足 AgentCore_运行时的协议契约，并把 DSH_Web 的 HTTP 与 WebSocket 流量转交给本机上的 `dsh web`。
+- **隧道**：浏览器与 AgentCore_运行时之间的接入链路，由内容分发层、登录与转发函数组成。
+- **认证服务**：负责登记用户、校验口令、颁发访问令牌的托管服务。
+- **访问令牌**：认证服务在登录成功后颁发的签名凭证，包含用户标识与过期时间点。
+- **用户**：通过浏览器登录并使用演示环境的自然人，由唯一的用户标识区分。
+- **持久目录**：用户运行时会话的托管持久存储。其中保存该用户的 DSH 数据目录与工作空间，在 microVM 回收后仍保留。
+- **加固补丁**：随 DSH 启动的配置补丁。它关闭 DSH_Web 中不适合多用户托管环境的功能。
+- **部署栈**：以基础设施即代码方式定义的、可重复创建本 PoC 全部云端资源的部署单元。
+
+## Requirements
+
+### Requirement 1: 将 DSH 部署到 AgentCore
+
+**User Story:** 作为演示工程师，我希望用一条可重复执行的部署流程把 DSH 及其外围资源部署到 AWS，以便在干净的账号中快速搭起演示环境。
+
+#### Acceptance Criteria
+
+1. THE 部署栈 SHALL 以基础设施即代码文件声明 AgentCore_运行时、隧道、认证服务及它们所需的角色与日志资源，且部署流程从开始到完成不需要任何手工控制台操作。
+2. WHEN 演示工程师在一个未部署过本 PoC 的 AWS 账号中执行部署流程，并只提供必填参数, THE 部署栈 SHALL 在部署开始后 60 分钟内使全部资源达到可用状态，并输出一个 HTTPS 访问地址。浏览器打开该地址后 10 秒内应显示登录界面。
+3. WHEN 在同一账号与区域中以未变更的参数重复执行部署流程, THE 部署栈 SHALL 不新建重复资源，保持全部资源标识不变，不更新 AgentCore_运行时的版本，并输出「无变更」的执行结果。
+4. IF 部署过程中任一资源创建失败, THEN THE 部署栈 SHALL 停止后续部署动作，以非零退出码结束，并输出失败资源名称与失败原因。
+5. IF 模型标识为空，或模型调用区域为空，或该模型标识在指定区域不可用, THEN THE 部署栈 SHALL 在创建任何资源之前以非零退出码终止，并逐项输出无效参数的名称与原因。
+6. IF 模型可用性检查所依赖的服务在检查开始后 30 秒内未返回结果, THEN THE 部署栈 SHALL 在创建任何资源之前以非零退出码终止，并输出检查未完成的原因。
+7. WHEN 部署流程完成, THE 部署栈 SHALL 输出本次实际生效的模型标识与模型调用区域。
+8. IF 一次部署会使 AgentCore_运行时产生新版本（即会清空全部用户的持久目录，见 5.6），且演示工程师未显式确认接受数据清空, THEN THE 部署栈 SHALL 在修改 AgentCore_运行时之前以非零退出码终止，并输出将被清空的数据范围说明。
+9. WHEN 演示工程师执行卸载流程并显式确认, THE 部署栈 SHALL 在卸载开始后 30 分钟内删除本 PoC 创建的全部资源，并逐项输出删除结果。卸载会删除全部用户的持久目录，未确认时不执行任何删除。
+10. IF 卸载流程在 30 分钟内未完成，或任一资源删除失败, THEN THE 部署栈 SHALL 以非零退出码结束，并输出删除失败或超时的资源名称、原因与实际删除清单。
+11. WHEN AgentCore_运行时收到某个用户运行时会话的首个请求，且该会话当前没有运行中的 microVM, THE AgentCore_运行时 SHALL 在 60 秒内启动 microVM、挂载该会话的持久目录、启动 DSH_Web，并完成该请求。在 DSH_Web 就绪之前到达的请求应被挂起等待，而不是直接返回错误。
+
+### Requirement 2: 登录与访问控制
+
+**User Story:** 作为演示环境的管理者，我希望只有经过认证的用户才能访问 DSH，且每名用户只能访问自己的环境，以便演示环境中的对话与文件不被未授权访问者读取。
+
+#### Acceptance Criteria
+
+1. WHEN 未登录的浏览器访问 PoC 访问地址的首页, THE 隧道 SHALL 跳转到登录页面。
+2. WHEN 用户在登录页面提交的用户名与口令与认证服务中登记的一致, THE 隧道 SHALL 在 2 秒内完成认证，把访问令牌写入仅限 HTTPS、脚本不可读的 cookie，并跳转到 DSH_Web 首页。
+3. IF 提交的凭证不一致, THEN THE 隧道 SHALL 返回统一的认证失败提示，不区分「用户不存在」与「口令错误」，且不下发任何 cookie。
+4. IF 提交的用户名为空，或口令为空，或用户名超过 64 个字符，或口令超过 128 个字符, THEN THE 隧道 SHALL 返回统一的认证失败提示，且不执行凭证比对。
+5. IF 同一用户名在连续 5 分钟内累计认证失败 5 次, THEN THE 隧道 SHALL 从第 5 次失败起 15 分钟内拒绝该用户名的全部登录请求，并返回与认证失败一致的统一提示。15 分钟后自动解除锁定。
+6. THE 认证服务 SHALL 以不可逆的单向哈希保存用户口令，且任何接口的响应中都不包含口令明文或其哈希值。
+7. THE 认证服务 SHALL 把访问令牌的有效期设置为自颁发起 12 小时（可通过部署参数调整）。
+8. IF 一个 HTTP 请求或 WebSocket 连接请求未携带访问令牌，或令牌签名校验失败，或令牌已过期, THEN THE 隧道与 AgentCore_运行时 SHALL 拒绝该请求（HTTP 401 或 403），且该请求不到达 DSH_Web。
+9. WHEN 浏览器对页面导航请求收到令牌过期的拒绝, THE 隧道 SHALL 清除令牌 cookie 并跳转到登录页面。
+10. THE 隧道 SHALL 仅根据访问令牌中的用户标识确定用户运行时会话，不接受浏览器指定的会话标识。
+11. IF 一个请求携带的访问令牌有效，但其请求的用户运行时会话不属于该令牌的用户标识（例如绕过隧道直接调用 AgentCore_运行时）, THEN THE 适配器 SHALL 拒绝该请求，且不向 DSH_Web 转发任何内容。
+12. IF 请求绕过内容分发层，直接访问隧道的源站地址, THEN THE 隧道 SHALL 返回 HTTP 403。
+13. WHEN 用户执行登出操作, THE 隧道 SHALL 在 2 秒内清除令牌 cookie，使该用户在认证服务中的刷新凭证失效，并跳转到登录页面。
+
+### Requirement 3: 官方 DSH Web UI
+
+**User Story:** 作为演示观众与试用用户，我希望在浏览器中直接使用 DSH 官方界面与 DSH 对话、查看它的工作过程与文件，以便我无需命令行即可体验 DSH 的完整能力。
+
+#### Acceptance Criteria
+
+1. THE PoC SHALL 向浏览器提供锁定版本的官方 DSH_Web，且不修改其前端代码。
+2. WHEN 已登录用户打开 PoC 访问地址, THE DSH_Web SHALL 在其用户运行时会话已有运行中的 microVM 时，于 15 秒内完成首页加载，且浏览器控制台中没有由隧道引起的错误。
+3. THE 隧道 SHALL 使 DSH_Web 的全部 HTTP 请求（含流式响应与以 `?` 开头的查询串）与 WebSocket 连接都能到达该用户的 DSH_Web，响应状态码、响应头与响应体字节保持不变。
+4. WHEN 用户在 DSH_Web 中新建会话、发送消息, THE DSH_Web SHALL 以流式方式逐段展示助手回复。
+5. WHEN DSH 在回复过程中执行工具调用, THE DSH_Web SHALL 展示该次工具调用及其结果。
+6. WHEN 用户在生成过程中点击「停止生成」, THE DSH SHALL 在 2 秒内停止本次生成，此后不再追加新的回复内容。
+7. WHEN 用户在 DSH_Web 的文件视图中打开工作空间里的文本文件, THE DSH_Web SHALL 展示该文件的内容。
+8. WHILE 浏览器与 DSH_Web 之间的 WebSocket 连接保持打开且没有业务消息, THE 隧道与适配器 SHALL 使该连接至少 180 秒不被中断。
+9. THE 加固补丁 SHALL 使 DSH_Web 的设置面板不出现模型配置页；THE 适配器 SHALL 拒绝浏览器对模型路由设置的写入与任何凭证的写入（返回 RPC 失败），并且只放行插件设置页、通用设置与界面偏好所用的设置命名空间。
+12. THE DSH_Web SHALL 显示插件设置页（终端、Agent 循环、Subagent、网页搜索四张配置卡片与已加载插件列表），用户在其中保存的配置对本用户生效并在 microVM 回收后保留；其中网页搜索的 API key 与接口地址由部署管理，用户不能修改。
+13. WHERE 部署时提供了 DeepSeek 官方 API key, THE 网页搜索 SHALL 经适配器内的本地代理调用 DeepSeek 搜索接口，由代理注入该 key；THE key SHALL 不出现在 CDK 模板、AgentCore_运行时配置、DSH 的配置、设置文件与环境中。
+10. THE 加固补丁 SHALL 关闭 DSH 的遥测上报与 DeepSeek 官方模型接入，使 DSH 进程除模型调用与（配置了 key 时的）网页搜索外不产生任何非回环外联；两者都经适配器内的本地代理发出。
+11. THE 适配器 SHALL 让 DSH_Web 只监听 microVM 内的回环地址，且浏览器只能经适配器访问它。
+
+### Requirement 4: 用户隔离
+
+**User Story:** 作为演示环境的管理者，我希望每名用户拥有互相隔离的 DSH 环境，以便多名试用用户同时使用时互不可见、互不影响。
+
+#### Acceptance Criteria
+
+1. THE PoC SHALL 为每名用户使用一个独立的用户运行时会话，其会话标识由该用户在认证服务中的用户标识唯一派生。不同用户的会话标识互不相同。
+2. WHEN 一名用户首次登录, THE DSH_Web SHALL 展示一个没有任何会话、没有其他用户工作空间内容的空白环境。
+3. THE PoC SHALL 使一名用户无法通过 DSH_Web、隧道或直接调用 AgentCore_运行时的方式，读取、写入或枚举另一名用户的会话历史、工作空间文件与进程。
+4. WHILE 多名用户同时使用, THE AgentCore_运行时 SHALL 在各自独立的 microVM 中运行各用户的 DSH，一名用户的负载与故障不影响其他用户的会话。
+5. WHILE 同一用户的浏览器对其用户运行时会话并发发出多个请求, THE 隧道 SHALL 使这些请求全部得到处理，不因并发而失败。
+
+### Requirement 5: 数据持久化
+
+**User Story:** 作为试用用户，我希望我的会话历史与工作空间文件在关闭页面、重新登录或 microVM 被回收后仍然保留，以便我下次访问时接着上次的内容继续工作。
+
+#### Acceptance Criteria
+
+1. THE 适配器 SHALL 把 DSH 的数据目录（含会话历史）与用户的工作空间保存在该用户的持久目录中。
+2. WHEN 用户关闭浏览器后重新登录, THE DSH_Web SHALL 展示该用户此前的全部会话及其历史，且用户可以在旧会话中继续对话，DSH 能使用旧会话的上下文。
+3. WHEN 用户的 microVM 因空闲超时、最长存活时间到期或被主动停止而回收后，用户再次访问, THE AgentCore_运行时 SHALL 在 60 秒内启动新的 microVM 并恢复该用户的持久目录。恢复后，用户在回收前至少 5 秒写入的会话历史与工作空间文件都应可见。
+4. WHEN 适配器收到 microVM 即将停止的信号, THE 适配器 SHALL 在进程退出前把尚未写入持久目录的 DSH 数据写入持久目录。
+5. WHEN DSH 或工具在工作空间中创建、修改或删除文件, THE 持久目录 SHALL 在下一次 microVM 启动后反映这些变更。
+6. THE 设计文档 SHALL 列明持久目录的容量上限、空闲清除期限与会被清空的场景（包括 AgentCore_运行时版本更新），且这些限制应出现在部署流程的输出或说明文档中。
+
+### Requirement 6: 模型接入
+
+**User Story:** 作为演示工程师，我希望 DSH 默认使用 DeepSeek 官方的最新模型，同时保留 Amazon Bedrock 上的 DeepSeek 模型作为可选项，并且 DSH 本身不接触任何长期密钥，以便演示效果好、环境安全。
+
+#### Acceptance Criteria
+
+1. WHERE 部署时提供了 DeepSeek 官方 API key, THE DSH SHALL 以 DeepSeek 官方模型（`deepseek-flash`）作为新会话的默认模型，并在模型下拉中提供 DeepSeek 官方模型与部署参数指定区域、模型标识的 Amazon Bedrock 模型；未提供 key 时只提供 Bedrock 模型，且以它为默认。
+2. THE 适配器 SHALL 让 DSH 的全部模型调用只发往容器内的本地代理：Bedrock 调用由签名代理以 AgentCore_运行时执行角色的临时凭证签名；DeepSeek 官方调用由 DeepSeek 代理注入部署配置的 key。镜像或代码包、环境变量、DSH 的配置与设置文件、日志中均不出现长期密钥。
+3. THE AgentCore_运行时执行角色 SHALL 只具有调用所选 Bedrock 模型、读取 DeepSeek key 所在 secret 与写日志的权限，不具有访问其他用户数据或其他 AWS 资源的权限。
+4. WHEN 用户发送消息, THE DSH SHALL 通过所选模型以流式方式生成回复，并能完成至少一次工具调用往返；用户可以在新会话中切换模型来源。
+5. IF 模型调用失败, THEN THE DSH_Web SHALL 在对话界面展示错误提示，且该用户的会话历史保持可用。
+
+### Requirement 7: 演示可观测性
+
+**User Story:** 作为演示工程师，我希望在演示出问题时能快速定位原因，以便在几分钟内判断故障发生在登录、隧道、AgentCore_运行时、DSH 还是模型调用环节。
+
+#### Acceptance Criteria
+
+1. WHEN 隧道处理完一个请求, THE 隧道 SHALL 输出一条结构化日志，包含请求路径、用户运行时会话标识、响应状态码与处理耗时（非负整数毫秒）。
+2. WHEN 适配器处理完一个转发请求，或建立、关闭一条 WebSocket 连接, THE 适配器 SHALL 输出一条结构化日志，包含会话标识、请求路径或连接事件、状态与耗时。
+3. WHEN 适配器拒绝一个请求（归属校验失败、DSH_Web 未就绪超时等）, THE 适配器 SHALL 输出一条包含拒绝原因的警告日志。
+4. THE 隧道与适配器 SHALL 不在日志中输出访问令牌、口令与 cookie 的值。
+5. WHEN AgentCore_运行时向适配器发起健康检查, THE 适配器 SHALL 在 DSH_Web 就绪前报告「忙碌」，就绪后报告「健康」。
+6. WHEN 适配器启动或停止, THE 适配器 SHALL 输出 DSH_Web 启动耗时、持久目录恢复与最后一次写入的结果。

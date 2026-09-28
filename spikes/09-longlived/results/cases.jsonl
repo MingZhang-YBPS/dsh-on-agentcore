@@ -1,0 +1,6 @@
+{"id":"S01","desc":"StopRuntimeSession 后打开着的页面：WebSocket 关闭并自动重连（刷新前）","pass":false,"note":"Stop=200 {}；go@37s 之后关闭 无，新开 无；全程打开 #0@6s #1@26s #2@282s #3@284s #4@286s；提示 [\"历史加载失败：api gateway: Remote stream WebSocket closed（gateway/internal）\"]"}
+{"id":"S02","desc":"回收后不刷新页面继续对话","pass":true,"note":"ok 1576 ms "}
+{"id":"S03","desc":"回收后刷新页面：历史可见、可继续对话","pass":false,"note":"历史=true；回复 FAIL"}
+{"id":"L01","desc":"浏览器页面保持 1 分钟：WebSocket 是否中断","pass":true,"note":"打开 #0@6s；关闭 无；结束前 wsOpen=1；提示 []"}
+{"id":"L02","desc":"保持 1 分钟后不刷新直接对话","pass":true,"note":"ok 1178 ms"}
+{"id":"L03","desc":"原始 WebSocket（只连接不发消息，令牌 60 分钟过期）保持 3 分钟","pass":true,"note":"{\"openedMs\":1182,\"closedMs\":180022,\"code\":1006,\"reason\":\"\",\"msgs\":0,\"pings\":8,\"error\":null,\"stillOpenAtEnd\":true}"}

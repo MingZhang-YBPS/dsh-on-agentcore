@@ -1,0 +1,9 @@
+{
+  "name": "spike-09-longlived",
+  "private": true,
+  "type": "module",
+  "description": "Task 1.9: long-lived WebSocket, microVM recycle and token expiry behaviour of the official DSH Web UI behind CloudFront + AgentCore",
+  "dependencies": {
+    "ws": "8.21.3"
+  }
+}

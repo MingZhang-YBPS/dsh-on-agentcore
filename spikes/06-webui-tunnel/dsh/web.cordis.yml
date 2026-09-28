@@ -1,0 +1,56 @@
+# Spike 06 补丁：叠加在 `dsh --profile web` 之上（`--patch` 最后一层，行级覆盖）。
+# 与 Spike 05 的桥接补丁同源：关闭外联与 DeepSeek 专有行，模型只走 llm-pi-ai → 适配层内签名代理。
+# 本文件只做「安全与外联」基线；设置/凭证面板的加固放在 web-hardening.cordis.yml，便于对照验证。
+
+- id: session-telemetry-otel
+  disabled: true
+- id: session-title-llm
+  disabled: true
+- id: hmr
+  disabled: true
+- id: llm-deepseek
+  disabled: true
+- id: deepseek-llm-api-extensions
+  disabled: true
+- id: session-log-deepseek
+  disabled: true
+- id: plugin-package-inventory-deepseek
+  disabled: true
+
+# web 相关行保持启用：官方 standard 预设（dsh-agent-presets/presets/standard）自带 tool-web 行并依赖 web 服务，
+# 关掉 web 会导致新建会话失败（实测 agent-preset/invalid）。web_search 的 DeepSeek 提供方没有 DEEPSEEK_API_KEY，
+# 调用时在本地因缺少凭证失败，不会外联；web_fetch 直接访问目标网址，与 bash 工具的出网能力相同。
+
+# 「在本机应用中打开」只对桌面有意义
+- id: open-in-app
+  disabled: true
+- id: ui-open-in-app
+  disabled: true
+
+# 客户端热重载：页面会一直挂着一个 EventSource /plugins/events 长连接（阶段 2 实测单条持续 214 s）。
+# 经 CloudFront → Lambda 隧道时，它每 30 s 被源响应超时切断并重连，白白占用 Lambda 与 InvokeAgentRuntime，关掉
+- id: client-hmr
+  disabled: true
+
+- id: bash-sandbox
+  config:
+    timeoutMs: 60000
+    graceMs: 500
+
+- id: agent-default-model
+  config:
+    provider: bedrock
+    model: !!js process.env.DSH_BRIDGE_MODEL_ID
+
+- id: llm-pi-ai
+  config:
+    providers:
+      bedrock:
+        displayName: Amazon Bedrock
+        api: openai-completions
+        baseURL: !!js process.env.DSH_BRIDGE_MODEL_BASE_URL
+        apiKeyEnv: DSH_BRIDGE_PLACEHOLDER_KEY
+        models:
+          - id: !!js process.env.DSH_BRIDGE_MODEL_ID
+            contextWindow: 131072
+            maxTokens: 8192

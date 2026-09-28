@@ -1,0 +1,406 @@
+{
+ "mode": "watch",
+ "minutes": 2,
+ "timeline": [
+  {
+   "t": 1,
+   "kind": "navigated",
+   "url": "http://localhost:8000/"
+  },
+  {
+   "t": 2,
+   "kind": "ws-open",
+   "id": 0
+  },
+  {
+   "t": 2,
+   "kind": "http-error",
+   "status": 404,
+   "url": "http://localhost:8000/api/settings/describe"
+  },
+  {
+   "t": 2,
+   "kind": "http-error",
+   "status": 404,
+   "url": "http://localhost:8000/api/settings/describe"
+  },
+  {
+   "t": 3,
+   "kind": "logged-in"
+  },
+  {
+   "t": 13,
+   "kind": "reply",
+   "tag": "第一条",
+   "ok": true,
+   "ms": 867
+  },
+  {
+   "t": 13,
+   "kind": "state",
+   "tag": "ready",
+   "url": "http://localhost:8000/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 13,
+   "kind": "waiting-for-go"
+  },
+  {
+   "t": 16,
+   "kind": "ws-close",
+   "id": 0,
+   "lifetimeS": 14,
+   "rx": 73,
+   "tx": 4
+  },
+  {
+   "t": 17,
+   "kind": "ws-open",
+   "id": 1
+  },
+  {
+   "t": 17,
+   "kind": "ws-close",
+   "id": 1,
+   "lifetimeS": 0,
+   "rx": 0,
+   "tx": 4
+  },
+  {
+   "t": 17,
+   "kind": "ws-open",
+   "id": 2
+  },
+  {
+   "t": 17,
+   "kind": "ws-close",
+   "id": 2,
+   "lifetimeS": 0,
+   "rx": 0,
+   "tx": 1
+  },
+  {
+   "t": 19,
+   "kind": "ws-open",
+   "id": 3
+  },
+  {
+   "t": 19,
+   "kind": "ws-error",
+   "id": 3,
+   "error": "Error in connection establishment: net::ERR_CONNECTION_REFUSED"
+  },
+  {
+   "t": 19,
+   "kind": "ws-close",
+   "id": 3,
+   "lifetimeS": 0,
+   "rx": 0,
+   "tx": 0
+  },
+  {
+   "t": 22,
+   "kind": "ws-open",
+   "id": 4
+  },
+  {
+   "t": 22,
+   "kind": "ws-error",
+   "id": 4,
+   "error": "Error in connection establishment: net::ERR_CONNECTION_REFUSED"
+  },
+  {
+   "t": 22,
+   "kind": "ws-close",
+   "id": 4,
+   "lifetimeS": 0,
+   "rx": 0,
+   "tx": 0
+  },
+  {
+   "t": 28,
+   "kind": "ws-open",
+   "id": 5
+  },
+  {
+   "t": 28,
+   "kind": "ws-error",
+   "id": 5,
+   "error": "Error in connection establishment: net::ERR_CONNECTION_REFUSED"
+  },
+  {
+   "t": 28,
+   "kind": "ws-close",
+   "id": 5,
+   "lifetimeS": 0,
+   "rx": 0,
+   "tx": 0
+  },
+  {
+   "t": 31,
+   "kind": "go"
+  },
+  {
+   "t": 37,
+   "kind": "ws-open",
+   "id": 6
+  },
+  {
+   "t": 37,
+   "kind": "http-error",
+   "status": 404,
+   "url": "http://localhost:8000/api/settings/describe"
+  },
+  {
+   "t": 41,
+   "kind": "state",
+   "tag": "t+41s",
+   "url": "http://localhost:8000/",
+   "wsOpen": 1,
+   "wsTotal": 7,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 51,
+   "kind": "state",
+   "tag": "t+51s",
+   "url": "http://localhost:8000/",
+   "wsOpen": 1,
+   "wsTotal": 7,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 61,
+   "kind": "state",
+   "tag": "t+61s",
+   "url": "http://localhost:8000/",
+   "wsOpen": 1,
+   "wsTotal": 7,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 71,
+   "kind": "state",
+   "tag": "t+71s",
+   "url": "http://localhost:8000/",
+   "wsOpen": 1,
+   "wsTotal": 7,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 81,
+   "kind": "state",
+   "tag": "t+81s",
+   "url": "http://localhost:8000/",
+   "wsOpen": 1,
+   "wsTotal": 7,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 91,
+   "kind": "state",
+   "tag": "t+91s",
+   "url": "http://localhost:8000/",
+   "wsOpen": 1,
+   "wsTotal": 7,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 101,
+   "kind": "state",
+   "tag": "t+101s",
+   "url": "http://localhost:8000/",
+   "wsOpen": 1,
+   "wsTotal": 7,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 111,
+   "kind": "state",
+   "tag": "t+111s",
+   "url": "http://localhost:8000/",
+   "wsOpen": 1,
+   "wsTotal": 7,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 121,
+   "kind": "state",
+   "tag": "t+121s",
+   "url": "http://localhost:8000/",
+   "wsOpen": 1,
+   "wsTotal": 7,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 131,
+   "kind": "state",
+   "tag": "t+131s",
+   "url": "http://localhost:8000/",
+   "wsOpen": 1,
+   "wsTotal": 7,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 141,
+   "kind": "state",
+   "tag": "t+141s",
+   "url": "http://localhost:8000/",
+   "wsOpen": 1,
+   "wsTotal": 7,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 151,
+   "kind": "state",
+   "tag": "t+151s",
+   "url": "http://localhost:8000/",
+   "wsOpen": 1,
+   "wsTotal": 7,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 152,
+   "kind": "reply",
+   "tag": "回收之后不刷新",
+   "ok": true,
+   "ms": 916
+  },
+  {
+   "t": 152,
+   "kind": "state",
+   "tag": "after-send-no-reload",
+   "url": "http://localhost:8000/",
+   "wsOpen": 1,
+   "wsTotal": 7,
+   "hints": [],
+   "replies": 2
+  },
+  {
+   "t": 152,
+   "kind": "navigated",
+   "url": "http://localhost:8000/"
+  },
+  {
+   "t": 153,
+   "kind": "ws-open",
+   "id": 7
+  },
+  {
+   "t": 153,
+   "kind": "http-error",
+   "status": 404,
+   "url": "http://localhost:8000/api/settings/describe"
+  },
+  {
+   "t": 153,
+   "kind": "http-error",
+   "status": 404,
+   "url": "http://localhost:8000/api/settings/describe"
+  },
+  {
+   "t": 158,
+   "kind": "state",
+   "tag": "after-reload",
+   "url": "http://localhost:8000/",
+   "wsOpen": 2,
+   "wsTotal": 8,
+   "hints": [],
+   "replies": 2
+  },
+  {
+   "t": 158,
+   "kind": "history-after-reload",
+   "visible": true
+  },
+  {
+   "t": 158,
+   "kind": "reply",
+   "tag": "刷新之后",
+   "ok": true,
+   "ms": 529
+  }
+ ],
+ "ws": [
+  {
+   "id": 0,
+   "url": "ws://localhost:8000/api/remote.mux",
+   "openedAt": 2,
+   "closedAt": 16,
+   "rx": 73,
+   "tx": 4
+  },
+  {
+   "id": 1,
+   "url": "ws://localhost:8000/api/remote.mux",
+   "openedAt": 17,
+   "closedAt": 17,
+   "rx": 0,
+   "tx": 4
+  },
+  {
+   "id": 2,
+   "url": "ws://localhost:8000/api/remote.mux",
+   "openedAt": 17,
+   "closedAt": 17,
+   "rx": 0,
+   "tx": 1
+  },
+  {
+   "id": 3,
+   "url": "ws://localhost:8000/api/remote.mux",
+   "openedAt": 19,
+   "closedAt": 19,
+   "rx": 0,
+   "tx": 0
+  },
+  {
+   "id": 4,
+   "url": "ws://localhost:8000/api/remote.mux",
+   "openedAt": 22,
+   "closedAt": 22,
+   "rx": 0,
+   "tx": 0
+  },
+  {
+   "id": 5,
+   "url": "ws://localhost:8000/api/remote.mux",
+   "openedAt": 28,
+   "closedAt": 28,
+   "rx": 0,
+   "tx": 0
+  },
+  {
+   "id": 6,
+   "url": "ws://localhost:8000/api/remote.mux",
+   "openedAt": 37,
+   "closedAt": null,
+   "rx": 55,
+   "tx": 4
+  },
+  {
+   "id": 7,
+   "url": "ws://localhost:8000/api/remote.mux",
+   "openedAt": 153,
+   "closedAt": null,
+   "rx": 48,
+   "tx": 4
+  }
+ ]
+}

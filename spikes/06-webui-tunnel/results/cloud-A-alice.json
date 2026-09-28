@@ -1,0 +1,67 @@
+{
+  "phase": "A",
+  "cases": [
+    {
+      "id": "U01",
+      "desc": "页面经隧道加载：无控制台错误、无失败请求、建立 1 条 /api/remote.mux WebSocket",
+      "pass": true,
+      "loadMs": 5158,
+      "requests": 44,
+      "console": [],
+      "failed": [],
+      "note": "加载 5158 ms，44 个请求",
+      "ms": 6664
+    },
+    {
+      "id": "U02",
+      "desc": "关闭内测声明，经目录选择器选择 ~/workspace 作为工作区",
+      "pass": true,
+      "note": "工作区已从上次运行持久化，无需重新选择",
+      "ms": 8015
+    },
+    {
+      "id": "U03",
+      "desc": "文本对话：发送后助手回复逐段渲染完成",
+      "pass": true,
+      "sendToReplyMs": 1418,
+      "note": "发送→回复出现 1418 ms",
+      "ms": 1650
+    },
+    {
+      "id": "U04",
+      "desc": "工具调用：bash 在工作空间写文件，界面显示工具调用与后续回复",
+      "pass": true,
+      "note": "发送→完成 1375 ms",
+      "ms": 1608
+    },
+    {
+      "id": "U05",
+      "desc": "停止生成：新会话慢速流式中点击「停止生成」，按钮消失、后续片段不再到达",
+      "pass": true,
+      "stopMs": 696,
+      "lastPieceAtStop": 16,
+      "lastPieceAfter5s": 16,
+      "note": "点击→停止控件消失 696 ms，停止时最后一片 片16，5 秒后 片16",
+      "ms": 8812
+    },
+    {
+      "id": "U06",
+      "desc": "文件预览：右侧边栏文件树列出工作空间文件，点击 hello.txt 显示内容",
+      "pass": true,
+      "note": "预览显示 spike05",
+      "ms": 3297
+    }
+  ],
+  "net": {
+    "console": [],
+    "failed": [],
+    "requests": 61,
+    "ws": [
+      {
+        "url": "wss://d2p7f1fl3ms30c.cloudfront.net/api/remote.mux",
+        "closed": false
+      }
+    ],
+    "loginMs": 9730
+  }
+}

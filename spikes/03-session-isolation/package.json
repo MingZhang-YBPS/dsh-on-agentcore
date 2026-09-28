@@ -1,0 +1,20 @@
+{
+  "name": "spike-03-session-isolation",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Spike 03: 会话级工作空间隔离的凭证机制验证（tasks.md 任务 1.3）",
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@aws-sdk/client-bedrock-agentcore": "3.1141.0",
+    "@aws-sdk/client-cloudtrail": "3.1141.0",
+    "@aws-sdk/client-dynamodb": "3.1141.0",
+    "@aws-sdk/client-s3": "3.1141.0",
+    "@aws-sdk/client-sts": "3.1141.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}

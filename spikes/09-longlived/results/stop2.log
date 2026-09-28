@@ -1,0 +1,11 @@
+06:20:53 L 开始：HOLD_MIN=1；bob 令牌 60 分钟后过期
+06:21:46 carol：页面就绪=true，StopRuntimeSession=200 {}
+06:27:28 ✓ S01 StopRuntimeSession 后打开着的页面：WebSocket 关闭并自动重连（刷新前） — Stop=200 {}；go@33s 之后关闭 #0@40s，新开 #1@40s；全程打开 #0@17s #1@40s #2@295s #3@299s #4@301s；提示 ["连接成功"]
+06:27:28 ✓ S02 回收后不刷新页面继续对话 — ok 1864 ms 
+06:27:28 ✗ S03 回收后刷新页面：历史可见、可继续对话 — 历史=true；「历史加载失败」后再刷新 0 次；回复 FAIL page.waitForFunction: Timeout 90000ms exceeded.
+06:27:28 ✓ S04 对照（不回收，页面打开 4 分钟后刷新）：历史与对话 — 「历史加载失败」后再刷新 0 次；回复 ok 1279 ms；WS 打开 #0@16s #1@279s 关闭 
+06:27:28 ✓ L01 浏览器页面保持 1 分钟：WebSocket 是否中断 — 打开 #0@14s；关闭 无；结束前 wsOpen=1；提示 []
+06:27:28 ✓ L02 保持 1 分钟后不刷新直接对话 — ok 1341 ms
+06:27:28 ✓ L03 原始 WebSocket（只连接不发消息，令牌 60 分钟过期）保持 3 分钟 — {"openedMs":8102,"closedMs":180038,"code":1006,"reason":"","msgs":0,"pings":8,"error":null,"stillOpenAtEnd":true}
+06:27:31 done
+EXIT 0

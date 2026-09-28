@@ -1,0 +1,26 @@
+04:41:02 S0 创建栈
+04:41:29 S0: version 1 读=v1-data Authorization 转发=true 首次调用 4233 ms，部署 13668 ms
+04:41:33 S1 参数不变重复部署：部署 {}
+04:42:14 S1: exit=0 noChanges=true stack=CREATE_COMPLETE version 1→1 [1] 立即读="v1-data"(同 VM=true, MARK=1) 重启后读="v1-data"(MARK=1, rev=r1) wiped=false
+04:42:19 S2 只 StopRuntimeSession（对照：同版本下恢复 session storage）：部署 {}
+04:42:56 S2: exit=0 noChanges=true stack=CREATE_COMPLETE version 1→1 [1] 立即读="v1-data"(同 VM=true, MARK=1) 重启后读="v1-data"(MARK=1, rev=r1) wiped=false
+04:43:00 S3 只改标签（Tags.rev）：部署 {"tagv":"b"}
+04:44:01 S3: exit=0 noChanges=false stack=UPDATE_COMPLETE version 1→2 [1,2] 立即读="v1-data"(同 VM=true, MARK=1) 重启后读=null(MARK=1, rev=r1) wiped=true
+04:44:06 S4 只改 Description：部署 {"desc":"spike08 probe v2"}
+04:45:06 S4: exit=0 noChanges=false stack=UPDATE_COMPLETE version 2→3 [1,2,3] 立即读="after-S3"(同 VM=true, MARK=1) 重启后读=null(MARK=1, rev=r1) wiped=true
+04:45:11 S5 只改环境变量（MARK=2）：部署 {"mark":"2"}
+04:46:13 S5: exit=0 noChanges=false stack=UPDATE_COMPLETE version 3→4 [1,2,3,4] 立即读="after-S4"(同 VM=true, MARK=1) 重启后读=null(MARK=2, rev=r1) wiped=true
+04:46:18 S6 只改 lifecycleConfiguration.idleRuntimeSessionTimeout（900→901）：部署 {"idle":"901"}
+04:47:19 S6: exit=0 noChanges=false stack=UPDATE_COMPLETE version 4→5 [1,2,3,4,5] 立即读="after-S5"(同 VM=true, MARK=2) 重启后读=null(MARK=2, rev=r1) wiped=true
+04:47:24 S7 只改代码包内容（CODE_REV r1→r2）：部署 {}
+04:48:27 S7: exit=0 noChanges=false stack=UPDATE_COMPLETE version 5→6 [1,2,3,4,5,6] 立即读="after-S6"(同 VM=true, MARK=2) 重启后读=null(MARK=2, rev=r2) wiped=true
+04:48:32 S8 更新时失败，默认回滚（MARK=3 + 必然失败的资源）：部署 {"mark":"3","fail":"bucket"}
+04:50:03 S8: exit=1 noChanges=false stack=UPDATE_ROLLBACK_COMPLETE version 6→8 [1,2,3,4,5,6,7,8] 立即读="after-S7"(同 VM=true, MARK=2) 重启后读=null(MARK=2, rev=r2) wiped=true
+04:50:08 S9a 更新时失败，--no-rollback（MARK=4 + 必然失败的资源）：部署 {"mark":"4","fail":"bucket"} --no-rollback
+04:51:28 S9a: exit=1 noChanges=false stack=UPDATE_FAILED version 8→9 [1,2,3,4,5,6,7,8,9] 立即读="after-S8"(同 VM=true, MARK=2) 重启后读=null(MARK=4, rev=r2) wiped=true
+04:51:32 S9b 从 UPDATE_FAILED 恢复：去掉失败资源再部署：部署 {"fail":""}
+04:52:07 S9b: exit=0 noChanges=true stack=UPDATE_FAILED version 9→9 [1,2,3,4,5,6,7,8,9] 立即读="after-S9a"(同 VM=true, MARK=4) 重启后读="after-S9a"(MARK=4, rev=r2) wiped=false
+04:52:07 S10 创建时失败（新栈 + 必然失败的资源，--no-rollback）
+05:17:00 S10: exit=1 stack=CREATE_FAILED 资源=CDKMetadata:CREATE_COMPLETE ExecRole372216D6:CREATE_COMPLETE ExecRoleDefaultPolicyD94BCE3E:CREATE_COMPLETE MustFail:CREATE_FAILED PoolClient8A3E5EB7:CREATE_COMPLETE PoolD3F588B8:CREATE_COMPLETE Runtime:CREATE_COMPLETE
+05:17:46 done
+EXIT 0

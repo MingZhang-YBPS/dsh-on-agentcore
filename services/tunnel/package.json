@@ -1,0 +1,19 @@
+{
+  "name": "@dsh-poc/tunnel",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "隧道 Lambda（Function URL，RESPONSE_STREAM）：登录页、登录节流、令牌续期、登出，以及浏览器 HTTP → AgentCore /invocations 的封包转发",
+  "exports": {
+    ".": { "source": "./src/index.ts", "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+    "./handler": { "source": "./src/handler.ts", "types": "./dist/handler.d.ts", "default": "./dist/handler.js" }
+  },
+  "dependencies": {
+    "@aws-sdk/client-cognito-identity-provider": "3.1141.0",
+    "@aws-sdk/client-dynamodb": "3.1141.0",
+    "@dsh-poc/auth-throttle": "*",
+    "@dsh-poc/envelope": "*",
+    "@dsh-poc/log": "*",
+    "@dsh-poc/session-identity": "*"
+  }
+}

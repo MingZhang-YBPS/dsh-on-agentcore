@@ -1,0 +1,9 @@
+{
+  "name": "dsh-poc-adapter-runtime",
+  "private": true,
+  "type": "module",
+  "description": "部署包的运行时依赖：只有锁定版本的 DSH（适配器本身由 esbuild 打包为 app.js）",
+  "dependencies": {
+    "@deepseek-ai/dsh": "0.1.5-rc.3"
+  }
+}

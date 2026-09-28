@@ -1,0 +1,11 @@
+# DSH 加固补丁：叠加在 web.cordis.yml 之后。
+# 模型设置页保持关闭：模型固定走容器内的 SigV4 签名代理（Bedrock），用户不能在界面上改模型路由或填 API key。
+# 插件设置页开放（终端、Agent 循环、网页搜索、Subagent 四张卡片与只读的已加载插件列表）。它依赖 settings-controller，
+# 而 settings-controller 没有按命名空间限制写入、并且总是挂载 credentials.*：
+# 适配器在转发 /api/settings/* 与 /api/credentials/* 前做服务端过滤（services/adapter/src/rpc-guard.ts）。
+
+- id: ui-settings-models
+  disabled: true
+
+# 不能关 ui-settings / ui-settings-general：ui-settings 提供客户端的 settingsScope 服务，locale、theme、layout、
+# chat 等 30 个客户端插件都依赖它，关掉后页面报「Failed to load plugins」（Spike 06 阶段 1 实测）。

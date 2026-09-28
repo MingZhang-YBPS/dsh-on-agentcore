@@ -1,0 +1,11 @@
+{
+  "name": "spike-08-deploy-semantics",
+  "private": true,
+  "type": "module",
+  "description": "Task 1.8: AgentCore Runtime version / session-storage wipe semantics and deploy failure semantics under CDK",
+  "dependencies": {
+    "aws-cdk": "2.1143.0",
+    "aws-cdk-lib": "2.271.0",
+    "constructs": "10.8.1"
+  }
+}

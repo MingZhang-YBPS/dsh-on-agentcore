@@ -1,0 +1,26 @@
+# 端到端阶段 E 结果
+
+- 运行：2026-09-28T05:12:00.656Z；runId c637d4；https://dsm2d40g257rc.cloudfront.net；Runtime dsh_poc_web-QEOKGXHwk4 v5；模型 deepseek.v3.2
+- 用例 19，不符合预期 0
+
+| 用例 | 用户 | 说明 | 结果 | 符合 |
+|---|---|---|---|---|
+| C01 |  | 未登录访问 / → 303 跳转登录页 | 303 → /auth/login | ✓ |
+| C02 |  | 口令错误 → 401 登录页，不下发 cookie | 401，Set-Cookie 0 | ✓ |
+| C03 |  | 绕过 CloudFront 直连 Lambda Function URL（无源站密钥）→ 403 | 403 | ✓ |
+| C04 |  | 未登录调用 /api/* → 401 | 401 | ✓ |
+| C05 |  | 未登录连接 /api/remote.mux → CloudFront Function 返回 401 | {"result":"rejected","status":401} | ✓ |
+| C06 |  | 正确口令 → 303 /，下发 HttpOnly 的 dsh_token 与 dsh_refresh | 303 2353 ms；dsh_token, dsh_refresh | ✓ |
+| C07 |  | bob 的有效令牌 + alice 的会话 ID 直接调用 AgentCore → 适配器 403 | AgentCore 200，内层 403 | ✓ |
+| C08 |  | 对照：alice 令牌 + alice 会话 ID → 200 | AgentCore 200，内层 200 | ✓ |
+| C09 |  | 不带令牌直接调用 AgentCore → JWT 授权器拒绝 | 401 | ✓ |
+| C10 |  | 签名被篡改的令牌 → JWT 授权器拒绝 | 401 | ✓ |
+| C11 |  | bob 令牌 + alice 会话 ID 直连 AgentCore /ws → 被拒绝或立即关闭 | {"result":"rejected","status":424} | ✓ |
+| C12 |  | 对照：alice 令牌 + alice 会话 ID 直连 /ws → 保持打开 | {"result":"open"} | ✓ |
+| C13 |  | 不带令牌直连 /ws → 被拒绝 | {"result":"rejected","status":403} | ✓ |
+| C14 |  | 会话 ID 由令牌主体派生，两名用户互不相同 | alice=dsh-user-84c84498-c031-7074-09bc-59e058c72dbd bob=dsh-user-e4e884d8-3071-707d-39b9-d83223d9c1bf | ✓ |
+| C15 |  | 记录行为：直连 /ws 时小写 authorization 不会被转发给容器 → 424 | {"result":"rejected","status":424} | ✓ |
+| C16 |  | 访问令牌已过期 + 有效刷新令牌 → 隧道续期后转发成功，并下发新 dsh_token | 200；新 cookie=true | ✓ |
+| C17 |  | 访问令牌已过期且没有刷新令牌 → 页面导航清 cookie 跳登录页 | 303 → /auth/login | ✓ |
+| C18 |  | /plugins/*：第二次请求命中缓存（另一用户），不带 Set-Cookie；不带 cookie → 401 | /plugins/??@deepseek-ai/dsh-api-gateway/client.js,@deepseek-：200 Hit from cloudfront / 200 Hit from cloudfront / 无 cookie 401 | ✓ |
+| C19 |  | 登出：303 登录页并清除两个 cookie；刷新令牌随 GlobalSignOut 失效 | 303 → /auth/login，清除 2 个 cookie；登出后用刷新令牌续期 → 303 /auth/login | ✓ |

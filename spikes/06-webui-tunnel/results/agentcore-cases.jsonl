@@ -1,0 +1,18 @@
+{"id":"A01","desc":"新会话首个请求（microVM 冷启动 + 挂载 session storage + dsh web 启动）","pass":true,"note":"8122 ms，status 200","coldStartMs":8122}
+{"id":"A02","desc":"热会话单个请求往返（本机 → us-east-1 → microVM → dsh web）","pass":true,"note":"423 ms"}
+{"id":"A03","desc":"同一会话 30 个并发 InvokeAgentRuntime","pass":true,"note":"成功 30/30，总耗时 1323 ms，单个 P50 920 ms / 最大 1319 ms","errors":[]}
+{"id":"A04","desc":"响应字节原样穿过隧道（静态文件）","pass":true,"note":"favicon 3721 B，manifest 267 B"}
+{"id":"U01","desc":"页面经隧道加载：无控制台错误、无失败请求、建立 1 条 /api/remote.mux WebSocket","pass":true,"loadMs":5932,"requests":20,"console":["Failed to load resource: the server responded with a status of 404 (Not Found)","Failed to load resource: the server responded with a status of 404 (Not Found)"],"failed":["404 POST http://localhost:8001/api/settings/describe","404 POST http://localhost:8001/api/settings/describe"],"note":"加载 5932 ms，20 个请求","ms":7441,"phase":"A"}
+{"id":"U02","desc":"关闭内测声明，经目录选择器选择 ~/workspace 作为工作区","pass":true,"ms":11544,"phase":"A"}
+{"id":"U03","desc":"文本对话：发送后助手回复逐段渲染完成","pass":true,"sendToReplyMs":1396,"note":"发送→回复出现 1396 ms","ms":1623,"phase":"A"}
+{"id":"U04","desc":"工具调用：bash 在工作空间写文件，界面显示工具调用与后续回复","pass":true,"note":"发送→完成 963 ms","ms":1188,"phase":"A"}
+{"id":"U05","desc":"停止生成：新会话慢速流式中点击「停止生成」，按钮消失、后续片段不再到达","pass":true,"stopMs":519,"lastPieceAtStop":17,"lastPieceAfter5s":17,"note":"点击→停止控件消失 519 ms，停止时最后一片 片17，5 秒后 片17","ms":8644,"phase":"A"}
+{"id":"U06","desc":"文件预览：右侧边栏文件树列出工作空间文件，点击 hello.txt 显示内容","pass":true,"note":"预览显示 spike05","ms":3287,"phase":"A"}
+{"id":"A05:settings/describe","desc":"加固补丁下经隧道直接调用 settings/describe 被拒绝","pass":true,"note":"status 404"}
+{"id":"A05:credentials/set","desc":"加固补丁下经隧道直接调用 credentials/set 被拒绝","pass":true,"note":"status 404"}
+{"id":"A06","desc":"WebSocket 经 AgentCore /ws 连接后空闲保持 180 s（不发业务消息）","pass":true,"note":"{\"opened\":751,\"stillOpenAfterMs\":180004,\"pings\":8}"}
+{"id":"A07","desc":"StopRuntimeSession 后再次访问（新 microVM + 恢复 session storage + dsh web 启动）","pass":true,"note":"10606 ms","resumeMs":10606}
+{"id":"U07","desc":"DSH 进程重启后（同一持久目录）：会话列表与历史仍在，可在旧会话继续对话","pass":true,"console":["Failed to load resource: the server responded with a status of 404 (Not Found)","Failed to load resource: the server responded with a status of 404 (Not Found)"],"note":"旧会话历史可见；继续对话回复 1081 ms","ms":11337,"phase":"B"}
+{"id":"U08","desc":"加固补丁下：页面可用、可新建会话对话；失败请求只有被关闭的 settings/describe","pass":true,"console":["Failed to load resource: the server responded with a status of 404 (Not Found)","Failed to load resource: the server responded with a status of 404 (Not Found)"],"failed":["404 POST http://localhost:8001/api/settings/describe","404 POST http://localhost:8001/api/settings/describe"],"note":"回复 943 ms；失败请求 2 个（均为 settings/describe=true）","ms":10036,"phase":"C"}
+{"id":"U09","desc":"加固补丁下：设置面板里没有模型/插件/凭证配置页","pass":true,"settingsEntry":true,"note":"设置入口=true；页面含「插件」=false「API Key」=false「凭证」=false","ms":1563,"phase":"C"}
+{"id":"A08","desc":"InvokeAgentRuntime 调用统计（本机 WSL → us-east-1）","pass":true,"note":"共 141 次，P50 435 ms，P95 928 ms，最大 10602 ms；网关错误 0"}

@@ -1,0 +1,28 @@
+{
+  "name": "@dsh-poc/infra",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "CDK 应用（单 Stack）与 preflight / deploy / destroy 包装脚本",
+  "scripts": {
+    "synth": "cdk synth --quiet",
+    "preflight": "tsx scripts/preflight.ts",
+    "deploy": "tsx scripts/deploy.ts",
+    "destroy": "tsx scripts/destroy.ts"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "2.271.0",
+    "constructs": "10.8.1"
+  },
+  "devDependencies": {
+    "@aws-sdk/client-bedrock": "3.1141.0",
+    "@aws-sdk/client-cloudformation": "3.1141.0",
+    "@aws-sdk/client-cloudwatch-logs": "3.1141.0",
+    "@aws-sdk/client-secrets-manager": "3.1141.0",
+    "@aws-sdk/credential-provider-node": "3.972.84",
+    "@smithy/hash-node": "4.5.2",
+    "@smithy/signature-v4": "5.7.4",
+    "aws-cdk": "2.1143.0",
+    "esbuild": "0.28.2"
+  }
+}

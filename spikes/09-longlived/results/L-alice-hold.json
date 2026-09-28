@@ -1,0 +1,89 @@
+{
+ "mode": "hold",
+ "minutes": 1,
+ "timeline": [
+  {
+   "t": 2,
+   "kind": "navigated",
+   "url": "/auth/login"
+  },
+  {
+   "t": 11,
+   "kind": "navigated",
+   "url": "/"
+  },
+  {
+   "t": 14,
+   "kind": "ws-open",
+   "id": 0
+  },
+  {
+   "t": 16,
+   "kind": "logged-in"
+  },
+  {
+   "t": 31,
+   "kind": "reply",
+   "tag": "第一条",
+   "ok": true,
+   "ms": 1474
+  },
+  {
+   "t": 31,
+   "kind": "state",
+   "tag": "ready",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 61,
+   "kind": "state",
+   "tag": "t+61s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 91,
+   "kind": "state",
+   "tag": "t+91s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 93,
+   "kind": "reply",
+   "tag": "保持之后不刷新",
+   "ok": true,
+   "ms": 1324
+  },
+  {
+   "t": 93,
+   "kind": "state",
+   "tag": "after-send",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 2
+  }
+ ],
+ "ws": [
+  {
+   "id": 0,
+   "url": "/api/remote.mux",
+   "openedAt": 14,
+   "closedAt": null,
+   "rx": 117,
+   "tx": 4
+  }
+ ]
+}

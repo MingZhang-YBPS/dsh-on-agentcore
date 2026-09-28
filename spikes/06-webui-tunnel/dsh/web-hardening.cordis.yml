@@ -1,0 +1,19 @@
+# Spike 06 加固补丁：叠加在 web.cordis.yml 之后。目标是让终端用户无法在界面上查看或修改模型路由、
+# 凭证与插件：只保留通用设置（主题、语言等）。
+# settings-controller 同时承载 settings.* 与 credentials.* 两组 RPC（packages/api/settings-controller），
+# 关掉它才真正阻止经 /api 直接调用；UI 行只是把入口藏起来。
+
+- id: settings-controller
+  disabled: true
+- id: ui-settings-models
+  disabled: true
+- id: ui-settings-plugins
+  disabled: true
+- id: ui-settings-plugin-inventory
+  disabled: true
+- id: plugin-inventory
+  disabled: true
+
+# 不能关 ui-settings / ui-settings-general：ui-settings 提供客户端的 settingsScope 服务，locale、theme、layout、
+# chat 等 30 个客户端插件都依赖它，关掉后页面报「Failed to load plugins」（阶段 1 实测）。
+# 保留它们的代价：页面加载时对 settings/describe 的调用得到 404，浏览器控制台留下 2 条错误，界面功能不受影响。

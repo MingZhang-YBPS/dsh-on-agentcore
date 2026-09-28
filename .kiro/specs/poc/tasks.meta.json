@@ -1,0 +1,824 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 选定 Cognito 认证失败计数方案并回修认证设计": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403841102
+      },
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403860552
+      },
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790405523917
+      }
+    ],
+    "1.2 验证停止生成链路并删除\"兜底路径\"": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403841182
+      },
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790405531787
+      },
+      {
+        "executionId": "4cf54dea-b05d-4492-89ec-db2a6e0a6573",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790405816926
+      },
+      {
+        "executionId": "4cf54dea-b05d-4492-89ec-db2a6e0a6573",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790407784771
+      }
+    ],
+    "1.3 验证会话级工作空间隔离的凭证机制": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403841262
+      },
+      {
+        "executionId": "4cf54dea-b05d-4492-89ec-db2a6e0a6573",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790407789855
+      },
+      {
+        "executionId": "4cf54dea-b05d-4492-89ec-db2a6e0a6573",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790409362770
+      }
+    ],
+    "1.4 验证 CloudFront + Lambda Function URL 的 SSE 链路并修正超时设计": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403841345
+      }
+    ],
+    "1.5 锁定 DSH 版本并验证集成接口": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403841419
+      }
+    ],
+    "1.6 验证 Bedrock OpenAI 兼容端点（Mantle）": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403841512
+      }
+    ],
+    "1.7 确定部署失败语义与默认参数": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403841586
+      }
+    ],
+    "1.8 修正消息序号分配方案": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403841658
+      }
+    ],
+    "1.9 确定工作空间孤儿对象回收方案": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403841729
+      }
+    ],
+    "1.10 完成小型设计修正（合并为一个任务）": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403841804
+      }
+    ],
+    "2. 检查点：设计回修完成": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403841887
+      }
+    ],
+    "3.1 搭建 monorepo 骨架": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403841966
+      }
+    ],
+    "3.2 实现 `packages/contracts` 共享契约": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403842045
+      }
+    ],
+    "3.3 实现共享 fast-check 生成器 `test/arbitraries/`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403842121
+      }
+    ],
+    "4.1 实现 `packages/history-codec` 序列化与反序列化": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403842197
+      }
+    ],
+    "4.2 编写 Property 20 属性测试：消息记录序列化往返一致性": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403842272
+      }
+    ],
+    "4.3 实现 `packages/snapshot-codec` 的 `pack` 与 `unpack`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403842347
+      }
+    ],
+    "4.4 编写 Property 26 属性测试：会话快照打包解包往返一致性与重复稳定性": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403842419
+      }
+    ],
+    "4.5 实现快照一致性校验 `verify`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403842497
+      }
+    ],
+    "4.6 编写 Property 27 属性测试：快照不一致的检出与版本保留": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403842570
+      }
+    ],
+    "4.7 实现工作空间容量与形态校验 `checkWorkspaceLimits`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403842635
+      }
+    ],
+    "4.8 编写 Property 28 属性测试：工作空间容量超限拒绝": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403842703
+      }
+    ],
+    "5.1 实现分页与上下文窗口 `services/gateway/src/history/pagination.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403842773
+      }
+    ],
+    "5.2 编写 Property 18 属性测试：最新消息分页、游标续页与上下文窗口": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403842845
+      }
+    ],
+    "5.3 实现会话归属授权 `services/gateway/src/auth/authorize.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403842919
+      }
+    ],
+    "5.4 编写 Property 6 属性测试：会话归属授权的拒绝与过滤": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403842982
+      }
+    ],
+    "5.5 实现认证节流判定 `packages/auth-throttle/src/throttle.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403843057
+      }
+    ],
+    "5.6 编写 Property 4 属性测试：认证节流滑动窗口判定": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403843127
+      }
+    ],
+    "5.7 实现敏感字段掩码 `packages/observability/src/mask.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403843192
+      }
+    ],
+    "5.8 编写 Property 31 属性测试：敏感字段掩码（按 1.10 修正后的表述）": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403843262
+      }
+    ],
+    "5.9 实现失败环节分类 `packages/observability/src/classify.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403843333
+      }
+    ],
+    "5.10 编写 Property 32 属性测试：失败环节分类与错误信息截断": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403843408
+      }
+    ],
+    "5.11 实现重试器 `packages/retry/src/`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403843480
+      }
+    ],
+    "5.12 编写 Property 19 属性测试：历史写入重试计划、早停与失败零残留": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403843554
+      }
+    ],
+    "5.13 编写 Property 29 属性测试：恢复失败的重试上限与处理阻断": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403843622
+      }
+    ],
+    "6.1 实现模型 SSE 映射器 `services/adapter/src/model/sse-mapper.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403843697
+      }
+    ],
+    "6.2 编写 Property 36 属性测试：模型 SSE 增量到 delta 事件的映射保真": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403843762
+      }
+    ],
+    "6.3 实现会话列表视图逻辑 `web/src/lib/session-list-view.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403843830
+      }
+    ],
+    "6.4 编写 Property 7 属性测试：会话列表排序、条数上限与标题截断": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403843901
+      }
+    ],
+    "6.5 实现消息提交控制器 `web/src/lib/submit-controller.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403843967
+      }
+    ],
+    "6.6 编写 Property 8 属性测试：消息提交校验与文本保真": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403844041
+      }
+    ],
+    "6.7 实现工具调用视图逻辑 `web/src/lib/tool-call-view.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403844116
+      }
+    ],
+    "6.8 编写 Property 10 属性测试：工具调用折叠、展开截断与提示": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403844182
+      }
+    ],
+    "6.9 实现工作空间预览状态逻辑 `web/src/lib/preview-state.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403844249
+      }
+    ],
+    "6.10 编写 Property 13 属性测试：工作空间目录与文件预览边界": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403844318
+      }
+    ],
+    "7. 检查点：纯函数层完成": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403844396
+      }
+    ],
+    "8.1 搭建本地集成测试环境": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403844467
+      }
+    ],
+    "8.2 实现会话元数据仓储 `services/gateway/src/history/sessions-repo.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403844538
+      }
+    ],
+    "8.3 实现消息写入 `services/gateway/src/history/messages-write.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403844610
+      }
+    ],
+    "8.4 编写 Property 17 属性测试：消息字段约束与会话内序号连续唯一（按 1.8 修正后的表述，DynamoDB Local 并发写入）": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403844682
+      }
+    ],
+    "8.5 实现消息读取 `services/gateway/src/history/messages-read.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403844752
+      }
+    ],
+    "8.6 编写 Property 21 属性测试：历史存储写读往返一致性（覆盖 S3 外溢分支）": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403844828
+      }
+    ],
+    "8.7 实现历史数据删除 `services/gateway/src/history/history-delete.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403844906
+      }
+    ],
+    "9.1 实现沙箱文件系统桥接 `packages/workspace-store/src/fs-bridge.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403844981
+      }
+    ],
+    "9.2 实现会话键解析与访问拒绝 `packages/workspace-store/src/keys.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403845056
+      }
+    ],
+    "9.3 编写 Property 25 属性测试：工作空间的会话隔离": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403845129
+      }
+    ],
+    "9.4 实现工作空间提交 `packages/workspace-store/src/commit.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403845204
+      }
+    ],
+    "9.5 实现工作空间恢复与恢复门闩 `packages/workspace-store/src/restore.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403845277
+      }
+    ],
+    "9.6 编写 Property 23 属性测试：跨调用工作空间保真（MinIO + DynamoDB Local + 临时目录）": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403845346
+      }
+    ],
+    "9.7 编写 Property 24 属性测试：工作空间提交的原子性与失败回滚": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403845421
+      }
+    ],
+    "9.8 实现工作空间管理操作 `packages/workspace-store/src/admin.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403845497
+      }
+    ],
+    "9.9 实现会话删除编排 `services/gateway/src/sessions/delete-session.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403845571
+      }
+    ],
+    "9.10 编写 Property 22 属性测试：会话删除的彻底性与幂等性（数据量跨越批量删除的分页边界）": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403845645
+      }
+    ],
+    "10. 检查点：存储层完成": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403845720
+      }
+    ],
+    "11.1 实现登录与失败节流接线": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403845798
+      }
+    ],
+    "11.2 编写 Property 3 属性测试：认证失败提示统一且不泄露凭证": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403845874
+      }
+    ],
+    "11.3 实现令牌校验中间件 `services/gateway/src/auth/verify-token.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403845958
+      }
+    ],
+    "11.4 编写 Property 2 属性测试：令牌校验先行且无效令牌零副作用": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403846031
+      }
+    ],
+    "11.5 实现登出吊销 `services/gateway/src/auth/logout.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403846105
+      }
+    ],
+    "11.6 编写 Property 5 属性测试：登出后令牌在剩余有效期内失效": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403846177
+      }
+    ],
+    "12.1 实现结构化日志与请求上下文": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403846244
+      }
+    ],
+    "12.2 编写 Property 30 属性测试：结构化日志字段与计时完备性": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403846315
+      }
+    ],
+    "12.3 实现路由与非流式接口 `services/gateway/src/handler.ts`、`router.ts`、`routes/`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403846391
+      }
+    ],
+    "12.5 实现消息提交与 SSE 转发 `services/gateway/src/routes/messages.ts`、`runtime/client.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403846472
+      }
+    ],
+    "12.6 编写 Property 16 属性测试：写入先于运行时调用与助手消息记录保真": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403846544
+      }
+    ],
+    "12.7 实现停止生成 `services/gateway/src/routes/stop.ts`、`runtime/run-control.ts`（按 1.2 结论）": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403846616
+      }
+    ],
+    "12.8 编写 Property 12 属性测试：停止生成保留已生成内容": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403846684
+      }
+    ],
+    "12.9 实现健康检查 `services/gateway/src/routes/healthz.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403846759
+      }
+    ],
+    "12.10 编写 Property 33 属性测试：健康检查项状态完备性": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403846830
+      }
+    ],
+    "13.1 实现适配层 HTTP 服务 `services/adapter/src/server.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403846907
+      }
+    ],
+    "13.2 实现 Bedrock OpenAI 兼容模型客户端 `services/adapter/src/model/client.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403846979
+      }
+    ],
+    "13.3 实现 DSH 驱动 `services/adapter/src/dsh/driver.ts`（按 1.5 结论）": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403847048
+      }
+    ],
+    "13.4 实现工具调用事件映射 `services/adapter/src/dsh/tool-events.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403847125
+      }
+    ],
+    "13.5 实现 chat 调用编排 `services/adapter/src/handlers/chat.ts` 并接入 `server.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403847197
+      }
+    ],
+    "13.6 编写 Property 34 属性测试：请求标识贯穿": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403847266
+      }
+    ],
+    "13.7 编写容器镜像 `docker/dsh/Dockerfile`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403847348
+      }
+    ],
+    "14. 检查点：后端链路完成": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403847427
+      }
+    ],
+    "15.1 搭建 SPA 骨架": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403847507
+      }
+    ],
+    "15.2 实现登录页、令牌管理与 AuthGuard": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403847579
+      }
+    ],
+    "15.3 编写 Property 35 属性测试：登录态失效的终态收敛": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403847653
+      }
+    ],
+    "15.4 实现会话列表 `SessionList`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403847718
+      }
+    ],
+    "15.6 实现工具调用卡片 `ToolCallCard`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403847789
+      }
+    ],
+    "15.7 实现对话界面 `ChatView`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403847862
+      }
+    ],
+    "15.8 编写 Property 9 属性测试：流式增量渲染的切分不变性": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403847936
+      }
+    ],
+    "15.9 编写 Property 11 属性测试：生成态与停止控件的一致性": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403848015
+      }
+    ],
+    "15.10 编写 Property 14 属性测试：错误提示不破坏既有界面状态": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403848086
+      }
+    ],
+    "15.11 实现工作空间浏览 `WorkspaceExplorer`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403848158
+      }
+    ],
+    "15.12 编写 Property 15 属性测试：键盘可达性与可访问名称（ChatView 与 WorkspaceExplorer 组合渲染）": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403848231
+      }
+    ],
+    "16. 检查点：前端完成": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403848305
+      }
+    ],
+    "17.1 实现预部署校验 `infra/scripts/preflight.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403848387
+      }
+    ],
+    "17.2 编写 Property 1 属性测试：部署参数与模型可用性预检完备性": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403848467
+      }
+    ],
+    "17.3 实现 `StorageConstruct` 与 `AuthConstruct`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403848543
+      }
+    ],
+    "17.4 实现 `RuntimeConstruct` 与 `GatewayConstruct`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403848618
+      }
+    ],
+    "17.5 实现 `WebConstruct`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403848694
+      }
+    ],
+    "17.6 组装 Stack 并输出结果": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403848771
+      }
+    ],
+    "17.7 实现部署与卸载包装脚本 `infra/scripts/deploy.ts`、`destroy.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403848850
+      }
+    ],
+    "18.1 实现 EMF 指标并埋点": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403848928
+      }
+    ],
+    "18.2 实现 `ObservabilityConstruct` 并接入 Stack": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403849014
+      }
+    ],
+    "19. 检查点：基础设施完成": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403849089
+      }
+    ],
+    "20.1 编写端到端冒烟脚本 `e2e/smoke.ts`": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403849166
+      }
+    ],
+    "20.2 在用户明确授权后执行冒烟脚本并记录结果": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403849236
+      }
+    ],
+    "21. 最终检查点": [
+      {
+        "executionId": "5919c135-e00b-469a-8797-c7bd398a86d4",
+        "chatSessionId": "sess_f8a51889-2e4c-4a19-81cf-3e8dfad72cce",
+        "timestamp": 1790403849313
+      }
+    ]
+  }
+}

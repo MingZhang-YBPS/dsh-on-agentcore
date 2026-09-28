@@ -1,0 +1,46 @@
+{
+  "name": "@dsh-poc/adapter",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "microVM \u5185\u9002\u914d\u5668\uff1aAgentCore HTTP \u534f\u8bae\u5951\u7ea6\uff08/ping\u3001/invocations\u3001/ws\uff09\u2194 \u5b98\u65b9 dsh web",
+  "exports": {
+    ".": {
+      "source": "./src/main.ts",
+      "types": "./dist/main.d.ts",
+      "default": "./dist/main.js"
+    },
+    "./home-mirror": {
+      "source": "./src/home-mirror.ts",
+      "types": "./dist/home-mirror.d.ts",
+      "default": "./dist/home-mirror.js"
+    },
+    "./mock-upstream": {
+      "source": "./src/mock-upstream.ts",
+      "types": "./dist/mock-upstream.d.ts",
+      "default": "./dist/mock-upstream.js"
+    },
+    "./signing-proxy": {
+      "source": "./src/signing-proxy.ts",
+      "types": "./dist/signing-proxy.d.ts",
+      "default": "./dist/signing-proxy.js"
+    }
+  },
+  "scripts": {
+    "start": "node dist/cli.js"
+  },
+  "dependencies": {
+    "@aws-sdk/credential-provider-node": "3.972.84",
+    "@deepseek-ai/dsh": "0.1.5-rc.3",
+    "@dsh-poc/envelope": "*",
+    "@dsh-poc/log": "*",
+    "@dsh-poc/model-stream": "*",
+    "@dsh-poc/session-identity": "*",
+    "@smithy/hash-node": "4.5.2",
+    "@smithy/signature-v4": "5.7.4",
+    "ws": "8.22.0"
+  },
+  "devDependencies": {
+    "@smithy/types": "4.19.0"
+  }
+}

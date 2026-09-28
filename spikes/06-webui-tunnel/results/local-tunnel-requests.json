@@ -1,0 +1,287 @@
+{
+  "http": 56,
+  "ws": 1,
+  "errors": 0,
+  "perRequestMs": [
+    {
+      "path": "/",
+      "status": 200,
+      "ms": 40
+    },
+    {
+      "path": "/plugins/",
+      "status": 200,
+      "ms": 96
+    },
+    {
+      "path": "/assets/index-BKQ_L1z6.js",
+      "status": 200,
+      "ms": 152
+    },
+    {
+      "path": "/assets/vendor-BNsW4eBh.css",
+      "status": 200,
+      "ms": 87
+    },
+    {
+      "path": "/assets/vendor-CCJJTK99.js",
+      "status": 200,
+      "ms": 132
+    },
+    {
+      "path": "/assets/index-DPX2bQLO.css",
+      "status": 200,
+      "ms": 71
+    },
+    {
+      "path": "/plugins/",
+      "status": 200,
+      "ms": 660
+    },
+    {
+      "path": "/api/settings/describe",
+      "status": 200,
+      "ms": 33
+    },
+    {
+      "path": "/api/credentials/describe",
+      "status": 200,
+      "ms": 12
+    },
+    {
+      "path": "/api/dynamicCordisRunner/inventory",
+      "status": 200,
+      "ms": 7
+    },
+    {
+      "path": "/api/session/modelCatalog",
+      "status": 200,
+      "ms": 9
+    },
+    {
+      "path": "/api/dynamicCordisRunner/syncInspectManifest",
+      "status": 200,
+      "ms": 18
+    },
+    {
+      "path": "/api/credentials/describe",
+      "status": 200,
+      "ms": 34
+    },
+    {
+      "path": "/favicon.svg",
+      "status": 200,
+      "ms": 50
+    },
+    {
+      "path": "/api/agentPresets/list",
+      "status": 200,
+      "ms": 141
+    },
+    {
+      "path": "/api/dynamicCordisRunner/inventory",
+      "status": 200,
+      "ms": 67
+    },
+    {
+      "path": "/api/session/modelCatalog",
+      "status": 200,
+      "ms": 65
+    },
+    {
+      "path": "/api/settings/describe",
+      "status": 200,
+      "ms": 64
+    },
+    {
+      "path": "/api/session/list",
+      "status": 200,
+      "ms": 71
+    },
+    {
+      "path": "/api/dynamicCordisRunner/syncInspectManifest",
+      "status": 200,
+      "ms": 45
+    },
+    {
+      "path": "/api/agentPresets/list",
+      "status": 200,
+      "ms": 101
+    },
+    {
+      "path": "/api/credentials/describe",
+      "status": 200,
+      "ms": 12
+    },
+    {
+      "path": "/api/settings/mutate",
+      "status": 200,
+      "ms": 36
+    },
+    {
+      "path": "/api/session/modelCatalog",
+      "status": 200,
+      "ms": 21
+    },
+    {
+      "path": "/api/llm/listConfigurableProviders",
+      "status": 200,
+      "ms": 19
+    },
+    {
+      "path": "/api/settings/describe",
+      "status": 200,
+      "ms": 30
+    },
+    {
+      "path": "/api/llm/listProviders",
+      "status": 200,
+      "ms": 22
+    },
+    {
+      "path": "/api/directoryPicker/list",
+      "status": 200,
+      "ms": 9
+    },
+    {
+      "path": "/api/settings/describe",
+      "status": 200,
+      "ms": 11
+    },
+    {
+      "path": "/api/credentials/describe",
+      "status": 200,
+      "ms": 10
+    },
+    {
+      "path": "/api/directoryPicker/list",
+      "status": 200,
+      "ms": 7
+    },
+    {
+      "path": "/api/credentials/describe",
+      "status": 200,
+      "ms": 11
+    },
+    {
+      "path": "/api/workspace/create",
+      "status": 200,
+      "ms": 24
+    },
+    {
+      "path": "/api/session/create",
+      "status": 200,
+      "ms": 338
+    },
+    {
+      "path": "/api/subagents/list",
+      "status": 200,
+      "ms": 19
+    },
+    {
+      "path": "/api/dynamicCordisRunner/inventory",
+      "status": 200,
+      "ms": 15
+    },
+    {
+      "path": "/api/commands/list",
+      "status": 200,
+      "ms": 14
+    },
+    {
+      "path": "/api/skills/list",
+      "status": 200,
+      "ms": 26
+    },
+    {
+      "path": "/api/agentPresets/list",
+      "status": 200,
+      "ms": 26
+    },
+    {
+      "path": "/api/session/prompt",
+      "status": 200,
+      "ms": 48
+    },
+    {
+      "path": "/api/session/prompt",
+      "status": 200,
+      "ms": 25
+    },
+    {
+      "path": "/api/session/create",
+      "status": 200,
+      "ms": 80
+    },
+    {
+      "path": "/api/dynamicCordisRunner/inventory",
+      "status": 200,
+      "ms": 59
+    },
+    {
+      "path": "/api/commands/list",
+      "status": 200,
+      "ms": 61
+    },
+    {
+      "path": "/api/subagents/list",
+      "status": 200,
+      "ms": 82
+    },
+    {
+      "path": "/api/skills/list",
+      "status": 200,
+      "ms": 84
+    },
+    {
+      "path": "/api/agentPresets/list",
+      "status": 200,
+      "ms": 69
+    },
+    {
+      "path": "/api/session/prompt",
+      "status": 200,
+      "ms": 21
+    },
+    {
+      "path": "/api/agentPresets/list",
+      "status": 200,
+      "ms": 31
+    },
+    {
+      "path": "/api/session/cancel",
+      "status": 200,
+      "ms": 27
+    },
+    {
+      "path": "/api/subagents/list",
+      "status": 200,
+      "ms": 16
+    },
+    {
+      "path": "/api/agentPresets/list",
+      "status": 200,
+      "ms": 43
+    },
+    {
+      "path": "/api/workspaceFiles/list",
+      "status": 200,
+      "ms": 8
+    },
+    {
+      "path": "/api/workspaceFiles/read",
+      "status": 200,
+      "ms": 13
+    },
+    {
+      "path": "/api/workspaceFiles/stat",
+      "status": 200,
+      "ms": 7
+    },
+    {
+      "path": "/api/settings/describe",
+      "status": 200,
+      "ms": 5
+    }
+  ]
+}

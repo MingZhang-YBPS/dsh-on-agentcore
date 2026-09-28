@@ -1,0 +1,84 @@
+# DSH 补丁（源自 Spike 06）：叠加在 `dsh --profile web` 之上（`--patch` 最后一层，行级覆盖）。
+# 与 Spike 05 的桥接补丁同源：关闭遥测与 DeepSeek 专有的上报行。模型有两个来源，都只连适配器内的本地代理：
+#   DeepSeek 官方（llm-deepseek → DeepSeek 代理，代理注入部署配置的 key；配置了 key 时为默认）
+#   Bedrock（llm-pi-ai 的 bedrock 提供方 → SigV4 签名代理）
+# 本文件只做「安全与外联」基线；设置/凭证面板的加固放在 web-hardening.cordis.yml，便于对照验证。
+
+- id: session-telemetry-otel
+  disabled: true
+- id: session-title-llm
+  disabled: true
+- id: hmr
+  disabled: true
+# DeepSeek 专用请求扩展（上报插件清单等）与会话日志上报保持关闭；llm-deepseek 不依赖它们
+- id: deepseek-llm-api-extensions
+  disabled: true
+- id: session-log-deepseek
+  disabled: true
+- id: plugin-package-inventory-deepseek
+  disabled: true
+
+# web 相关行保持启用：官方 standard 预设（dsh-agent-presets/presets/standard）自带 tool-web 行并依赖 web 服务，
+# 关掉 web 会导致新建会话失败（实测 agent-preset/invalid）。web_search 的 DeepSeek 提供方没有 DEEPSEEK_API_KEY，
+# 调用时在本地因缺少凭证失败，不会外联；web_fetch 直接访问目标网址，与 bash 工具的出网能力相同。
+
+# 「在本机应用中打开」只对桌面有意义
+- id: open-in-app
+  disabled: true
+- id: ui-open-in-app
+  disabled: true
+
+# 客户端热重载：页面会一直挂着一个 EventSource /plugins/events 长连接（阶段 2 实测单条持续 214 s）。
+# 经 CloudFront → Lambda 隧道时，它每 30 s 被源响应超时切断并重连，白白占用 Lambda 与 InvokeAgentRuntime，关掉
+- id: client-hmr
+  disabled: true
+
+# 网页搜索（DeepSeek 搜索提供方）：请求发往适配器内的 DeepSeek 代理，由代理注入部署时配置的 DeepSeek API key
+# （services/adapter/src/deepseek-proxy.ts）。DSH 只拿到占位值：apiKeyEnv 指向的 DSH_BRIDGE_DEEPSEEK_KEY 只在部署配置了
+# key 时才由适配器设置，插件页的网页搜索卡片据此显示「已配置密钥」且不可修改；未配置时显示「未配置密钥」。
+- id: web-search-deepseek
+  config:
+    baseURL: !!js process.env.DSH_BRIDGE_DEEPSEEK_API_BASE + '/anthropic/v1'
+    apiKeyEnv: DSH_BRIDGE_DEEPSEEK_KEY
+
+- id: bash-sandbox
+  config:
+    timeoutMs: 60000
+    graceMs: 500
+
+# 默认模型由适配器决定（部署配置了 DeepSeek key 时为 deepseek-official/deepseek-flash，否则为 Bedrock）；
+# 用户可以在输入框的模型下拉里切换
+- id: agent-default-model
+  config:
+    provider: !!js process.env.DSH_BRIDGE_DEFAULT_PROVIDER
+    model: !!js process.env.DSH_BRIDGE_DEFAULT_MODEL
+
+# DeepSeek 官方模型：请求发往适配器内的 DeepSeek 代理，key 引用是占位变量（同网页搜索）。
+# 没有配置 key 时整行关闭，模型下拉里不出现不可用的 DeepSeek 模型。
+# 模型列表只列出部署所用 key 实际可用的两个（GET https://api.deepseek.com/models，2026-09-28）
+- id: llm-deepseek
+  disabled: !!js process.env.DSH_BRIDGE_DEEPSEEK_KEY === undefined
+  config:
+    baseURL: !!js process.env.DSH_BRIDGE_DEEPSEEK_API_BASE
+    apiKeyEnv: DSH_BRIDGE_DEEPSEEK_KEY
+    models:
+      - id: deepseek-flash
+        name: DeepSeek-V4.1-Flash
+        inputModalities: [text, image]
+        systemPromptUpdate: in-history
+      - id: deepseek-v4-pro
+        name: DeepSeek-V4-Pro
+        description: 更强的 agent 编码、知识与复杂推理；适合复杂或对质量要求高的任务，费用更高。
+
+- id: llm-pi-ai
+  config:
+    providers:
+      bedrock:
+        displayName: Amazon Bedrock
+        api: openai-completions
+        baseURL: !!js process.env.DSH_BRIDGE_MODEL_BASE_URL
+        apiKeyEnv: DSH_BRIDGE_PLACEHOLDER_KEY
+        models:
+          - id: !!js process.env.DSH_BRIDGE_MODEL_ID
+            contextWindow: 131072
+            maxTokens: 8192

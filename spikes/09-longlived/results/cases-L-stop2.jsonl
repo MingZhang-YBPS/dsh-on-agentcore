@@ -1,0 +1,7 @@
+{"id":"S01","desc":"StopRuntimeSession 后打开着的页面：WebSocket 关闭并自动重连（刷新前）","pass":true,"note":"Stop=200 {}；go@33s 之后关闭 #0@40s，新开 #1@40s；全程打开 #0@17s #1@40s #2@295s #3@299s #4@301s；提示 [\"连接成功\"]"}
+{"id":"S02","desc":"回收后不刷新页面继续对话","pass":true,"note":"ok 1864 ms "}
+{"id":"S03","desc":"回收后刷新页面：历史可见、可继续对话","pass":false,"note":"历史=true；「历史加载失败」后再刷新 0 次；回复 FAIL page.waitForFunction: Timeout 90000ms exceeded."}
+{"id":"S04","desc":"对照（不回收，页面打开 4 分钟后刷新）：历史与对话","pass":true,"note":"「历史加载失败」后再刷新 0 次；回复 ok 1279 ms；WS 打开 #0@16s #1@279s 关闭 "}
+{"id":"L01","desc":"浏览器页面保持 1 分钟：WebSocket 是否中断","pass":true,"note":"打开 #0@14s；关闭 无；结束前 wsOpen=1；提示 []"}
+{"id":"L02","desc":"保持 1 分钟后不刷新直接对话","pass":true,"note":"ok 1341 ms"}
+{"id":"L03","desc":"原始 WebSocket（只连接不发消息，令牌 60 分钟过期）保持 3 分钟","pass":true,"note":"{\"openedMs\":8102,\"closedMs\":180038,\"code\":1006,\"reason\":\"\",\"msgs\":0,\"pings\":8,\"error\":null,\"stillOpenAtEnd\":true}"}

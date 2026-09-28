@@ -1,0 +1,127 @@
+[
+ {
+  "at": 1483,
+  "data": {
+   "choices": [
+    {
+     "delta": {
+      "content": "",
+      "role": "assistant"
+     },
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "pRdJja1Q9zLpgyfAEfT7okpay8Y4y00y0cqUGTaF2RVDTSLrGhTCG3r0Cl8Zi4t2GIvohHwHVJIncxc7UzgC4q9B"
+    }
+   ],
+   "created": 1790479286,
+   "id": "chatcmpl-ed1d9ccb-0d0b-49bd-8080-c5603b0ad081",
+   "model": "deepseek.v3.2",
+   "obfuscation": "Ka0XboBbjatsPceM5nkWwGmhVzZH57jdcF8KRmefn9GFB7bdjYNXtrbHEqp0KHok08mAZ0jVxCD8Vv4uSUqKJtiUls7thWo2Ot",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1784,
+  "data": {
+   "choices": [
+    {
+     "delta": {
+      "content": "执行 `echo spike07` 命令的输出是：\n\n```\nspike07\n```\n\n"
+     },
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "Y8uAio3fwoSss0zX24BNFPzwi3ufhSzEPkq4BEG73ySU0zZT11"
+    }
+   ],
+   "created": 1790479286,
+   "id": "chatcmpl-ed1d9ccb-0d0b-49bd-8080-c5603b0ad081",
+   "model": "deepseek.v3.2",
+   "obfuscation": "Dce4MMo4Oiq2hD1RiEu1kXSTvJIYZcKGvuJhDuKAiFCSUTDKnVuvCkbe33",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1886,
+  "data": {
+   "choices": [
+    {
+     "delta": {
+      "content": "命令成功"
+     },
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "mdh9dbZZzDt4tzWslPYj7MwnKwm1UJKeGt7j8GygnxBy2QDvEwQXG1aNmsYrPvDQSQ0r3IfVFT8wOzgKUQ9Rd4vXpBI2GL"
+    }
+   ],
+   "created": 1790479286,
+   "id": "chatcmpl-ed1d9ccb-0d0b-49bd-8080-c5603b0ad081",
+   "model": "deepseek.v3.2",
+   "obfuscation": "CdHDEozQIuzyehNsL9RsrEiicQbkTlSiwWlGciN",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1887,
+  "data": {
+   "choices": [
+    {
+     "delta": {
+      "content": "执行，退出代码为 0。"
+     },
+     "finish_reason": null,
+     "index": 0,
+     "obfuscation": "giaxIPUHQcfUL1jK3LV4PgbqfhcJsMXJihvd1TCzERBM6RdQkpvoHi4z3zCNEWD4TGgQMauXM2xcbG5vhmhxdxR92zVqulOARkzwEM"
+    }
+   ],
+   "created": 1790479286,
+   "id": "chatcmpl-ed1d9ccb-0d0b-49bd-8080-c5603b0ad081",
+   "model": "deepseek.v3.2",
+   "obfuscation": "6WMc9HjpzAY008bMNmloU3mH8r1pNlgnzAcy4ErQiBcBKg5C91LtoEMJH",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1887,
+  "data": {
+   "choices": [
+    {
+     "delta": {},
+     "finish_reason": "stop",
+     "index": 0,
+     "obfuscation": "xrn18eCSIlBE7qwfiLfhJGNabtfKoIWsAF4UVGhATcxscbKrtVLpAB2HHmAOAYBX22Gk6DcG15FWjYLZoxp3O9GpBSdDM2cY4a8E8lXMcLXNh"
+    }
+   ],
+   "created": 1790479286,
+   "id": "chatcmpl-ed1d9ccb-0d0b-49bd-8080-c5603b0ad081",
+   "model": "deepseek.v3.2",
+   "obfuscation": "UXeVvNUhiVTV7GFdmhoxI9qFQLpj6ndCXTtCEZiRb8L84",
+   "object": "chat.completion.chunk",
+   "service_tier": "default"
+  }
+ },
+ {
+  "at": 1887,
+  "data": {
+   "choices": [],
+   "created": 1790479286,
+   "id": "chatcmpl-ed1d9ccb-0d0b-49bd-8080-c5603b0ad081",
+   "model": "deepseek.v3.2",
+   "obfuscation": "y2J72k9Fp5tPYXUkkqVdicvJxZyDJZOVg7NfDTSx6wAo6lIsw6rNI8TyT8Y2hsKrjhJa0hPXGLVWcJGTMHgPJycaY0X00gvNIaJMuKLAaaG",
+   "object": "chat.completion.chunk",
+   "service_tier": "default",
+   "usage": {
+    "completion_tokens": 28,
+    "prompt_tokens": 6294,
+    "total_tokens": 6322
+   }
+  }
+ },
+ {
+  "at": 1887,
+  "data": "[DONE]"
+ }
+]

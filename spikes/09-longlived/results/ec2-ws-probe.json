@@ -1,0 +1,66 @@
+{
+ "startedAt": "2026-09-27T07:14:09.826Z",
+ "minutes": 75,
+ "results": [
+  {
+   "label": "V1",
+   "openedS": 0,
+   "closedS": 3626,
+   "code": 1008,
+   "reason": "Policy violated: Max connection duration of 1 hour is exceeded",
+   "pings": 181,
+   "lastPingS": 3620,
+   "http": [],
+   "error": null
+  },
+  {
+   "label": "V2",
+   "openedS": 0,
+   "closedS": 3630,
+   "code": 1008,
+   "reason": "Policy violated: Max connection duration of 1 hour is exceeded",
+   "pings": 181,
+   "lastPingS": 3620,
+   "http": [],
+   "error": null
+  },
+  {
+   "label": "V3",
+   "openedS": 0,
+   "closedS": 3632,
+   "code": 1008,
+   "reason": "Policy violated: Max connection duration of 1 hour is exceeded",
+   "pings": 181,
+   "lastPingS": 3620,
+   "http": [],
+   "error": null
+  },
+  {
+   "label": "V4",
+   "openedS": 0,
+   "closedS": 3632,
+   "code": 1008,
+   "reason": "Policy violated: Max connection duration of 1 hour is exceeded",
+   "pings": 181,
+   "lastPingS": 3620,
+   "http": [
+    "240s:200",
+    "480s:200",
+    "720s:200",
+    "960s:200",
+    "1200s:200",
+    "1440s:200",
+    "1680s:200",
+    "1920s:200",
+    "2160s:200",
+    "2400s:200",
+    "2640s:200",
+    "2880s:200",
+    "3120s:200",
+    "3360s:200",
+    "3600s:401"
+   ],
+   "error": null
+  }
+ ]
+}

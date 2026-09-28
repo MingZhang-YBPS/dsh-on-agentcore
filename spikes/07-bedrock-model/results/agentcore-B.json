@@ -1,0 +1,61 @@
+{
+  "phase": "R",
+  "cases": [
+    {
+      "id": "R01",
+      "desc": "选择 ~/workspace 作为工作区",
+      "pass": true,
+      "ms": 3126
+    },
+    {
+      "id": "R02",
+      "desc": "文本对话：真实模型流式回复，页面无原始标记",
+      "pass": true,
+      "doneMs": 1194,
+      "stopSeenMs": 570,
+      "leak": false,
+      "note": "发送→结束 1194 ms（停止控件 570 ms）；新增「消息或创建任务, / 调用指令, @ 文件或对话 完全权限 deepseek.v3.2 1 轮 1 步·3000 tok/s 8.3K tok·缓存命中 98%」",
+      "ms": 1560
+    },
+    {
+      "id": "R03",
+      "desc": "工具调用：模型调用 bash 写文件并报告输出，界面显示工具调用，无原始标记",
+      "pass": true,
+      "doneMs": 2544,
+      "stopSeenMs": 527,
+      "toolShown": true,
+      "leak": false,
+      "note": "发送→结束 2544 ms；工具调用标记=true；展开后原始标记=false",
+      "ms": 4523
+    },
+    {
+      "id": "R04",
+      "desc": "多轮上下文：追问上一轮工具输出（历史中含 assistant.tool_calls 与 role=tool 消息）",
+      "pass": true,
+      "doneMs": 1504,
+      "stopSeenMs": 546,
+      "note": "发送→结束 1504 ms；新增「件或对话 完全权限 deepseek.v3.2 3 轮 4 步·364 tok/s 33.8K tok·缓存命中 73%」",
+      "ms": 2023
+    },
+    {
+      "id": "R05",
+      "desc": "停止生成：长回复中点击「停止生成」，按钮消失且之后不再追加内容",
+      "pass": true,
+      "stopMs": 504,
+      "lastAtStop": 75,
+      "lastAfter5s": 75,
+      "note": "发送→数到 50：2587 ms；点击→停止控件消失 504 ms；停止时 75，5 秒后 75",
+      "ms": 9768
+    }
+  ],
+  "net": {
+    "console": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "failed": [
+      "404 POST http://localhost:8000/api/settings/describe",
+      "404 POST http://localhost:8000/api/settings/describe"
+    ]
+  }
+}

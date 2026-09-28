@@ -1,0 +1,11 @@
+{
+  "name": "spike-07-bedrock-model",
+  "private": true,
+  "type": "module",
+  "description": "Task 1.7: DSH signing proxy against real Amazon Bedrock DeepSeek models",
+  "dependencies": {
+    "@aws-sdk/credential-provider-node": "3.972.84",
+    "@smithy/hash-node": "4.5.2",
+    "@smithy/signature-v4": "5.7.4"
+  }
+}

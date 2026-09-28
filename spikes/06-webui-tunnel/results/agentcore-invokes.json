@@ -1,0 +1,1553 @@
+{
+  "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+  "invokes": [
+    {
+      "ms": 7835,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431920421
+    },
+    {
+      "ms": 418,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431921113
+    },
+    {
+      "ms": 405,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431921532
+    },
+    {
+      "ms": 793,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431921930
+    },
+    {
+      "ms": 750,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431921955
+    },
+    {
+      "ms": 871,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922018
+    },
+    {
+      "ms": 818,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922019
+    },
+    {
+      "ms": 828,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922019
+    },
+    {
+      "ms": 801,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922020
+    },
+    {
+      "ms": 869,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922021
+    },
+    {
+      "ms": 794,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922021
+    },
+    {
+      "ms": 858,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922022
+    },
+    {
+      "ms": 830,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922023
+    },
+    {
+      "ms": 882,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922023
+    },
+    {
+      "ms": 821,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922024
+    },
+    {
+      "ms": 844,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922024
+    },
+    {
+      "ms": 857,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922024
+    },
+    {
+      "ms": 803,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922025
+    },
+    {
+      "ms": 817,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922025
+    },
+    {
+      "ms": 870,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922026
+    },
+    {
+      "ms": 845,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922027
+    },
+    {
+      "ms": 813,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922028
+    },
+    {
+      "ms": 900,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922033
+    },
+    {
+      "ms": 839,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922034
+    },
+    {
+      "ms": 865,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922036
+    },
+    {
+      "ms": 894,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922037
+    },
+    {
+      "ms": 986,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922125
+    },
+    {
+      "ms": 928,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922126
+    },
+    {
+      "ms": 941,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922127
+    },
+    {
+      "ms": 919,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922128
+    },
+    {
+      "ms": 940,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922128
+    },
+    {
+      "ms": 1012,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922225
+    },
+    {
+      "ms": 395,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431922836
+    },
+    {
+      "ms": 407,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431923245
+    },
+    {
+      "ms": 617,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431924884
+    },
+    {
+      "ms": 405,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431925514
+    },
+    {
+      "ms": 402,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431925523
+    },
+    {
+      "ms": 395,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431925523
+    },
+    {
+      "ms": 405,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431925523
+    },
+    {
+      "ms": 425,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431925548
+    },
+    {
+      "ms": 825,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431925955
+    },
+    {
+      "ms": 395,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431927655
+    },
+    {
+      "ms": 452,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431927855
+    },
+    {
+      "ms": 438,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431927856
+    },
+    {
+      "ms": 416,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431927885
+    },
+    {
+      "ms": 474,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431927889
+    },
+    {
+      "ms": 435,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431927956
+    },
+    {
+      "ms": 402,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431928058
+    },
+    {
+      "ms": 404,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431928981
+    },
+    {
+      "ms": 404,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431928982
+    },
+    {
+      "ms": 420,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431928996
+    },
+    {
+      "ms": 504,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431929083
+    },
+    {
+      "ms": 633,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431929207
+    },
+    {
+      "ms": 408,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431929390
+    },
+    {
+      "ms": 456,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431940244
+    },
+    {
+      "ms": 461,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431941064
+    },
+    {
+      "ms": 670,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431942123
+    },
+    {
+      "ms": 674,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431942805
+    },
+    {
+      "ms": 390,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431943216
+    },
+    {
+      "ms": 390,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431943217
+    },
+    {
+      "ms": 604,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431943433
+    },
+    {
+      "ms": 816,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431943625
+    },
+    {
+      "ms": 370,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431943983
+    },
+    {
+      "ms": 436,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431944061
+    },
+    {
+      "ms": 415,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431945714
+    },
+    {
+      "ms": 392,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431946696
+    },
+    {
+      "ms": 395,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431947107
+    },
+    {
+      "ms": 403,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431947108
+    },
+    {
+      "ms": 402,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431947112
+    },
+    {
+      "ms": 395,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431947119
+    },
+    {
+      "ms": 419,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431947130
+    },
+    {
+      "ms": 423,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431947963
+    },
+    {
+      "ms": 592,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431948143
+    },
+    {
+      "ms": 445,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431949873
+    },
+    {
+      "ms": 413,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431955400
+    },
+    {
+      "ms": 442,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431955451
+    },
+    {
+      "ms": 395,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431956239
+    },
+    {
+      "ms": 433,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431957141
+    },
+    {
+      "ms": 408,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431957449
+    },
+    {
+      "ms": 399,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431959103
+    },
+    {
+      "ms": 396,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790431959501
+    },
+    {
+      "ms": 10602,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432176818
+    },
+    {
+      "ms": 789,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432178669
+    },
+    {
+      "ms": 380,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432179056
+    },
+    {
+      "ms": 400,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432179086
+    },
+    {
+      "ms": 475,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432179169
+    },
+    {
+      "ms": 603,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432179287
+    },
+    {
+      "ms": 674,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432179363
+    },
+    {
+      "ms": 673,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432179366
+    },
+    {
+      "ms": 397,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432180908
+    },
+    {
+      "ms": 456,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432181119
+    },
+    {
+      "ms": 472,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432181120
+    },
+    {
+      "ms": 462,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432181121
+    },
+    {
+      "ms": 413,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432181121
+    },
+    {
+      "ms": 393,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432181514
+    },
+    {
+      "ms": 959,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432181716
+    },
+    {
+      "ms": 420,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432182044
+    },
+    {
+      "ms": 444,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432182064
+    },
+    {
+      "ms": 409,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432182126
+    },
+    {
+      "ms": 613,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432182231
+    },
+    {
+      "ms": 610,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432182232
+    },
+    {
+      "ms": 402,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432182448
+    },
+    {
+      "ms": 772,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432182842
+    },
+    {
+      "ms": 405,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432183251
+    },
+    {
+      "ms": 394,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432183252
+    },
+    {
+      "ms": 393,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432183252
+    },
+    {
+      "ms": 393,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432183253
+    },
+    {
+      "ms": 410,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432187450
+    },
+    {
+      "ms": 415,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432187451
+    },
+    {
+      "ms": 426,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432187455
+    },
+    {
+      "ms": 403,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432187456
+    },
+    {
+      "ms": 616,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432187655
+    },
+    {
+      "ms": 523,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432188681
+    },
+    {
+      "ms": 396,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432191160
+    },
+    {
+      "ms": 384,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432191559
+    },
+    {
+      "ms": 402,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432191569
+    },
+    {
+      "ms": 407,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432191589
+    },
+    {
+      "ms": 467,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432191652
+    },
+    {
+      "ms": 474,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432191661
+    },
+    {
+      "ms": 503,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432191681
+    },
+    {
+      "ms": 443,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432193698
+    },
+    {
+      "ms": 401,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432193800
+    },
+    {
+      "ms": 392,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432193806
+    },
+    {
+      "ms": 455,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432193915
+    },
+    {
+      "ms": 419,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432193929
+    },
+    {
+      "ms": 593,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432194004
+    },
+    {
+      "ms": 407,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432194209
+    },
+    {
+      "ms": 405,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432194823
+    },
+    {
+      "ms": 403,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432194824
+    },
+    {
+      "ms": 403,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432194825
+    },
+    {
+      "ms": 415,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432194838
+    },
+    {
+      "ms": 424,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432194844
+    },
+    {
+      "ms": 374,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432195234
+    },
+    {
+      "ms": 409,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432195235
+    },
+    {
+      "ms": 388,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432195236
+    },
+    {
+      "ms": 377,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432195239
+    },
+    {
+      "ms": 393,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432195254
+    },
+    {
+      "ms": 432,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432199226
+    },
+    {
+      "ms": 415,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432200299
+    },
+    {
+      "ms": 459,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432200354
+    },
+    {
+      "ms": 396,
+      "statusCode": 200,
+      "sessionId": "dsh-user-5e8708509155109c89cfe6b9",
+      "at": 1790432201285
+    }
+  ],
+  "gatewayStats": {
+    "http": 141,
+    "ws": 3,
+    "errors": 0,
+    "perRequestMs": [
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 8101
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 419
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 405
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 794
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 750
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 871
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 818
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 829
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 802
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 870
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 795
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 858
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 830
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 882
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 821
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 803
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 817
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 870
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 846
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 813
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 900
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 839
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 866
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 894
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 987
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 929
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 942
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 919
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 1044
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 1057
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 1012
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 1250
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 396
+      },
+      {
+        "path": "/manifest.webmanifest",
+        "status": 200,
+        "ms": 408
+      },
+      {
+        "path": "/",
+        "status": 200,
+        "ms": 832
+      },
+      {
+        "path": "/plugins/",
+        "status": 200,
+        "ms": 589
+      },
+      {
+        "path": "/assets/vendor-BNsW4eBh.css",
+        "status": 200,
+        "ms": 598
+      },
+      {
+        "path": "/assets/index-DPX2bQLO.css",
+        "status": 200,
+        "ms": 827
+      },
+      {
+        "path": "/assets/index-BKQ_L1z6.js",
+        "status": 200,
+        "ms": 1019
+      },
+      {
+        "path": "/assets/vendor-CCJJTK99.js",
+        "status": 200,
+        "ms": 1014
+      },
+      {
+        "path": "/plugins/",
+        "status": 200,
+        "ms": 2043
+      },
+      {
+        "path": "/api/settings/describe",
+        "status": 404,
+        "ms": 396
+      },
+      {
+        "path": "/api/dynamicCordisRunner/syncInspectManifest",
+        "status": 200,
+        "ms": 460
+      },
+      {
+        "path": "/api/session/modelCatalog",
+        "status": 200,
+        "ms": 448
+      },
+      {
+        "path": "/api/dynamicCordisRunner/inventory",
+        "status": 200,
+        "ms": 474
+      },
+      {
+        "path": "/api/agentPresets/list",
+        "status": 200,
+        "ms": 436
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 639
+      },
+      {
+        "path": "/api/dynamicCordisRunner/inventory",
+        "status": 200,
+        "ms": 404
+      },
+      {
+        "path": "/api/session/modelCatalog",
+        "status": 200,
+        "ms": 404
+      },
+      {
+        "path": "/api/session/list",
+        "status": 200,
+        "ms": 421
+      },
+      {
+        "path": "/api/agentPresets/list",
+        "status": 200,
+        "ms": 634
+      },
+      {
+        "path": "/api/dynamicCordisRunner/syncInspectManifest",
+        "status": 200,
+        "ms": 408
+      },
+      {
+        "path": "/api/settings/describe",
+        "status": 404,
+        "ms": 1024
+      },
+      {
+        "path": "/api/directoryPicker/list",
+        "status": 200,
+        "ms": 457
+      },
+      {
+        "path": "/api/directoryPicker/list",
+        "status": 200,
+        "ms": 461
+      },
+      {
+        "path": "/api/workspace/create",
+        "status": 200,
+        "ms": 671
+      },
+      {
+        "path": "/api/session/create",
+        "status": 200,
+        "ms": 674
+      },
+      {
+        "path": "/api/dynamicCordisRunner/inventory",
+        "status": 200,
+        "ms": 391
+      },
+      {
+        "path": "/api/commands/list",
+        "status": 200,
+        "ms": 390
+      },
+      {
+        "path": "/api/skills/list",
+        "status": 200,
+        "ms": 605
+      },
+      {
+        "path": "/api/subagents/list",
+        "status": 200,
+        "ms": 1123
+      },
+      {
+        "path": "/api/agentPresets/list",
+        "status": 200,
+        "ms": 371
+      },
+      {
+        "path": "/api/session/prompt",
+        "status": 200,
+        "ms": 436
+      },
+      {
+        "path": "/api/session/prompt",
+        "status": 200,
+        "ms": 680
+      },
+      {
+        "path": "/api/session/create",
+        "status": 200,
+        "ms": 393
+      },
+      {
+        "path": "/api/skills/list",
+        "status": 200,
+        "ms": 396
+      },
+      {
+        "path": "/api/subagents/list",
+        "status": 200,
+        "ms": 403
+      },
+      {
+        "path": "/api/dynamicCordisRunner/inventory",
+        "status": 200,
+        "ms": 402
+      },
+      {
+        "path": "/api/agentPresets/list",
+        "status": 200,
+        "ms": 396
+      },
+      {
+        "path": "/api/commands/list",
+        "status": 200,
+        "ms": 419
+      },
+      {
+        "path": "/api/agentPresets/list",
+        "status": 200,
+        "ms": 424
+      },
+      {
+        "path": "/api/session/prompt",
+        "status": 200,
+        "ms": 593
+      },
+      {
+        "path": "/api/session/cancel",
+        "status": 200,
+        "ms": 445
+      },
+      {
+        "path": "/api/subagents/list",
+        "status": 200,
+        "ms": 414
+      },
+      {
+        "path": "/api/agentPresets/list",
+        "status": 200,
+        "ms": 444
+      },
+      {
+        "path": "/api/workspaceFiles/list",
+        "status": 200,
+        "ms": 395
+      },
+      {
+        "path": "/api/workspaceFiles/read",
+        "status": 200,
+        "ms": 434
+      },
+      {
+        "path": "/api/workspaceFiles/stat",
+        "status": 200,
+        "ms": 408
+      },
+      {
+        "path": "/api/settings/describe",
+        "status": 404,
+        "ms": 399
+      },
+      {
+        "path": "/api/credentials/set",
+        "status": 404,
+        "ms": 396
+      },
+      {
+        "path": "/plugins/events",
+        "status": 200,
+        "ms": 214411
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 10603
+      },
+      {
+        "path": "/",
+        "status": 200,
+        "ms": 790
+      },
+      {
+        "path": "/plugins/",
+        "status": 200,
+        "ms": 401
+      },
+      {
+        "path": "/assets/vendor-BNsW4eBh.css",
+        "status": 200,
+        "ms": 604
+      },
+      {
+        "path": "/assets/index-DPX2bQLO.css",
+        "status": 200,
+        "ms": 674
+      },
+      {
+        "path": "/assets/index-BKQ_L1z6.js",
+        "status": 200,
+        "ms": 987
+      },
+      {
+        "path": "/assets/vendor-CCJJTK99.js",
+        "status": 200,
+        "ms": 1090
+      },
+      {
+        "path": "/plugins/",
+        "status": 200,
+        "ms": 1732
+      },
+      {
+        "path": "/api/session/modelCatalog",
+        "status": 200,
+        "ms": 456
+      },
+      {
+        "path": "/api/dynamicCordisRunner/syncInspectManifest",
+        "status": 200,
+        "ms": 472
+      },
+      {
+        "path": "/api/dynamicCordisRunner/inventory",
+        "status": 200,
+        "ms": 462
+      },
+      {
+        "path": "/api/settings/describe",
+        "status": 404,
+        "ms": 693
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 393
+      },
+      {
+        "path": "/api/agentPresets/list",
+        "status": 200,
+        "ms": 959
+      },
+      {
+        "path": "/api/session/modelCatalog",
+        "status": 200,
+        "ms": 421
+      },
+      {
+        "path": "/api/session/list",
+        "status": 200,
+        "ms": 445
+      },
+      {
+        "path": "/api/settings/describe",
+        "status": 404,
+        "ms": 409
+      },
+      {
+        "path": "/api/agentPresets/list",
+        "status": 200,
+        "ms": 614
+      },
+      {
+        "path": "/api/dynamicCordisRunner/inventory",
+        "status": 200,
+        "ms": 610
+      },
+      {
+        "path": "/api/dynamicCordisRunner/syncInspectManifest",
+        "status": 200,
+        "ms": 403
+      },
+      {
+        "path": "/api/session/create",
+        "status": 200,
+        "ms": 772
+      },
+      {
+        "path": "/api/subagents/list",
+        "status": 200,
+        "ms": 406
+      },
+      {
+        "path": "/api/commands/list",
+        "status": 200,
+        "ms": 394
+      },
+      {
+        "path": "/api/dynamicCordisRunner/inventory",
+        "status": 200,
+        "ms": 599
+      },
+      {
+        "path": "/api/skills/list",
+        "status": 200,
+        "ms": 608
+      },
+      {
+        "path": "/api/skills/list",
+        "status": 200,
+        "ms": 411
+      },
+      {
+        "path": "/api/dynamicCordisRunner/inventory",
+        "status": 200,
+        "ms": 416
+      },
+      {
+        "path": "/api/subagents/list",
+        "status": 200,
+        "ms": 427
+      },
+      {
+        "path": "/api/agentPresets/list",
+        "status": 200,
+        "ms": 403
+      },
+      {
+        "path": "/api/commands/list",
+        "status": 200,
+        "ms": 616
+      },
+      {
+        "path": "/api/session/prompt",
+        "status": 200,
+        "ms": 524
+      },
+      {
+        "path": "/",
+        "status": 200,
+        "ms": 397
+      },
+      {
+        "path": "/plugins/",
+        "status": 200,
+        "ms": 509
+      },
+      {
+        "path": "/assets/vendor-BNsW4eBh.css",
+        "status": 200,
+        "ms": 580
+      },
+      {
+        "path": "/assets/index-DPX2bQLO.css",
+        "status": 200,
+        "ms": 671
+      },
+      {
+        "path": "/assets/vendor-CCJJTK99.js",
+        "status": 200,
+        "ms": 776
+      },
+      {
+        "path": "/assets/index-BKQ_L1z6.js",
+        "status": 200,
+        "ms": 988
+      },
+      {
+        "path": "/plugins/",
+        "status": 200,
+        "ms": 1972
+      },
+      {
+        "path": "/api/dynamicCordisRunner/syncInspectManifest",
+        "status": 200,
+        "ms": 402
+      },
+      {
+        "path": "/api/session/modelCatalog",
+        "status": 200,
+        "ms": 393
+      },
+      {
+        "path": "/api/agentPresets/list",
+        "status": 200,
+        "ms": 420
+      },
+      {
+        "path": "/api/dynamicCordisRunner/inventory",
+        "status": 200,
+        "ms": 594
+      },
+      {
+        "path": "/api/settings/describe",
+        "status": 404,
+        "ms": 750
+      },
+      {
+        "path": "/favicon.svg",
+        "status": 200,
+        "ms": 408
+      },
+      {
+        "path": "/api/agentPresets/list",
+        "status": 200,
+        "ms": 406
+      },
+      {
+        "path": "/api/dynamicCordisRunner/inventory",
+        "status": 200,
+        "ms": 404
+      },
+      {
+        "path": "/api/session/modelCatalog",
+        "status": 200,
+        "ms": 403
+      },
+      {
+        "path": "/api/settings/describe",
+        "status": 404,
+        "ms": 415
+      },
+      {
+        "path": "/api/session/list",
+        "status": 200,
+        "ms": 424
+      },
+      {
+        "path": "/api/dynamicCordisRunner/inventory",
+        "status": 200,
+        "ms": 375
+      },
+      {
+        "path": "/api/dynamicCordisRunner/syncInspectManifest",
+        "status": 200,
+        "ms": 409
+      },
+      {
+        "path": "/api/subagents/list",
+        "status": 200,
+        "ms": 388
+      },
+      {
+        "path": "/api/skills/list",
+        "status": 200,
+        "ms": 377
+      },
+      {
+        "path": "/api/commands/list",
+        "status": 200,
+        "ms": 393
+      },
+      {
+        "path": "/api/subagents/list",
+        "status": 200,
+        "ms": 433
+      },
+      {
+        "path": "/api/agentPresets/list",
+        "status": 200,
+        "ms": 415
+      },
+      {
+        "path": "/api/session/prompt",
+        "status": 200,
+        "ms": 460
+      },
+      {
+        "path": "/api/settings/describe",
+        "status": 404,
+        "ms": 397
+      }
+    ]
+  }
+}

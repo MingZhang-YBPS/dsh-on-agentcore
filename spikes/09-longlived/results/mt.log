@@ -1,0 +1,15 @@
+06:46:24 重新配置（第 1 次）：{"MAX_LIFETIME":"300","IDLE_TIMEOUT":"240","TOKEN_VALIDITY_MINUTES":"60"}
+06:48:31 重新配置完成 126906 ms：version 4 lifecycle {"idleRuntimeSessionTimeout":240,"maxLifetime":300} token 60 min；Front 分发 等待分发部署（通常 5–15 分钟）：https://df073xoeev9f0.cloudfront.net cloud setup done: https://df073xoeev9f0.cloudfront.net 
+06:56:16 ✓ M01 maxLifetime=300 s 到期：打开着的页面 WebSocket 关闭并自动重连（刷新前） — 关闭 #0@307s，新开 #1@307s；全程打开 #0@15s #1@307s #2@457s；提示 ["自动重连中..."]
+06:56:16 ✓ M02 到期回收后：不刷新继续对话 / 刷新后历史与对话 — 不刷新 ok 1707 ms；刷新后历史=true 回复 ok 1288 ms
+06:56:19 重新配置（第 1 次）：{"MAX_LIFETIME":"28800","IDLE_TIMEOUT":"900","TOKEN_VALIDITY_MINUTES":"5"}
+06:58:19 重新配置完成 120085 ms：version 5 lifecycle {"idleRuntimeSessionTimeout":900,"maxLifetime":28800} token 5 min；Front 分发 等待分发部署（通常 5–15 分钟）：https://df073xoeev9f0.cloudfront.net cloud setup done: https://df073xoeev9f0.cloudfront.net 
+06:58:21 • T00 新签发令牌有效期 — 299 s
+07:07:55 • T01 令牌过期后，已建立的 WebSocket 是否继续可用 — 关闭 无；原始 WS {"openedMs":8340,"closedMs":540022,"code":1006,"reason":"","msgs":0,"pings":26,"error":null,"stillOpenAtEnd":true}
+07:07:55 • T02 令牌过期后不刷新直接对话 — FAIL 60336 ms page.waitForFunction: Timeout 60000ms exceeded.
+07:07:55 ✓ T03 令牌过期后 HTTP 请求与刷新页面 — HTTP 错误 401 /api/session/prompt@509s；导航 /auth/login@2s /@8s /auth/login@569s；刷新后 URL /auth/login
+07:07:55 • T04 令牌过期后界面提示 — ["登录"]
+07:07:55 重新配置（第 1 次）：{"MAX_LIFETIME":"28800","IDLE_TIMEOUT":"900","TOKEN_VALIDITY_MINUTES":"60"}
+07:09:59 重新配置完成 123726 ms：version 6 lifecycle {"idleRuntimeSessionTimeout":900,"maxLifetime":28800} token 60 min；Front 分发 等待分发部署（通常 5–15 分钟）：https://df073xoeev9f0.cloudfront.net cloud setup done: https://df073xoeev9f0.cloudfront.net 
+07:09:59 done
+EXIT 0

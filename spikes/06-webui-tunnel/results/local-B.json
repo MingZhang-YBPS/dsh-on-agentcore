@@ -1,0 +1,24 @@
+{
+  "phase": "B",
+  "cases": [
+    {
+      "id": "U07",
+      "desc": "DSH 进程重启后（同一持久目录）：会话列表与历史仍在，可在旧会话继续对话",
+      "pass": true,
+      "console": [],
+      "note": "旧会话历史可见；继续对话回复 550 ms",
+      "ms": 5277
+    }
+  ],
+  "net": {
+    "console": [],
+    "failed": [],
+    "requests": 36,
+    "ws": [
+      {
+        "url": "ws://localhost:8000/api/remote.mux",
+        "closed": false
+      }
+    ]
+  }
+}

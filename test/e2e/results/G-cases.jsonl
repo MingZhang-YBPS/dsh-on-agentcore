@@ -1,0 +1,9 @@
+{"runId":"c637d4","id":"G00","desc":"回收测试用户的 microVM（StopRuntimeSession），使用当前版本与当前 key 状态启动","note":"200 {}"}
+{"runId":"c637d4","id":"G01","desc":"设置面板有「插件」，没有「模型」","pass":true,"note":"导航：设置 设置 通用设置 插件 Agent 预设 打开配置文件 ","ms":1955,"user":"carol"}
+{"runId":"c637d4","id":"G02","desc":"插件页：插件配置（终端、Agent 循环、Subagent、网页搜索）与插件列表两个视图","pass":true,"note":"四张卡片与两个视图都在","ms":909,"user":"carol"}
+{"runId":"c637d4","id":"G03","desc":"网页搜索卡片：API Key 由部署管理，不能在页面上填写","pass":true,"configured":true,"note":"密钥已配置；输入框禁用=true；接口地址 http://127.0.0.1:<port>/anthropic/v1","ms":1301,"user":"carol"}
+{"runId":"c637d4","id":"G04","desc":"修改终端命令超时并保存，刷新后仍在；恢复默认后回到默认值","pass":true,"note":"原值 60000 → 保存 45000，刷新后 45000；恢复默认后 60000","ms":9512,"user":"carol"}
+{"runId":"c637d4","id":"G05","desc":"修改网页搜索的接口地址：部署拒绝，页面提示「本部署没有接受这些值」","pass":true,"note":"保存被拒绝，草稿保留","ms":3366,"user":"carol"}
+{"runId":"c637d4","id":"G06","desc":"插件列表列出已加载的插件","pass":true,"note":"「已启用」25 项，含 tool-bash=true","ms":2072,"user":"carol"}
+{"runId":"c637d4","id":"G07","desc":"对话中调用 web_search：经适配器的 DeepSeek 代理返回结果","pass":true,"links":["https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/agents-tools-runtime.html"],"note":"17246 ms；工具「网页搜索」=true；无错误；外站链接 1 个（https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/agents-tools-runtime.html）","ms":22260,"user":"carol"}
+{"runId":"c637d4","id":"G08","desc":"网页搜索卡片的「已配置密钥」与部署的 secret 一致","pass":true,"note":"secret 已配置，卡片 已配置（卡片状态在 microVM 启动时确定）"}

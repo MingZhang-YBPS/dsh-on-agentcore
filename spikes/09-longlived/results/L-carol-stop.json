@@ -1,0 +1,378 @@
+{
+ "mode": "watch",
+ "minutes": 4,
+ "timeline": [
+  {
+   "t": 2,
+   "kind": "navigated",
+   "url": "/auth/login"
+  },
+  {
+   "t": 14,
+   "kind": "navigated",
+   "url": "/"
+  },
+  {
+   "t": 16,
+   "kind": "ws-open",
+   "id": 0
+  },
+  {
+   "t": 19,
+   "kind": "logged-in"
+  },
+  {
+   "t": 32,
+   "kind": "reply",
+   "tag": "第一条",
+   "ok": true,
+   "ms": 1525
+  },
+  {
+   "t": 32,
+   "kind": "state",
+   "tag": "ready",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 1,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 32,
+   "kind": "waiting-for-go"
+  },
+  {
+   "t": 40,
+   "kind": "ws-close",
+   "id": 0,
+   "lifetimeS": 24,
+   "rx": 73,
+   "tx": 4
+  },
+  {
+   "t": 40,
+   "kind": "ws-open",
+   "id": 1
+  },
+  {
+   "t": 50,
+   "kind": "go"
+  },
+  {
+   "t": 60,
+   "kind": "state",
+   "tag": "t+60s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 70,
+   "kind": "state",
+   "tag": "t+70s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 80,
+   "kind": "state",
+   "tag": "t+80s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 90,
+   "kind": "state",
+   "tag": "t+90s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 100,
+   "kind": "state",
+   "tag": "t+100s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 110,
+   "kind": "state",
+   "tag": "t+110s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 120,
+   "kind": "state",
+   "tag": "t+120s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 130,
+   "kind": "state",
+   "tag": "t+130s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 140,
+   "kind": "state",
+   "tag": "t+140s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 150,
+   "kind": "state",
+   "tag": "t+150s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 160,
+   "kind": "state",
+   "tag": "t+160s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 170,
+   "kind": "state",
+   "tag": "t+170s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 180,
+   "kind": "state",
+   "tag": "t+180s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 190,
+   "kind": "state",
+   "tag": "t+190s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 200,
+   "kind": "state",
+   "tag": "t+200s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 210,
+   "kind": "state",
+   "tag": "t+210s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 220,
+   "kind": "state",
+   "tag": "t+220s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 230,
+   "kind": "state",
+   "tag": "t+230s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 240,
+   "kind": "state",
+   "tag": "t+240s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 250,
+   "kind": "state",
+   "tag": "t+250s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 260,
+   "kind": "state",
+   "tag": "t+260s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 270,
+   "kind": "state",
+   "tag": "t+270s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 280,
+   "kind": "state",
+   "tag": "t+280s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 290,
+   "kind": "state",
+   "tag": "t+290s",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 1
+  },
+  {
+   "t": 292,
+   "kind": "reply",
+   "tag": "回收之后不刷新",
+   "ok": true,
+   "ms": 1597
+  },
+  {
+   "t": 292,
+   "kind": "state",
+   "tag": "after-send-no-reload",
+   "url": "/",
+   "wsOpen": 1,
+   "wsTotal": 2,
+   "hints": [],
+   "replies": 2
+  },
+  {
+   "t": 293,
+   "kind": "navigated",
+   "url": "/"
+  },
+  {
+   "t": 294,
+   "kind": "ws-open",
+   "id": 2
+  },
+  {
+   "t": 299,
+   "kind": "state",
+   "tag": "after-reload",
+   "url": "/",
+   "wsOpen": 2,
+   "wsTotal": 3,
+   "hints": [],
+   "replies": 2
+  },
+  {
+   "t": 299,
+   "kind": "history-after-reload",
+   "visible": true
+  },
+  {
+   "t": 300,
+   "kind": "reply",
+   "tag": "刷新之后",
+   "ok": true,
+   "ms": 1089
+  }
+ ],
+ "ws": [
+  {
+   "id": 0,
+   "url": "/api/remote.mux",
+   "openedAt": 16,
+   "closedAt": 40,
+   "rx": 73,
+   "tx": 4
+  },
+  {
+   "id": 1,
+   "url": "/api/remote.mux",
+   "openedAt": 40,
+   "closedAt": null,
+   "rx": 55,
+   "tx": 4
+  },
+  {
+   "id": 2,
+   "url": "/api/remote.mux",
+   "openedAt": 294,
+   "closedAt": null,
+   "rx": 48,
+   "tx": 4
+  }
+ ]
+}

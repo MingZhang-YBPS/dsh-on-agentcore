@@ -1,0 +1,17 @@
+node_modules/
+reference/
+deploy/front/state.env
+*.log
+.DS_Store
+spikes/*/.state/
+spikes/*/cdk.out/
+spikes/*/.agent-build/
+spikes/*/.outputs-*.json
+spikes/*/.ec2-probe
+**/dist/
+**/cdk.out/
+infra/cdk.context.json
+build/
+*.tsbuildinfo
+!spikes/*/results/*.log
+test/results/

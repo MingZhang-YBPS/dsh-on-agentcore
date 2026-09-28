@@ -1,0 +1,14 @@
+[
+ {
+  "t": "2026-09-27T03:50:22.689Z",
+  "level": "warn",
+  "msg": "model call",
+  "path": "/openai/v1/chat/completions",
+  "status": 401,
+  "ms": 69,
+  "bytesIn": 36180,
+  "cancelled": false,
+  "strippedRawToolMarkup": 0,
+  "errorBody": "{\"error\":{\"message\":\"User: arn:aws:sts::271547278201:assumed-role/dsh-poc-spike-07-exec-role/BedrockAgentCore-468eedc9-f2d1-4ad2-8d95-9e93daff68be is not authorized to perform: bedrock:InvokeModel on resource: arn:aws:bedrock:us-east-1::foundation-model/openai.gpt-oss-20b-1:0 because no identity-bas"
+ }
+]

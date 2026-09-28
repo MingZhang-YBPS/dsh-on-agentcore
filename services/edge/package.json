@@ -1,0 +1,7 @@
+{
+  "name": "@dsh-poc/edge",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "CloudFront Functions（cloudfront-js-2.0，viewer-request）：default-rewrite 与 ws-rewrite。源文件是运行时直接执行的 JS，不经过编译"
+}

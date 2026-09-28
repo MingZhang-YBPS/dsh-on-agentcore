@@ -1,0 +1,20 @@
+[
+ {
+  "label": "60 KB 单帧",
+  "result": "closed",
+  "code": 1008,
+  "reason": "invalid Remote stream request"
+ },
+ {
+  "label": "70 KB 单帧",
+  "result": "closed",
+  "code": 1009,
+  "reason": "Policy violated: message size limit of 64 KB for a message frame is exceeded"
+ },
+ {
+  "label": "70 KB 分两帧",
+  "result": "closed",
+  "code": 1008,
+  "reason": "invalid Remote stream request"
+ }
+]
