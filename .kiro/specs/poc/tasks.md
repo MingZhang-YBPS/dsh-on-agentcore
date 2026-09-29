@@ -283,10 +283,60 @@
     - 修正用例：模型回复里出现行内代码 `hello.txt` 时，文件预览用例误点对话正文；改为只点右半屏文件树并在预览区检查内容
     - _Requirements: 6.1, 6.4_
 
+- [ ] 12. 每用户运行时 + 专属 EFS（D4 方案 A，用户在任务 11 之后提出；独立的栈 `DshPerUser`，不改动 `DshPoc`）
+  - [x] 12.1 在不改变 `DshPoc` 合成结果的前提下重构构件
+    - `RuntimeConstruct` 拆出执行角色、适配器环境变量、JWT 授权器等构造函数；`TunnelConstruct`、`EdgeConstruct`、`ObservabilityConstruct` 参数化；`AuthConstruct` 增加 `addUser`
+    - 隧道 Lambda 的每用户逻辑放进新入口 `per-user.ts`，`index.ts`、`handler.ts`、`ports.ts` 不变
+    - 每用户 Runtime 使用新代码包 `adapter-per-user.zip`，`adapter.zip` 不变
+    - 验证：以线上用户列表重新合成 `DshPoc`，模板与全部资产哈希逐字节相同；线上 `cdk diff DshPoc` 为 no differences（每轮改动后都复核）
+    - _Requirements: 8.1_
+  - [x] 12.2 网络与每用户资源
+    - L1 VPC：按可用区 ID 建子网；默认单可用区、单 NAT；两个可用区时各有自己的 NAT；私有子网带 S3 网关端点
+    - 每名用户一个嵌套栈：EFS（文件系统策略限定执行角色与 TLS）、挂载目标、访问点 991:991、执行角色、Runtime（VPC 模式，`customClaims` 要求 `username`，`DSH_HOME_MIRROR=0`）、Cognito 用户与口令 secret（主栈的 provisioner 按标签读取）
+    - _Requirements: 8.2, 8.3, 8.4, 8.10_
+  - [x] 12.3 路由
+    - DynamoDB 路由表，由嵌套栈里的 `Custom::DshPerUserRoute` 写入，同一个自定义资源也负责日志组保留期
+    - 隧道 Lambda 查表（缓存 60 s），并下发 `dsh_rt`
+    - `ws-rewrite-per-user.js` 按 `dsh_rt` 拼 ARN，并核对其名称部分与令牌 `username` 一致
+    - _Requirements: 8.7, 8.8_
+  - [x] 12.4 部署脚本
+    - `-c stack=DshPerUser` 与 `deploy:per-user` 等别名
+    - 数据保护：EFS 文件系统删除或替换、嵌套栈删除时要求 `acceptDataWipe`；Runtime 变更只提示
+    - 部署结束时汇总嵌套栈输出，失败时输出嵌套栈里失败资源的原因
+    - 卸载时按前缀清理日志组，并对网卡延迟释放给出提示
+    - _Requirements: 8.6, 8.12_
+  - [x] 12.5 首次部署与修正（alice、bob，us-east-1）
+    - 弹性 IP 配额已满，提额到 25
+    - 执行角色补 `elasticfilesystem:DescribeAccessPoints` / `DescribeMountTargets`
+    - AgentCore 先启动进程、后挂载 EFS：新增入口 `per-user-entry.js` 等待挂载
+    - 结果：
+      - 协议级 12/12：授权器按 `username` 拒绝他人令牌（HTTP 401，`/ws` 403），CloudFront Function 拒绝他人或缺失的 `dsh_rt`，登出清除 `dsh_rt`；
+      - 浏览器 W/P 6/6：写文件、回收后历史与文件仍在，冷启动约 14 s
+    - _Requirements: 8.2, 8.3, 8.8, 8.9_
+  - [x] 12.6 跨 Runtime 版本保留数据：v2 写入 alice、bob 的数据，经 v3、v4 两次只改 Runtime 的部署，每次回收后数据都在；包装器没有拦截
+    - _Requirements: 8.5, 8.6_
+  - [x] 12.7 DeepSeek key 可按用户独立
+    - 参数 `deepseekSecretPerUser`，环境变量 `DEEPSEEK_API_KEY_<用户>`，preflight 逐个校验
+    - 演示部署先用共享 key；回收后模型列表出现 DeepSeek 官方模型
+    - Bedrock 仍按执行角色 IAM/SigV4 调用
+    - _Requirements: 8.11_
+  - [ ] 12.8 为每用户形态补充自动化测试
+    - `ws-rewrite-per-user.js` 与 `per-user.ts` 的单元测试，`DshPerUser` 合成不变量测试，`deploy-guard` 的 EFS 与嵌套栈用例
+    - 让 `test/e2e/cloud.ts` 支持 `DshPerUser`：从嵌套栈读输出，用用户自己的令牌调用 `StopRuntimeSession`
+    - 本轮只用一次性脚本验证过，脚本已删除
+    - _Requirements: 8.3, 8.5, 8.6, 8.8_
+  - [x] 12.9 为单个用户安装记忆插件（bob）
+    - `dsh-memory-eternal` 0.7.0 在 rc.3 上不能自动记忆：它读 `agent.session.events`，DSH 0.1.2 起已移除，已卸载
+    - 改装 `@alanzhao/dsh-memory-lite` 0.3.0，并把 profile 里的 `@deepseek-ai/schemastery` 固定为宿主的 3.18.2（否则 DSH 启动失败）
+    - 实测：自动提取、新会话召回、回收后召回均通过
+    - 步骤见 `docs/memory-plugin-dsh-memory-lite.md`；按用户要求不纳入部署流程
+    - _Requirements: 8.2_
+
 ## Notes
 
 - 每条设计属性对应一个属性测试，紧跟被测实现。测试文件为 `test/properties/pNN-*.test.ts`，头部标注 `// Feature: poc, Property N: ...`。
 - 7、8.x 会调用真实 AWS，执行前需要用户授权。
+- 12.x 的每用户形态部署在独立的栈 `DshPerUser` 中；每轮改动都复核 `DshPoc` 的合成结果与线上 `cdk diff` 不变。
 - 新增依赖一律使用精确版本。
 - 已作废的旧任务（自建 SPA、DynamoDB 历史、S3 工作空间快照、RUNCTL 停止链路、消息序号、工作空间 GC）不再列出，原因见 design.md Overview。
 

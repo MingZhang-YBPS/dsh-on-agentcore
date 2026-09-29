@@ -12,6 +12,8 @@ PoC 不自建前端，也不自建历史存储或工作空间存储。会话历�
 
 本设计取代此前「自建 SPA + 接入服务 + DynamoDB 历史 + S3 工作空间版本存储」的方案。改变方案的原因有两个：用户要求必须使用 AgentCore，并且不自建 UI；Spike 06 证明官方 UI 可以经隧道运行在 AgentCore 上（本机 23/23、AgentCore 18/18、CloudFront + Cognito 22/22）。Spike 07 在 AgentCore 上用真实 Bedrock DeepSeek 模型跑通了对话、工具调用、停止生成与错误显示（本机 27/27、AgentCore 20/20）。Spike 08 验证了 IaC 下 Runtime 的版本与数据清空语义，以及部署失败语义。Spike 09 验证了长连接、microVM 回收与令牌过期下官方 UI 的行为，并发现和修复了 AgentCore `/ws` 单帧 64 KB 上限的问题。Spike 01–05 的结论中仍然有效的部分已并入本文，其余不再适用。
 
+**两种部署形态。** 以下各节描述的是 PoC 形态（栈 `DshPoc`）：所有用户共用一个 Runtime，数据放在 session storage 上。为了长期试用，另有每用户运行时形态（栈 `DshPerUser`，需求 8，决策点 D4 方案 A）：每名用户一个 Runtime，挂载该用户独占的 EFS 文件系统，Runtime 升级不再清空数据。两个栈互不影响，每用户形态与 PoC 形态的差异集中写在「每用户运行时形态（`DshPerUser`）」一节。PoC 形态的模板与代码包在实现每用户形态前后逐字节相同，线上 `DshPoc` 的 `cdk diff` 为 no differences。
+
 > 术语澄清：AWS 文档中的 "AgentCore harness" 是 AWS 自己的托管编排层，与本 PoC 部署的 DeepSeek Harness 同名不同物。本设计只使用 AgentCore Runtime。
 
 ### 关键决策
@@ -19,8 +21,8 @@ PoC 不自建前端，也不自建历史存储或工作空间存储。会话历�
 | 决策点 | 选定方案 | 主要理由 | 未选方案 |
 |---|---|---|---|
 | 前端 | 官方 `dsh web`（`@deepseek-ai/dsh@0.1.5-rc.3`），不改前端代码，用加固补丁关闭不适合托管的功能 | 用户要求；得到完整的官方交互（计划、子代理、附件、文件预览等）；Spike 06 已跑通 | 自建 SPA（用户否决）；只在 microVM 外反向代理（DSH 是单用户进程，没有多用户隔离） |
-| 用户与会话映射 | 一名用户对应一个 runtimeSessionId：`dsh-user-<Cognito sub>`（45 个字符，满足 AgentCore 至少 33 个字符的要求） | 一名用户的全部 DSH 会话都放在同一个 microVM 和同一份持久目录里，DSH 自己的会话列表就是这名用户的会话列表 | 一个 DSH 会话对应一个运行时会话（与 DSH_Web 的多会话模型冲突）；每名用户一个 Runtime（资源数随用户数增长，作为存储退路保留，见下） |
-| 持久化 | AgentCore 托管 session storage 挂在 `/mnt/workspace`，`HOME` 指向它，工作空间为 `~/workspace`。`DSH_HOME` 放在本地 `/tmp/dsh-home`，由适配器每 2 s 镜像到 `/mnt/workspace/.dsh` | 按会话隔离、免 VPC、stop/resume 后仍保留（Spike 06 实测）。session storage 不支持硬链接，而 DSH 用 `link()` 发布会话文件，所以 DSH_HOME 不能直接放在上面 | 每名用户一个 Runtime + EFS 访问点（需要 VPC；不会因 Runtime 版本更新而清空，作为退路）；Instances 计算类型 + 每会话 EBS 卷（未验证） |
+| 用户与会话映射 | 一名用户对应一个 runtimeSessionId：`dsh-user-<Cognito sub>`（45 个字符，满足 AgentCore 至少 33 个字符的要求） | 一名用户的全部 DSH 会话都放在同一个 microVM 和同一份持久目录里，DSH 自己的会话列表就是这名用户的会话列表 | 一个 DSH 会话对应一个运行时会话（与 DSH_Web 的多会话模型冲突）；每名用户一个 Runtime（资源数随用户数增长；已作为每用户运行时形态实现，见「每用户运行时形态（`DshPerUser`）」） |
+| 持久化 | AgentCore 托管 session storage 挂在 `/mnt/workspace`，`HOME` 指向它，工作空间为 `~/workspace`。`DSH_HOME` 放在本地 `/tmp/dsh-home`，由适配器每 2 s 镜像到 `/mnt/workspace/.dsh` | 按会话隔离、免 VPC、stop/resume 后仍保留（Spike 06 实测）。session storage 不支持硬链接，而 DSH 用 `link()` 发布会话文件，所以 DSH_HOME 不能直接放在上面 | 每名用户一个 Runtime + EFS（需要 VPC；不会因 Runtime 版本更新而清空；已作为每用户运行时形态实现）；Instances 计算类型 + 每会话 EBS 卷（未验证） |
 | 承载方式 | AgentCore Runtime 直接代码部署（`NODE_22`，linux/arm64 zip），HTTP 协议 | Spike 06 实测可行：包 58 MB，解压 275 MB，低于 250 MB 压缩包上限；不需要 ECR 与镜像构建 | 自带容器镜像（仍可行；需要 tini 等 init 时再切换，见风险表） |
 | 入口鉴权 | Cognito User Pool + Runtime 的 `customJWTAuthorizer`（`allowedClients`）。Runtime 用 `requestHeaderAllowlist=Authorization` 把令牌转给适配器，由适配器校验会话归属 | JWT 授权器只验证令牌本身，不绑定会话 ID（AgentCore 文档与 Spike 06 C07 均确认），所以必须在容器内再校验一次 | IAM SigV4（终端用户没有 IAM 身份） |
 | 浏览器 → AgentCore（HTTP） | CloudFront 默认行为 → 隧道 Lambda（Function URL，`AuthType NONE`，`RESPONSE_STREAM`，只接受带源站密钥头的请求）→ `InvokeAgentRuntime`（Bearer） | 官方 UI 使用根路径下的任意 HTTP 请求，而 AgentCore 只有 `/invocations`，必须有一层把请求封包；Lambda 同时承担登录 | OAC 签名的 Function URL（DSH 客户端不会发送 `x-amz-content-sha256`，POST 请求会被拒绝）；浏览器直连 AgentCore（无法携带 Bearer） |
@@ -538,6 +540,124 @@ npm run destroy   -- --confirm-delete-user-data          # 删除全部资源，
   3. 整个过程由包装器计时，上限 30 分钟；删除期间逐项输出每个资源的 `DELETE_COMPLETE` / `DELETE_FAILED`。
 - **运维操作**：Runtime 配置为 JWT 授权器后，`StopRuntimeSession` 等数据面调用也必须携带 Bearer 令牌，SigV4 调用会返回 `Authorization method mismatch`（Spike 08/09）。运维脚本使用一个专用的运维用户换取令牌。
 
+## 每用户运行时形态（`DshPerUser`）
+
+需求 8、决策点 D4 方案 A。独立的栈 `DshPerUser`，与 `DshPoc` 同账号同区域共存。两者的 Runtime 名称（`dsh_pu_<用户>` 与 `dsh_poc_web`）、用户池、分发、日志组前缀都不同。入口是 `infra/bin/app.ts`：`-c stack=DshPerUser` 合成这个栈，默认仍合成 `DshPoc`。
+
+### 关键决策
+
+| 决策点 | 选定方案 | 主要理由 | 未选方案 |
+|---|---|---|---|
+| 运行时粒度 | 每名用户一个 `AWS::BedrockAgentCore::Runtime`（`dsh_pu_<用户名，- 换成 _>`），会话 ID 仍是 `dsh-user-<sub>` | 每个 Runtime 挂自己的文件系统、用自己的执行角色；Runtime 版本与用户数据解耦 | 共享 Runtime + S3 备份 HOME（D4 方案 B，要解决按会话限定凭证） |
+| 存储 | 每名用户一个 EFS 文件系统（加密、Elastic 吞吐、30 天转 IA）+ 一个访问点（POSIX 991:991，根目录 `/home`），挂到 `/mnt/workspace`。`DSH_HOME` 直接放在 EFS 上（`DSH_HOME_MIRROR=0`） | 文件系统随用户的嵌套栈存在，与 Runtime 版本无关。EFS 支持硬链接，不再需要 DSH_HOME 镜像；没有 1 GB 与 14 天限制。实测容器进程为 `agentcore-runtime-user`（991:991），与访问点一致 | 共用一个文件系统、每名用户一个访问点（隔离弱一层，删除用户时要另行清理目录） |
+| 存储隔离 | 文件系统策略只允许本账号中 `aws:PrincipalArn` 为该用户执行角色的主体，经挂载目标、以 TLS 挂载（`ClientMount`/`ClientWrite`，不授予 `ClientRootAccess`）；执行角色只能以本用户访问点挂载 | 没有匿名 NFS 放行；主体写成「账号 + 条件」，避开新建角色在 IAM 传播前被 EFS 判为无效主体 | 只靠安全组（microVM 内有 root 即可越权） |
+| 入口鉴权 | JWT 授权器在 `allowedClients` 之外加 `customClaims`：`username` 声明 `EQUALS` 所属用户 | 其他用户的有效令牌在 AgentCore 数据面即被拒绝（实测 401 `Authorization denied`），不依赖适配器 | 只靠适配器的会话归属校验（令牌持有者可以在别人的 Runtime 上开自己的会话、挂载别人的 EFS） |
+| 路由（HTTP） | DynamoDB 路由表（`pk = USER#<用户名>` → `runtimeId`，由嵌套栈内的自定义资源写入）；隧道 Lambda 的每用户入口 `services/tunnel/src/per-user.ts` 查表，内存缓存 60 s | 用户数不受 Lambda 环境变量 4 KB 限制；增删用户不改 Lambda | 映射写进环境变量（约 80 人上限） |
+| 路由（WebSocket） | 隧道 Lambda 下发 `dsh_rt=<Runtime ID>`（`Path=/api/remote.mux; HttpOnly; Secure`）；`ws-rewrite-per-user.js` 要求它形如 `dsh_pu_<令牌 username>-<10 位>`，再拼出 ARN | CloudFront Function 不能访问 DynamoDB；映射写进函数代码受 10 KB 限制；Runtime ID 不是秘密，真正的边界是授权器 | CloudFront KeyValueStore（要自定义资源维护键值，API 需要 SigV4A） |
+| 网络 | 新建 VPC（`10.80.0.0/16`），子网按 AgentCore 支持的可用区 ID 创建（L1 资源）。默认单可用区、一个 NAT 网关；两个可用区时各有自己的 NAT。私有子网带 S3 网关端点 | EFS 挂载要求 Runtime 使用 VPC 模式；AgentCore 网卡没有公网地址，出网必须经 NAT。单 NAT 时第二个可用区不提供出网可用性，反而有跨可用区流量费。2026-05 之后新建的 VPC 模式 Runtime 经本 VPC 从 S3 下载代码包 | 每个可用区一个 NAT（费用翻倍，作为参数保留） |
+| 栈结构 | 主栈 + 每名用户一个嵌套栈 `User-<用户名>`：Cognito 用户与口令 secret、执行角色、EFS（文件系统、挂载目标、访问点）、Runtime、路由项 | 单栈上限 500 个资源、200 个输出，每名用户约 11 个资源、5 个输出，单栈只能放约 37 人；嵌套后主栈每名用户只占 1 个资源、0 个输出（主栈约 54 个固定资源，约 440 人） | 单栈（约 37 人） |
+| 进程入口 | 代码包 `adapter-per-user.zip` = `adapter.zip` + `per-user-entry.js`（`build-adapter.sh` 第 5 步），入口 `per-user-entry.js` 先等 `/proc/mounts` 中出现挂载点（最多 20 s），再加载 `app.js` | 实测 AgentCore 先启动进程、约 0.9 s 后才挂载 EFS。适配器一启动就建工作区，会 EACCES 退出，调用方看到 424「Runtime initialization time exceeded」。`adapter.zip` 本身不变，`DshPoc` 资产哈希不变 | 修改适配器（会让 `DshPoc` 的代码包变化，下次部署要清空数据） |
+| DeepSeek key | 默认所有用户共用主栈的 secret；`-c deepseekSecretPerUser=<用户,…或 *>` 让列出的用户在自己的嵌套栈里有独立 secret，执行角色只能读自己的。值只经环境变量 `DEEPSEEK_API_KEY` / `DEEPSEEK_API_KEY_<用户>` 写入 | 按用户计费与隔离的可能性保留在部署参数里；Bedrock 仍按各用户执行角色 IAM/SigV4 调用，不按用户区分密钥 | 按用户的 Bedrock API key（不做精细管理） |
+
+### 架构图
+
+```mermaid
+flowchart LR
+  UI[官方 DSH Web UI] -- HTTPS --> CF[CloudFront]
+  CF -- 默认 / /plugins/* --> L[隧道 Lambda per-user.ts<br/>查路由表，下发 dsh_rt]
+  CF -- /api/remote.mux --> FW[ws-rewrite-per-user<br/>按 dsh_rt 拼 ARN]
+  L --> RT[(DynamoDB 路由表)]
+  L -- InvokeAgentRuntime Bearer --> RA
+  FW -- /runtimes/arn/ws --> RA
+  subgraph VPC[VPC（默认单可用区，私有子网 → NAT；S3 网关端点）]
+    subgraph NA[嵌套栈 User-alice]
+      RA[Runtime dsh_pu_alice<br/>JWT 授权器 username=alice]
+      EA[(EFS alice<br/>访问点 991:991)]
+      RA -- NFS TLS + IAM --- EA
+    end
+    subgraph NB[嵌套栈 User-bob]
+      RB[Runtime dsh_pu_bob<br/>JWT 授权器 username=bob]
+      EB[(EFS bob)]
+      RB --- EB
+    end
+  end
+  RA & RB -- NAT --> OUT[Bedrock / DeepSeek / Secrets Manager / 用户工具出网]
+```
+
+### 与 PoC 形态的差异
+
+- **HTTP 路径**：隧道 Lambda 在 `handler.ts` 的业务逻辑外包了一层（`handleWithRoute`）：
+  - 从令牌的 `username` 查路由表，把请求发往该用户的 Runtime；查不到时（例如没有 Runtime 的用户）返回 403 `no runtime is provisioned for this user`，不调用 AgentCore；
+  - 页面导航总是下发 `dsh_rt`；其他请求只在浏览器带来的 `dsh_rt` 缺失或不一致时下发；`/plugins/*` 与 `/auth/*` 不下发，登出时清除；
+  - 源站密钥不对的请求直接交给 `handler.ts` 返回 403，不查表。
+  `index.ts`、`handler.ts`、`ports.ts` 不变，`DshPoc` 的隧道代码包不变。
+- **WebSocket 路径**：`ws-rewrite-per-user.js` 要求令牌里有合规的 `username`，`dsh_rt` 的名称部分必须等于 `dsh_pu_<username 中 - 换成 _>-`。缺失或不符时返回 403（刷新页面即可重新下发）。
+- **安全分层**：在 PoC 形态的各层之外，AgentCore 授权器按 `username` 拒绝其他用户的令牌，文件系统策略限定挂载主体。适配器的会话归属校验保留。没有 `ops` 用户：各 Runtime 只接受所属用户的令牌，`StopRuntimeSession` 等数据面调用要用该用户自己的令牌。
+- **持久目录布局**：
+
+```
+/mnt/workspace/                 = HOME = 该用户的 EFS 访问点根目录（/home）
+├── workspace/                  默认工作区
+├── .dsh/                       DSH_HOME（直接在 EFS 上，不镜像；含 profiles/web，用户安装的插件也在这里）
+└── …                           用户或插件写入的其他文件（例如记忆插件的 ~/.agent-memory）
+```
+
+- **日志保留期**：每名用户的路由自定义资源（主栈里一个共享的 Provider）同时创建 Runtime 日志组并设置保留期，删除用户时删除日志组。主栈 Dashboard 只包含前 50 名用户的 Runtime 日志（Logs Insights 上限）。
+
+### 配置参数（在 PoC 形态的参数之外）
+
+| 参数 | 默认值 | 说明 |
+|---|---|---|
+| `stack` | `DshPoc` | `DshPerUser` 时合成每用户形态；`npm run deploy:per-user` 等别名已带上 |
+| `vpcCidr` | `10.80.0.0/16` | 必须是 /16，切成 /20 |
+| `vpcAzIds` | 区域支持列表的第一个 | 一个或两个 AgentCore 支持的可用区 ID（`infra/lib/params.ts` 中的表）；每个可用区一个 NAT |
+| `efsPosixUid` / `efsPosixGid` | `991` / `991` | 访问点的 POSIX 身份 |
+| `efsBackup` | `false` | EFS 自动备份（恢复点在卸载后仍保留） |
+| `deepseekSecretPerUser` | 空 | 使用独立 DeepSeek key 的用户（逗号分隔或 `*`） |
+| `adapterPerUserZip` | 与 `adapterZip` 同目录的 `adapter-per-user.zip` | 每用户 Runtime 的代码包 |
+
+`demoUsers` 在两种形态中含义相同；每用户形态下用户名替换 `-` 为 `_` 后必须仍然唯一（Runtime 名称）。
+
+### 部署与卸载
+
+```bash
+DEEPSEEK_API_KEY=… npm run deploy:per-user -- -c demoUsers=alice,bob [-c deepseekSecretPerUser=bob] [-c acceptDataWipe=true]
+npm run destroy:per-user -- --confirm-delete-user-data
+```
+
+- **数据保护（8.6）**：Runtime 变更不再需要 `acceptDataWipe`，包装器只提示「Runtime 有变更，数据在 EFS 上」。`cdk diff`（含各嵌套栈的段落）中出现以下变更时，没有 `-c acceptDataWipe=true` 就以退出码 3 终止，并列出受影响的资源（`infra/scripts/deploy-guard.ts` 的 `efsFileSystemsAtRisk`）：
+  - `AWS::EFS::FileSystem` 被删除或替换；
+  - `AWS::CloudFormation::Stack` 被删除。从 `demoUsers` 去掉用户时，diff 里只出现嵌套栈本身，不会列出其中的 EFS。
+- **输出**：主栈只有固定输出（`WebUrl`、`RouteTableName`、`VpcId`、共享 `DeepSeekApiKeySecretArn` 等）。每名用户的 `AgentRuntimeArn`、`AgentRuntimeVersion`、`EfsFileSystemId`、`UserSecretArn`、`DeepSeekKeyScope` 在其嵌套栈上，部署包装器结束时汇总打印，部署失败时也打印嵌套栈中失败资源的原因。输出文件为 `infra/build/outputs-DshPerUser.json`，不覆盖 `DshPoc` 的 `outputs.json`。
+- **卸载**：删除全部嵌套栈与 EFS。AgentCore 在 VPC 中的网卡会在 Runtime 删除后保留最多 8 小时，其间子网与安全组可能 `DELETE_FAILED`，包装器提示稍后重跑。日志组按前缀 `/aws/bedrock-agentcore/runtimes/dsh_pu_` 与 `/aws/lambda/DshPerUser-` 清理。
+- **首次部署的前提**：
+  - 账号中还没有服务关联角色 `AWSServiceRoleForBedrockAgentCoreNetwork` 时，部署身份需要 `iam:CreateServiceLinkedRole`；
+  - 需要 1 个（双可用区时 2 个）空闲的弹性 IP 配额。本账号首次部署时配额已满，提额到 25 后才部署成功。
+
+### 实测记录（2026-09-29，`alice,bob`，us-east-1）
+
+- **隔离**：alice 的令牌直接调用 bob 的 Runtime，HTTP 返回 401，`/ws` 返回 403。经 CloudFront 把 `dsh_rt` 改成 bob 的 ID、或不带 `dsh_rt`，都返回 403。登出清除 `dsh_rt`。
+- **EFS**：挂载成功，mkdir、写文件、硬链接都正常。浏览器里用工具写入 `hello.txt`，回收 microVM 后会话历史与文件都在（P01–P03）。
+- **跨版本保留（8.5）**：v2 写入 alice、bob 的数据，经两次只改 Runtime 的部署到 v3、v4，每次回收后数据都在。包装器没有拦截这两次部署。
+- **冷启动**：适配器启动到 DSH 就绪约 6.7–7.3 s，首页可用约 14–15 s。
+- **首次部署暴露的问题**（均已修正）：
+  - 执行角色还需要 `elasticfilesystem:DescribeAccessPoints` 与 `DescribeMountTargets`。缺少时 CreateAgentRuntime 报「Execution role is missing required filesystem permissions」，文件系统配置文档里没有列出这两项；
+  - 进程启动时 EFS 还没挂上（见「进程入口」）；
+  - 弹性 IP 配额。
+- **DeepSeek key**：以共享 key 部署后回收 microVM，适配器报告 `deepseekKeyConfigured: true`，模型列表出现 DeepSeek 官方模型。
+- **用户自装插件**：为 bob 安装记忆插件 `@alanzhao/dsh-memory-lite`，步骤与注意事项见 `docs/memory-plugin-dsh-memory-lite.md`。插件带来的 `@deepseek-ai/schemastery` 必须用 pnpm `overrides` 固定为宿主的 3.18.2，否则 Cordis 把插件配置解析成空对象，DSH 无法启动。
+
+### 每用户形态的限制与风险
+
+| 项 | 影响 | 处理 |
+|---|---|---|
+| 单 NAT、默认单可用区 | 该可用区故障时服务不可用（EFS 为区域级存储，数据不受影响）；NAT 按小时计费 | 需要时传两个可用区，每个可用区一个 NAT |
+| 账号级配额 | Runtime、IAM 角色、EFS 文件系统默认各 1000；CloudFormation 栈数也计入嵌套栈 | 用户数接近时提额 |
+| `username` 是路由与授权的依据 | 删除某个用户后再以同名重建，会拿到原来的 Runtime 与数据（EFS 随嵌套栈删除时除外） | 删除用户会删除其嵌套栈与 EFS，受数据保护拦截 |
+| `dsh_rt` cookie 过期或缺失 | WebSocket 返回 403，页面显示重连 | 页面导航总会重新下发；刷新即可恢复 |
+| 没有 `ops` 用户 | 运维数据面调用要用各用户自己的令牌 | 运维脚本从该用户的口令 secret 换取令牌 |
+| 端到端脚本仍针对 `DshPoc` | 每用户形态的回归靠一次性脚本 | 见 tasks.md 任务 12.8 |
+
 ## 待用户确认的决策点
 
 - **D4：用户数据如何跨 Runtime 版本保留。**
@@ -546,12 +666,13 @@ npm run destroy   -- --confirm-delete-user-data          # 删除全部资源，
   - **B. 保留单个 Runtime，适配器把 HOME 备份到 S3。** 退出时和定期把 HOME 备份到 S3 上按用户隔离的前缀；启动时如果发现 session storage 是空的，就从 S3 恢复。代价：要解决按会话限定的 S3 凭证。这又回到 Spike 03 的问题：执行角色凭证在 microVM 内对所有进程可见，需要由外部为每个会话签发范围受限的凭证。此外 1 GB 以内的全量恢复会拉长冷启动。
   - 推荐：PoC 阶段维持现状（接受清空）；进入长期试用前选 A。A 的每一部分都是托管能力，也不需要重新设计凭证隔离。
   - **已确认（2026-09-27）**：PoC 阶段接受「部署即清空」，依靠 `acceptDataWipe` 保护与 README 说明；进入长期试用前改为方案 A。
+  - **已实现（2026-09-29）**：方案 A 以独立的栈 `DshPerUser` 实现，`DshPoc` 保持不变。实测 Runtime 两次升级（v2→v4）后数据保留。设计见「每用户运行时形态（`DshPerUser`）」，需求见需求 8。
 
 ## 已知限制与风险
 
 | 项 | 影响 | 处理 |
 |---|---|---|
-| session storage 在 Runtime 版本更新时清空（预览期行为） | Runtime 的**任何**变更，包括只改标签或描述、升级适配器代码、升级 DSH 版本，都会清空全部用户数据；清空在各用户 microVM 回收后陆续发生（Spike 08） | PoC：部署包装器的 `acceptDataWipe` 保护，README 写明。PoC 之后必须在两条路线中二选一，见决策点 D4 |
+| session storage 在 Runtime 版本更新时清空（预览期行为） | Runtime 的**任何**变更，包括只改标签或描述、升级适配器代码、升级 DSH 版本，都会清空全部用户数据；清空在各用户 microVM 回收后陆续发生（Spike 08） | PoC：部署包装器的 `acceptDataWipe` 保护，README 写明。长期试用改用每用户运行时形态 `DshPerUser`（D4 方案 A，已实现），数据在 EFS 上，不受 Runtime 版本影响 |
 | 访问令牌过期 | 令牌过期后，已建立的 WebSocket 仍然可用，但发送消息的 HTTP 请求会返回 401，界面没有任何提示（Spike 09 T 阶段） | 隧道 Lambda 滑动续期（见「3. 隧道 Lambda」），真正的登录时长由刷新令牌的有效期决定 |
 | 访问令牌无法吊销 | cookie 泄露后，访问令牌在过期前仍可访问；登出只能让刷新令牌失效 | cookie 设为 `HttpOnly; Secure`。有效期不宜短于用户可能的最长无操作时间：WebSocket 每小时重连一次，重连用的是 cookie 中的令牌，而 cookie 只在有 HTTP 请求时才续期 |
 | WebSocket 每小时被 AgentCore 断开一次 | 1008「Max connection duration of 1 hour is exceeded」；重连期间界面短暂显示「自动重连中…」 | 依赖 DSH_Web 的自动重连。任务 8.2 L 阶段实测：连接在 3647 s 被关闭，页面同一秒重连，之后不刷新即可对话 |
@@ -566,6 +687,6 @@ npm run destroy   -- --confirm-delete-user-data          # 删除全部资源，
 | 执行角色凭证可被工具读取 | 用户可在 microVM 中用执行角色调用模型 | 执行角色只具有所选模型的调用权限，调用其他模型会被拒绝（Spike 07 实测 401）；只影响本会话的用量。`bedrock-mantle` 端点面只能按项目授权，同一项目下的其他模型也能调用 |
 | 模型输出格式随 Bedrock 侧更新而变化 | 原始标记的写法变了，过滤器就会漏掉；过滤器也可能误删正文中恰好出现的标记字符串 | 过滤器只匹配 DeepSeek 专用的全角标记；`model call` 日志记录每次剥离的次数；升级模型或定期回归时重跑 Spike 07 的 `run-local.mjs`（R03/L04） |
 | DSH 把 IAM 拒绝显示为「API 密钥无效」 | 排障时容易误判 | 以适配器 `model call.errorBody` 为准；README 写明 |
-| 共享的 DeepSeek API key 可被用户取得 | 用户可以经 bash 调用本地代理或用执行角色读取 secret，使用或导出整个部署共用的网页搜索 key | PoC 接受；长期使用改为按用户的 key，或在 microVM 之外注入 key |
+| 共享的 DeepSeek API key 可被用户取得 | 用户可以经 bash 调用本地代理或用执行角色读取 secret，使用或导出整个部署共用的网页搜索 key | PoC 接受。每用户形态可用 `deepseekSecretPerUser` 给用户独立的 key，执行角色只能读自己的；用户仍能取得自己的 key |
 | 用户可绕过设置过滤 | 适配器只过滤浏览器的设置 RPC；用户在 bash 里改 `$DSH_HOME/settings.yaml` 仍能改模型路由等设置 | 与 bash 的出网能力同级，只影响本用户；PoC 接受 |
 | DSH developer preview 版本变动 | 补丁行 id、封包路径、WebSocket 协议都可能变化 | 版本锁定；升级前重跑三组集成用例 |
