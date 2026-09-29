@@ -9,7 +9,6 @@ import { Construct } from 'constructs'
 import type { AuthConstruct } from './auth.js'
 import { bundleTunnel } from './bundle.js'
 import type { Params } from './params.js'
-import type { RuntimeConstruct } from './runtime.js'
 
 export class TunnelConstruct extends Construct {
   readonly fn: lambda.Function
@@ -17,7 +16,11 @@ export class TunnelConstruct extends Construct {
   readonly logGroup: logs.LogGroup
   readonly originSecret: secrets.Secret
 
-  constructor(scope: Construct, id: string, p: Params, auth: AuthConstruct, rt: RuntimeConstruct) {
+  /**
+   * runtimeEnv：共享 Runtime 时为 { RUNTIME_ARN }（入口 services/tunnel/src/index.ts）；
+   * 每用户 Runtime 时为 { RUNTIME_ARN_PREFIX, USER_RUNTIMES }（入口 per-user.ts，opts.entry 指定）
+   */
+  constructor(scope: Construct, id: string, p: Params, auth: AuthConstruct, runtimeEnv: Record<string, string>, opts: { entry?: 'index.ts' | 'per-user.ts'; description?: string } = {}) {
     super(scope, id)
     this.originSecret = new secrets.Secret(this, 'OriginSecret', {
       description: 'DSH PoC: X-Origin-Verify header value shared by CloudFront and the tunnel Lambda',
@@ -26,16 +29,16 @@ export class TunnelConstruct extends Construct {
     })
     this.logGroup = new logs.LogGroup(this, 'Logs', { retention: retentionOf(p.logRetentionDays), removalPolicy: RemovalPolicy.DESTROY })
     this.fn = new lambda.Function(this, 'Fn', {
-      description: 'DSH PoC tunnel: login, cookie token, envelope + InvokeAgentRuntime streaming',
+      description: opts.description ?? 'DSH PoC tunnel: login, cookie token, envelope + InvokeAgentRuntime streaming',
       runtime: lambda.Runtime.NODEJS_22_X,
       architecture: lambda.Architecture.ARM_64,
       handler: 'index.handler',
-      code: lambda.Code.fromAsset(bundleTunnel()),
+      code: lambda.Code.fromAsset(bundleTunnel(opts.entry)),
       timeout: Duration.seconds(900),
       memorySize: 512,
       logGroup: this.logGroup,
       environment: {
-        RUNTIME_ARN: rt.runtime.attrAgentRuntimeArn,
+        ...runtimeEnv,
         USER_POOL_ID: auth.pool.userPoolId,
         CLIENT_ID: auth.client.userPoolClientId,
         // CloudFormation 动态引用，部署时解析，不出现在模板里

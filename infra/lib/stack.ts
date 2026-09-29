@@ -3,7 +3,7 @@
 import { CfnOutput, Stack, Tags, type StackProps } from 'aws-cdk-lib'
 import type { Construct } from 'constructs'
 import { AuthConstruct } from './auth.js'
-import { EdgeConstruct } from './edge.js'
+import { EdgeConstruct, wsRewriteCode } from './edge.js'
 import { ObservabilityConstruct } from './observability.js'
 import { readParams } from './params.js'
 import { RuntimeConstruct } from './runtime.js'
@@ -17,9 +17,9 @@ export class DshPocStack extends Stack {
     const p = readParams(this.node, this.region)
     const auth = new AuthConstruct(this, 'Auth', p)
     const rt = new RuntimeConstruct(this, 'Agent', p, auth)
-    const tunnel = new TunnelConstruct(this, 'Tunnel', p, auth, rt)
-    const edge = new EdgeConstruct(this, 'Edge', tunnel, rt)
-    new ObservabilityConstruct(this, 'Observability', p, rt, tunnel, edge.distribution)
+    const tunnel = new TunnelConstruct(this, 'Tunnel', p, auth, { RUNTIME_ARN: rt.runtime.attrAgentRuntimeArn })
+    const edge = new EdgeConstruct(this, 'Edge', tunnel, wsRewriteCode(rt.runtime.attrAgentRuntimeArn))
+    new ObservabilityConstruct(this, 'Observability', p, { '': rt.runtime.attrAgentRuntimeId }, tunnel, edge.distribution)
 
     // Spike 08：Runtime 的标签变更也会清空数据，所以标签只打在其他资源上（Stack 级标签会继承到 Runtime，这里不用）
     for (const c of [auth, tunnel, edge]) Tags.of(c).add('project', 'dsh-poc')

@@ -22,9 +22,13 @@
     "test:integration": "vitest run --project integration",
     "build:adapter": "bash infra/scripts/build-adapter.sh",
     "synth": "npm run -w infra synth",
+    "synth:per-user": "npm run -w infra synth -- -c stack=DshPerUser",
     "preflight": "npm run -w infra preflight --",
     "deploy": "npm run -w infra deploy --",
-    "destroy": "npm run -w infra destroy --"
+    "destroy": "npm run -w infra destroy --",
+    "preflight:per-user": "npm run -w infra preflight -- -c stack=DshPerUser",
+    "deploy:per-user": "npm run -w infra deploy -- -c stack=DshPerUser",
+    "destroy:per-user": "npm run -w infra destroy -- -c stack=DshPerUser"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

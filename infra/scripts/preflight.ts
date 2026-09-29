@@ -1,13 +1,13 @@
 // preflight：部署前校验参数与模型可用性，30 秒硬超时。
 //   npm run preflight -- [-c key=value ...]
 // 检查项：
-//   1. context 参数（与合成时同一套校验，见 lib/params.ts）
+//   1. context 参数（与合成时同一套校验，见 lib/params.ts；-c stack=DshPerUser 时包括 VPC 可用区与 EFS 参数）
 //   2. 当前凭证与区域；CDK bootstrap（CDKToolkit 栈）存在
 //   3. 模型（mockModel=true 时跳过）：
 //      bedrock-runtime：GetFoundationModelAvailability 要求 AUTHORIZED + AVAILABLE，再发一次 max_completion_tokens=1 的
 //        非流式调用（Spike 07：R1 在模型列表里有，但在 OpenAI 兼容端点上 404，只查列表不够）
 //      bedrock-mantle：GET /v1/models 中包含该模型
-//   4. 设置了环境变量 DEEPSEEK_API_KEY 时（网页搜索用的 DeepSeek 官方 key）：GET https://api.deepseek.com/models 返回 200
+//   4. 设置了环境变量 DEEPSEEK_API_KEY / DEEPSEEK_API_KEY_<用户> 时（DeepSeek 官方 key）：GET https://api.deepseek.com/models 返回 200
 
 import { BedrockClient, GetFoundationModelAvailabilityCommand } from '@aws-sdk/client-bedrock'
 import { CloudFormationClient } from '@aws-sdk/client-cloudformation'
@@ -17,7 +17,7 @@ import { SignatureV4 } from '@smithy/signature-v4'
 import { createHash } from 'node:crypto'
 import { pathToFileURL } from 'node:url'
 import { surfaceBase, surfaceService, type Params } from '../lib/params.js'
-import { describeStack, fail, loadParams, parseCli, resolveRegion, type Cli } from './common.js'
+import { describeStack, fail, loadParams, parseCli, resolveRegion, stackNameOf, type Cli } from './common.js'
 
 const HARD_TIMEOUT_MS = 30_000
 
@@ -42,7 +42,7 @@ export async function preflight(cli: Cli): Promise<Params> {
   const region = await resolveRegion()
   let p: Params
   try { p = loadParams(cli, region) } catch (e) { fail(`invalid parameters: ${(e as Error).message}`) }
-  ok(`parameters valid (region ${region}, model ${p.modelId} @ ${p.modelRegion} via ${p.modelEndpointSurface}${p.mockModel ? ', mockModel' : ''})`)
+  ok(`parameters valid (stack ${stackNameOf(cli)}, region ${region}, model ${p.modelId} @ ${p.modelRegion} via ${p.modelEndpointSurface}${p.mockModel ? ', mockModel' : ''})`)
 
   const cfn = new CloudFormationClient({ region })
   const toolkit = await describeStack(cfn, 'CDKToolkit').catch((e: Error) => fail(`cannot call CloudFormation with the current credentials: ${e.message}`))
@@ -69,14 +69,14 @@ export async function preflight(cli: Cli): Promise<Params> {
     if (!ids.includes(p.modelId)) fail(`model ${p.modelId} is not listed by bedrock-mantle in ${p.modelRegion} (${ids.length} models listed)`)
     ok('model listed by bedrock-mantle /v1/models')
   }
-  const dsKey = process.env.DEEPSEEK_API_KEY?.trim()
-  if (dsKey) {
-    const r = await fetch('https://api.deepseek.com/models', { headers: { authorization: `Bearer ${dsKey}` }, signal: abort }).catch((e: Error) => fail(`DeepSeek API check failed: ${e.message}`))
-    if (r.status !== 200) fail(`DEEPSEEK_API_KEY was rejected by api.deepseek.com: HTTP ${r.status} ${(await r.text()).slice(0, 200)}`)
-    ok('DEEPSEEK_API_KEY accepted by api.deepseek.com')
-  } else {
-    ok('DEEPSEEK_API_KEY not set: the stored DeepSeek key (if any) is left unchanged')
-  }
+  // DEEPSEEK_API_KEY（共享）与 DEEPSEEK_API_KEY_<用户>（每用户部署中有自己 key 的用户），逐个校验
+  const keys = Object.entries(process.env).filter(([k, v]) => /^DEEPSEEK_API_KEY(_[A-Z0-9_]+)?$/.test(k) && v?.trim()).map(([k, v]) => [k, (v ?? '').trim()] as const)
+  if (keys.length === 0) ok('DEEPSEEK_API_KEY not set: the stored DeepSeek key (if any) is left unchanged')
+  await Promise.all(keys.map(async ([name, key]) => {
+    const r = await fetch('https://api.deepseek.com/models', { headers: { authorization: `Bearer ${key}` }, signal: abort }).catch((e: Error) => fail(`DeepSeek API check for ${name} failed: ${e.message}`))
+    if (r.status !== 200) fail(`${name} was rejected by api.deepseek.com: HTTP ${r.status} ${(await r.text()).slice(0, 200)}`)
+    ok(`${name} accepted by api.deepseek.com`)
+  }))
   clearTimeout(timer)
   return p
 }

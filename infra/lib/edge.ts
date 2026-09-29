@@ -10,7 +10,6 @@ import { Construct } from 'constructs'
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { REPO_ROOT } from './bundle.js'
-import type { RuntimeConstruct } from './runtime.js'
 import type { TunnelConstruct } from './tunnel.js'
 
 export const ARN_PLACEHOLDER = '__RUNTIME_ARN__'
@@ -23,10 +22,20 @@ export function wsRewriteCode(runtimeArn: string): string {
   return Fn.join('', [parts[0] ?? '', runtimeArn, parts[1] ?? ''])
 }
 
+export const ARN_PREFIX_PLACEHOLDER = '__RUNTIME_ARN_PREFIX__'
+
+/** 每用户 Runtime 部署的 ws-rewrite：把 ARN 前缀（arn:…:runtime/，合成时含 CloudFormation 令牌）填进 ws-rewrite-per-user.js */
+export function wsRewritePerUserCode(arnPrefix: string): string {
+  const parts = edgeSource('ws-rewrite-per-user.js').split(ARN_PREFIX_PLACEHOLDER)
+  if (parts.length !== 2) throw new Error(`ws-rewrite-per-user.js must contain ${ARN_PREFIX_PLACEHOLDER} exactly once`)
+  return Fn.join('', [parts[0] ?? '', arnPrefix, parts[1] ?? ''])
+}
+
 export class EdgeConstruct extends Construct {
   readonly distribution: cloudfront.Distribution
 
-  constructor(scope: Construct, id: string, tunnel: TunnelConstruct, rt: RuntimeConstruct) {
+  /** wsCode：/api/remote.mux 行为上的 CloudFront Function 源码（wsRewriteCode 或 wsRewritePerUserCode 的结果） */
+  constructor(scope: Construct, id: string, tunnel: TunnelConstruct, wsCode: string, opts: { wsComment?: string; comment?: string } = {}) {
     super(scope, id)
     const region = Stack.of(this).region
     const js2 = cloudfront.FunctionRuntime.JS_2_0
@@ -36,9 +45,9 @@ export class EdgeConstruct extends Construct {
       code: cloudfront.FunctionCode.fromInline(edgeSource('default-rewrite.js')),
     })
     const wsFn = new cloudfront.Function(this, 'WsRewrite', {
-      comment: 'DSH PoC: /api/remote.mux -> AgentCore /ws with Bearer token from cookie',
+      comment: opts.wsComment ?? 'DSH PoC: /api/remote.mux -> AgentCore /ws with Bearer token from cookie',
       runtime: js2,
-      code: cloudfront.FunctionCode.fromInline(wsRewriteCode(rt.runtime.attrAgentRuntimeArn)),
+      code: cloudfront.FunctionCode.fromInline(wsCode),
     })
 
     const tunnelOrigin = new origins.FunctionUrlOrigin(tunnel.url, {
@@ -79,7 +88,7 @@ export class EdgeConstruct extends Construct {
     const viewerRequest = (f: cloudfront.IFunction): cloudfront.FunctionAssociation[] => [{ eventType: cloudfront.FunctionEventType.VIEWER_REQUEST, function: f }]
 
     this.distribution = new cloudfront.Distribution(this, 'Distribution', {
-      comment: 'DSH PoC (official DSH Web UI on AgentCore Runtime)',
+      comment: opts.comment ?? 'DSH PoC (official DSH Web UI on AgentCore Runtime)',
       priceClass: cloudfront.PriceClass.PRICE_CLASS_ALL,
       httpVersion: cloudfront.HttpVersion.HTTP2,
       defaultBehavior: {

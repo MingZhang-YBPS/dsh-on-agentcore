@@ -72,7 +72,87 @@ npm run deploy                                         # preflight 先用它调�
 3. **14 天未使用。** session storage 在会话 14 天未被调用后由服务清空。
 4. **卸载。** `npm run destroy` 删除全部资源和数据。
 
-长期试用前需要改为「每用户一个 Runtime + EFS」（设计决策点 D4），PoC 阶段接受上述行为。
+长期试用前需要改为「每用户一个 Runtime + EFS」（设计决策点 D4），PoC 阶段接受上述行为。方案 A 已实现为独立的栈 `DshPerUser`，见下一节。
+
+## 每用户 Runtime + 独立 EFS（`DshPerUser` 栈）
+
+设计决策点 D4 的方案 A。它是一个**独立的栈**，与 `DshPoc` 可以同时存在，互不影响：两者的 Runtime 名称、用户池、分发、日志组前缀都不同。`npm run deploy` / `destroy`（不带 `:per-user`）仍然只操作 `DshPoc`，模板与之前逐字节相同。
+
+```
+浏览器 ─▶ CloudFront ─┬─ 默认 / /plugins/* ─▶ 隧道 Lambda（per-user.ts：查路由表 DynamoDB，下发 dsh_rt cookie）─┐
+                      └─ /api/remote.mux ───▶ ws-rewrite-per-user（按 dsh_rt cookie 拼 Runtime ARN）───────────┤
+                                                                                                      ▼
+                     每名用户：AgentCore Runtime dsh_pu_<用户>（VPC 模式，JWT 授权器要求 username = 该用户）
+                               └─ /mnt/workspace = 该用户自己的 EFS 文件系统（访问点，uid/gid 991）
+```
+
+```bash
+read -rs DEEPSEEK_API_KEY && export DEEPSEEK_API_KEY   # 新栈有自己的 secret，首次部署时要传一次
+npm run preflight:per-user
+npm run deploy:per-user -- -c demoUsers=alice,bob
+npm run destroy:per-user -- --confirm-delete-user-data  # 删除所有用户的 EFS，即全部数据
+```
+
+与 `DshPoc` 的区别：
+
+- **数据不随 Runtime 版本丢失。** 数据在各用户的 EFS 上，升级适配器、DSH、改环境变量或生命周期参数都不会清空，也不需要 `acceptDataWipe`。只有 EFS 文件系统被删除或替换时（从 `demoUsers` 去掉用户、卸载）才会删除数据；部署包装器在 `cdk diff` 中发现这种变更时拒绝部署（退出码 3），除非加 `-c acceptDataWipe=true`。
+- **没有 1 GB 与 14 天限制；支持硬链接。** DSH_HOME 直接放在 EFS 上，不再镜像（`DSH_HOME_MIRROR=0`），`pnpm` 不需要额外配置。
+- **隔离。** 每名用户有自己的执行角色、访问点和文件系统。文件系统策略只允许该用户的角色经 TLS 挂载。Runtime 的 JWT 授权器除 `client_id` 外还要求令牌的 `username` 声明等于所属用户。
+- **没有 `ops` 用户。** 每个 Runtime 的授权器只接受其所属用户的令牌，`StopRuntimeSession` 等数据面调用也要用该用户自己的令牌。用户池里的其他用户（没有 Runtime）登录后得到 403。
+- **路由。** 「用户名 → Runtime ID」存在 DynamoDB 路由表（输出 `RouteTableName`，由部署写入）。隧道 Lambda 查表（内存缓存 60 秒），并下发 `dsh_rt` cookie（该用户的 Runtime ID，只发往 `/api/remote.mux`）。WebSocket 不经过 Lambda，CloudFront Function 也不能访问 DynamoDB，所以 WebSocket 的目标 Runtime 取自这个 cookie。cookie 被篡改没有用：CloudFront Function 只接受名称与令牌 `username` 一致的 Runtime ID，目标 Runtime 的授权器也会拒绝别人的令牌。cookie 缺失或过期时 WebSocket 返回 403，刷新页面即可重新下发。
+- **增删用户要部署一次。** 新用户会新建一个嵌套栈并写入路由表；隧道 Lambda 与 CloudFront Function 都不用改。
+- **每名用户一个嵌套栈 `User-<用户名>`。** 嵌套栈里是该用户的 Cognito 用户与口令 secret、执行角色、EFS、Runtime，以及路由项（同时设置 Runtime 日志组的保留期）。主栈里每名用户只占 1 个资源、不占输出，按 CloudFormation 单栈 500 个资源算，大约可以放 440 名用户。
+  - 用户多了以后，先碰到的是账号级配额：AgentCore Runtime（默认 1000）、IAM 角色（默认 1000，账号里已有的角色也算）、EFS 文件系统（默认 1000）、CloudFormation 栈数（嵌套栈也算）。
+  - 每名用户的 Runtime ARN、EFS ID、口令 secret 在各自嵌套栈的输出上，`deploy:per-user` 结束时会汇总打印。
+  - 从 `demoUsers` 去掉用户会删除其嵌套栈，也就删除了该用户的 EFS。部署包装器会把这种变更当作删除数据拦下（退出码 3），除非加 `-c acceptDataWipe=true`。
+  - 部署失败时，包装器会把嵌套栈里失败资源的原因一并打印出来。
+  - 仪表盘的 Runtime 日志查询只包含前 50 名用户，这是 Logs Insights 的上限。
+- **网络与费用。** 新建 VPC（默认 `10.80.0.0/16`），默认**单可用区**：子网按 AgentCore 支持的可用区 ID 创建（us-east-1 默认 `use1-az1`），一个 NAT 网关，每名用户一个 EFS 挂载目标，没有跨可用区流量费。该可用区故障时服务不可用；EFS 用的是区域级（Standard）存储，数据不受影响。传两个可用区时，每个可用区各有一个 NAT。
+  - NAT 按小时计费，并收取数据处理费。EFS 按用量计费（Elastic 吞吐，30 天未访问的文件转入 IA）。
+  - 私有子网带 S3 网关端点。2026-05 之后新建的 VPC 模式 Runtime 启动时，要经本 VPC 从 S3 下载代码包，这个端点是必需的。
+- **卸载可能要重跑。** AgentCore 在 VPC 中创建的网卡会在 Runtime 删除后保留最多 8 小时，其间子网与安全组可能删除失败，稍后再运行一次 `destroy:per-user`。
+- 首次在账号中使用 VPC 模式时，AgentCore 会创建服务关联角色 `AWSServiceRoleForBedrockAgentCoreNetwork`，部署身份需要 `iam:CreateServiceLinkedRole`（当前账号还没有这个角色）。
+
+附加参数（`-c key=value`）：
+
+| 参数 | 默认 | 说明 |
+|---|---|---|
+| `vpcCidr` | `10.80.0.0/16` | 必须是 /16，切成 /20：每个可用区一个公有子网放 NAT、一个私有子网放 Runtime 与 EFS 挂载目标 |
+| `vpcAzIds` | 区域支持列表的第一个 | 一个或两个可用区 ID，必须在 AgentCore 支持的列表中（`infra/lib/params.ts`）；每个可用区一个 NAT |
+| `efsPosixUid` / `efsPosixGid` | `991` / `991` | 访问点的 POSIX 身份，与 NODE_22 代码运行时的进程身份 `agentcore-runtime-user`（991:991，实测）一致 |
+| `efsBackup` | `false` | 开启 EFS 自动备份。恢复点在卸载后仍保留，另行计费 |
+| `deepseekSecretPerUser` | 空 | 使用自己 DeepSeek 官方 key 的用户，逗号分隔，`*` 表示全部；其余用户共用栈级的 key。见下文「DeepSeek key」 |
+
+**DeepSeek key。** DeepSeek 官方模型与网页搜索用的 key 可以按用户分开；Bedrock 模型仍然用各用户执行角色的 IAM 权限（SigV4）调用，不按用户管理。
+
+- **默认：所有用户共用栈级的 secret。** 输出为 `DeepSeekApiKeySecretArn`，用 `DEEPSEEK_API_KEY` 写入。
+- **列在 `deepseekSecretPerUser` 里的用户：** 在自己的嵌套栈里有一个 secret，执行角色只能读自己的，读不到共享的。key 用 `DEEPSEEK_API_KEY_<用户名大写，- 换成 _>` 写入，例如：
+  ```bash
+  read -rs DEEPSEEK_API_KEY_BOB && export DEEPSEEK_API_KEY_BOB
+  npm run deploy:per-user -- -c demoUsers=alice,bob -c deepseekSecretPerUser=bob
+  ```
+- **key 只经过环境变量。** 值不进 context、模板或 Runtime 配置；preflight 会先调用一次 `api.deepseek.com` 校验每个 key。写入或更换 key 不改动 Runtime；要等各用户的 microVM 回收后（空闲 15 分钟，或用户自己的令牌调用 `StopRuntimeSession`），模型列表里才会出现 DeepSeek 官方模型。
+- **在共享与独立之间切换：** 会改变该用户 Runtime 读取的 secret，所以产生新的 Runtime 版本（不丢数据）。新建的独立 secret 初始为 `not-configured`，应在同一次部署里一起传入 key。部署结束时，包装器会逐个用户报告 key 是否已配置。
+- 各用户用哪个 secret，见其嵌套栈的输出 `DeepSeekKeyScope`（`user` / `shared`）与 `DeepSeekApiKeySecretArn`。
+
+首次部署实测（2026-09-29，`alice,bob`，全部通过）：
+
+- **隔离：** alice 的令牌调用 bob 的 Runtime，无论 HTTP 还是 WebSocket 都被授权器拒绝（401 `Authorization denied` / 403）。经 CloudFront 把 `dsh_rt` 改成 bob 的 ID、或不带 `dsh_rt`，都由 CloudFront Function 返回 403。
+- **EFS：** 容器进程是 uid/gid 991（`agentcore-runtime-user`），与访问点一致。在满足文件系统策略（IAM + TLS）的前提下挂载成功，mkdir、写文件、硬链接都正常。
+- **持久化：** 在浏览器里让模型用 bash 写入 `hello.txt`，然后用 alice 自己的令牌调用 `StopRuntimeSession`。重新打开后，会话历史与文件都还在，也能继续对话。
+- **冷启动：** 新 microVM 从适配器启动到 DSH 就绪约 6.7 s，首页可用约 14–15 s。
+- **跨 Runtime 版本保留数据：** 在 v2 写入 alice、bob 的数据后，两次只改 Runtime 的部署（`idleRuntimeSessionTimeoutSeconds` 900→901→900）把版本推到 v3、v4。每次都回收 microVM 再打开，会话历史与 `hello.txt` 都还在。部署包装器没有拦截（EFS 不受影响），只提示 Runtime 有变更。
+
+部署中发现、已处理的两点：
+
+- **执行角色需要额外权限。** 除 `ClientMount`/`ClientWrite` 外，还需要 `elasticfilesystem:DescribeAccessPoints` 与 `DescribeMountTargets`，否则创建 Runtime 时报「Execution role is missing required filesystem permissions」。文件系统配置文档里没有列出这两项。
+- **进程启动时 EFS 还没挂上。** AgentCore 先启动进程，约 0.9 s 后才挂载 EFS。适配器一启动就创建工作区目录，会失败（EACCES）并退出，调用方看到 424「Runtime initialization time exceeded」。
+  - 处理办法：每用户 Runtime 的代码包 `adapter-per-user.zip`（`build-adapter.sh` 第 5 步）多一个入口 `per-user-entry.js`，等挂载出现后再加载 `app.js`。
+  - `DshPoc` 的 `adapter.zip` 不变。
+
+给单个用户安装 DSH 插件（例如记忆插件 `@alanzhao/dsh-memory-lite`）的步骤见 [`docs/memory-plugin-dsh-memory-lite.md`](docs/memory-plugin-dsh-memory-lite.md)。设计与需求见 `.kiro/specs/poc/design.md` 的「每用户运行时形态（`DshPerUser`）」一节与 `requirements.md` 的需求 8。
+
+端到端脚本 `test/e2e/cloud.ts` 仍针对 `DshPoc`，还没有适配这个栈。
 
 ## 已知限制
 

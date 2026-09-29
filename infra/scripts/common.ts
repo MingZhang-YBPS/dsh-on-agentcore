@@ -1,15 +1,16 @@
 // preflight / deploy / destroy 共用：命令行解析、CDK context 合并、区域解析、子进程与栈状态查询。
 
-import { CloudFormationClient, DescribeStackEventsCommand, DescribeStacksCommand, type Stack, type StackEvent } from '@aws-sdk/client-cloudformation'
+import { CloudFormationClient, DescribeStackEventsCommand, DescribeStacksCommand, ListStackResourcesCommand, type Stack, type StackEvent } from '@aws-sdk/client-cloudformation'
 import { App } from 'aws-cdk-lib'
 import { spawn } from 'node:child_process'
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { REPO_ROOT } from '../lib/bundle.js'
-import { readParams, type Params } from '../lib/params.js'
+import { readParams, readPerUserParams, type Params } from '../lib/params.js'
+import { PER_USER_STACK_NAME } from '../lib/per-user-stack.js'
 import { STACK_NAME } from '../lib/stack.js'
 
-export { STACK_NAME, REPO_ROOT }
+export { STACK_NAME, PER_USER_STACK_NAME, REPO_ROOT }
 export const INFRA_DIR = join(REPO_ROOT, 'infra')
 export const CDK_BIN = join(REPO_ROOT, 'node_modules', '.bin', 'cdk')
 
@@ -45,9 +46,19 @@ export function mergedContext(cli: Cli): Record<string, unknown> {
 
 export const isTrue = (v: unknown): boolean => ['true', '1', 'yes'].includes(String(v ?? 'false').toLowerCase())
 
+/** 目标栈：-c stack=DshPoc（默认，共享 Runtime）或 -c stack=DshPerUser（每用户 Runtime + EFS） */
+export function stackNameOf(cli: Cli): string {
+  const s = String(mergedContext(cli).stack ?? STACK_NAME)
+  if (s !== STACK_NAME && s !== PER_USER_STACK_NAME) fail(`context stack must be ${STACK_NAME} or ${PER_USER_STACK_NAME}`)
+  return s
+}
+export const isPerUser = (stackName: string): boolean => stackName === PER_USER_STACK_NAME
+
 export function loadParams(cli: Cli, region: string): Params {
   const app = new App({ context: mergedContext(cli), autoSynth: false })
-  return readParams(app.node, region)
+  const p = readParams(app.node, region)
+  if (isPerUser(stackNameOf(cli))) readPerUserParams(app.node, region, p)
+  return p
 }
 
 export async function resolveRegion(): Promise<string> {
@@ -84,6 +95,20 @@ export async function describeStack(cfn: CloudFormationClient, name = STACK_NAME
 }
 
 export const outputOf = (s: Stack | undefined, key: string): string | undefined => s?.Outputs?.find((o) => o.OutputKey === key)?.OutputValue
+
+/** 栈的全部嵌套栈（每用户部署：每名用户一个），返回其 describe-stacks 结果 */
+export async function nestedStacks(cfn: CloudFormationClient, name: string): Promise<Stack[]> {
+  const ids: string[] = []
+  let token: string | undefined
+  do {
+    const r = await cfn.send(new ListStackResourcesCommand({ StackName: name, NextToken: token }))
+    for (const x of r.StackResourceSummaries ?? []) if (x.ResourceType === 'AWS::CloudFormation::Stack' && x.PhysicalResourceId) ids.push(x.PhysicalResourceId)
+    token = r.NextToken
+  } while (token)
+  const out: Stack[] = []
+  for (const id of ids) { const s = await describeStack(cfn, id); if (s) out.push(s) }
+  return out
+}
 
 /** 返回 since 之后的栈事件（按时间正序） */
 export async function eventsSince(cfn: CloudFormationClient, since: Date, name = STACK_NAME): Promise<StackEvent[]> {

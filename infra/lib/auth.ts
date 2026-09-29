@@ -18,8 +18,11 @@ export class AuthConstruct extends Construct {
   readonly client: cognito.UserPoolClient
   readonly throttleTable: dynamodb.Table
   readonly userSecrets: Record<string, secrets.Secret> = {}
+  readonly provisioner: lambda.Function
+  readonly provider: cr.Provider
 
-  constructor(scope: Construct, id: string, p: Params) {
+  /** users：在本构造下创建的用户，默认 demoUsers + ops（DshPoc）；DshPerUser 传 []，由各用户的嵌套栈调用 addUser */
+  constructor(scope: Construct, id: string, p: Params, users: readonly string[] = [...p.demoUsers, 'ops']) {
     super(scope, id)
     this.pool = new cognito.UserPool(this, 'Pool', {
       selfSignUpEnabled: false,
@@ -46,7 +49,7 @@ export class AuthConstruct extends Construct {
     })
 
     // 演示用户与运维用户（运维用户用于需要 Bearer 令牌的数据面调用，例如 StopRuntimeSession）
-    const provisioner = new lambda.Function(this, 'UserProvisioner', {
+    const provisioner = this.provisioner = new lambda.Function(this, 'UserProvisioner', {
       description: 'DSH PoC: create Cognito users and set their passwords from Secrets Manager',
       runtime: lambda.Runtime.NODEJS_22_X,
       architecture: lambda.Architecture.ARM_64,
@@ -59,23 +62,30 @@ export class AuthConstruct extends Construct {
       actions: ['cognito-idp:AdminCreateUser', 'cognito-idp:AdminSetUserPassword', 'cognito-idp:AdminDeleteUser'],
       resources: [this.pool.userPoolArn],
     }))
-    const provider = new cr.Provider(this, 'UserProvider', {
+    this.provider = new cr.Provider(this, 'UserProvider', {
       onEventHandler: provisioner,
       logGroup: new logs.LogGroup(this, 'UserProviderLogs', { retention: logs.RetentionDays.ONE_WEEK, removalPolicy: RemovalPolicy.DESTROY }),
     })
-    for (const name of [...p.demoUsers, 'ops']) {
-      const secret = new secrets.Secret(this, `User-${name}`, {
-        description: `DSH PoC ${name === 'ops' ? 'ops' : 'demo'} user ${name}`,
-        generateSecretString: { passwordLength: 24, requireEachIncludedType: true, excludeCharacters: '"\'\\`$&;|<>{}()[]' },
-        removalPolicy: RemovalPolicy.DESTROY,
-      })
-      this.userSecrets[name] = secret
-      secret.grantRead(provisioner)
-      new CustomResource(this, `CognitoUser-${name}`, {
-        serviceToken: provider.serviceToken,
-        resourceType: 'Custom::DshPocUser',
-        properties: { UserPoolId: this.pool.userPoolId, Username: name, SecretArn: secret.secretArn },
-      })
-    }
+    for (const name of users) this.addUser(this, name)
+  }
+
+  /**
+   * 在 scope 下创建一名 Cognito 用户及其口令 secret（口令只在 Secrets Manager 与 Cognito 中，不经过模板）。
+   * grantProvisioner=false 时由调用方另行授权 provisioner 读取（DshPerUser 用标签条件统一授权，避免 provisioner 的策略随用户数增长）。
+   */
+  addUser(scope: Construct, name: string, grantProvisioner = true): secrets.Secret {
+    const secret = new secrets.Secret(scope, `User-${name}`, {
+      description: `DSH PoC ${name === 'ops' ? 'ops' : 'demo'} user ${name}`,
+      generateSecretString: { passwordLength: 24, requireEachIncludedType: true, excludeCharacters: '"\'\\`$&;|<>{}()[]' },
+      removalPolicy: RemovalPolicy.DESTROY,
+    })
+    this.userSecrets[name] = secret
+    if (grantProvisioner) secret.grantRead(this.provisioner)
+    new CustomResource(scope, `CognitoUser-${name}`, {
+      serviceToken: this.provider.serviceToken,
+      resourceType: 'Custom::DshPocUser',
+      properties: { UserPoolId: this.pool.userPoolId, Username: name, SecretArn: secret.secretArn },
+    })
+    return secret
   }
 }

@@ -9,25 +9,34 @@ import * as cw from 'aws-cdk-lib/aws-cloudwatch'
 import * as logs from 'aws-cdk-lib/aws-logs'
 import { Construct } from 'constructs'
 import type { Params } from './params.js'
-import type { RuntimeConstruct } from './runtime.js'
 import { retentionOf, type TunnelConstruct } from './tunnel.js'
 
 export class ObservabilityConstruct extends Construct {
-  readonly runtimeLogGroupName: string
+  readonly runtimeLogGroupNames: string[]
   readonly dashboard: cw.Dashboard
 
-  constructor(scope: Construct, id: string, p: Params, rt: RuntimeConstruct, tunnel: TunnelConstruct, distribution: cloudfront.Distribution) {
+  /**
+   * runtimeIds：键 → Runtime ID。共享 Runtime 部署传 { '': id }（构造 ID 保持 RuntimeLogRetention）；
+   * 每用户部署传 { <用户名>: id }（构造 ID 为 RuntimeLogRetention-<用户名>）。
+   * 日志查询面板最多引用 50 个日志组（Logs Insights 上限），超出的用户只设置保留期、不进面板。
+   * manageRetention=false：保留期由调用方设置（DshPerUser 在各用户的嵌套栈里由路由自定义资源设置），这里只建面板。
+   */
+  constructor(scope: Construct, id: string, p: Params, runtimeIds: Record<string, string>, tunnel: TunnelConstruct, distribution: cloudfront.Distribution, manageRetention = true) {
     super(scope, id)
-    this.runtimeLogGroupName = `/aws/bedrock-agentcore/runtimes/${rt.runtime.attrAgentRuntimeId}-DEFAULT`
-    new logs.LogRetention(this, 'RuntimeLogRetention', {
-      logGroupName: this.runtimeLogGroupName,
-      retention: retentionOf(p.logRetentionDays),
-      removalPolicy: RemovalPolicy.DESTROY,
-    })
+    this.runtimeLogGroupNames = []
+    for (const [key, runtimeId] of Object.entries(runtimeIds)) {
+      const logGroupName = `/aws/bedrock-agentcore/runtimes/${runtimeId}-DEFAULT`
+      this.runtimeLogGroupNames.push(logGroupName)
+      if (manageRetention) new logs.LogRetention(this, key ? `RuntimeLogRetention-${key}` : 'RuntimeLogRetention', {
+        logGroupName,
+        retention: retentionOf(p.logRetentionDays),
+        removalPolicy: RemovalPolicy.DESTROY,
+      })
+    }
 
     const fn = tunnel.fn
     const tunnelLogs = [tunnel.logGroup.logGroupName]
-    const runtimeLogs = [this.runtimeLogGroupName]
+    const runtimeLogs = this.runtimeLogGroupNames.slice(0, 50)
     const period = Duration.minutes(5)
     this.dashboard = new cw.Dashboard(this, 'Dashboard', {
       defaultInterval: Duration.hours(6),

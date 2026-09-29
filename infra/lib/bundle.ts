@@ -8,12 +8,13 @@ import { fileURLToPath } from 'node:url'
 
 export const REPO_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..')
 
-export function bundleTunnel(): string {
-  const outdir = join(REPO_ROOT, 'infra', 'build', 'tunnel')
+/** entry：index.ts（共享 Runtime，DshPoc）或 per-user.ts（每用户 Runtime，DshPerUser）；输出文件都叫 index.mjs（handler 为 index.handler） */
+export function bundleTunnel(entry: 'index.ts' | 'per-user.ts' = 'index.ts'): string {
+  const outdir = join(REPO_ROOT, 'infra', 'build', entry === 'index.ts' ? 'tunnel' : 'tunnel-per-user')
   rmSync(outdir, { recursive: true, force: true })
   mkdirSync(outdir, { recursive: true })
   buildSync({
-    entryPoints: [join(REPO_ROOT, 'services', 'tunnel', 'src', 'index.ts')],
+    entryPoints: [join(REPO_ROOT, 'services', 'tunnel', 'src', entry)],
     outfile: join(outdir, 'index.mjs'),
     bundle: true,
     platform: 'node',

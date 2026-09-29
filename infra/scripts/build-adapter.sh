@@ -50,4 +50,15 @@ size="$(stat -c %s "$OUT/adapter.zip")"
 sha="$(sha256sum "$OUT/adapter.zip" | cut -d' ' -f1)"
 echo "$sha" > "$OUT/adapter.zip.sha256"
 echo "   解压 $(du -sh "$PKG" | cut -f1)，zip $((size / 1024 / 1024)) MB，sha256 ${sha:0:12}…"
+
+echo "== 5/5 每用户 Runtime 的代码包（adapter.zip + per-user-entry.js：等 EFS 挂载后再启动适配器）"
+# adapter.zip 本身不变（DshPoc 的资产哈希不变）；新文件同样固定时间戳，保证可重复构建
+EXTRA="$OUT/per-user-extra"
+rm -rf "$EXTRA" "$OUT/adapter-per-user.zip" && mkdir -p "$EXTRA"
+cp "$ROOT/services/adapter/per-user/per-user-entry.js" "$EXTRA/"
+node --check "$EXTRA/per-user-entry.js"
+chmod -R u+rwX,go+rX "$EXTRA" && find "$EXTRA" -exec touch -h -d @315532800 {} +
+cp "$OUT/adapter.zip" "$OUT/adapter-per-user.zip"
+(cd "$EXTRA" && zip -q -X "$OUT/adapter-per-user.zip" per-user-entry.js)
+echo "   sha256 $(sha256sum "$OUT/adapter-per-user.zip" | cut -c1-12)…"
 echo "$OUT/adapter.zip"
